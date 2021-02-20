@@ -7,7 +7,7 @@ class WelcomeManager {
 
   static WelcomeManager load(SharedPreferences sharedPreferences) {
     final isInitialAppStart =
-        sharedPreferences.getBool(initialAppStartKey) ?? false;
+        sharedPreferences.getBool(initialAppStartKey) ?? true;
     return WelcomeManager(isInitialAppStart, sharedPreferences);
   }
 

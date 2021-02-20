@@ -25,12 +25,13 @@ class MessageLookup extends MessageLookupByLibrary {
   static _notInlinedMessages(_) => <String, Function> {
     "add_node_to_get_started" : MessageLookupByLibrary.simpleMessage("Add a Service Node below to get started."),
     "add_service_node" : MessageLookupByLibrary.simpleMessage("Add a Service Node"),
-    "add_service_node_title" : MessageLookupByLibrary.simpleMessage("Add Service Node"),
     "error_public_key_too_long" : MessageLookupByLibrary.simpleMessage("Public Key too long"),
     "error_public_key_too_short" : MessageLookupByLibrary.simpleMessage("Public Key too short"),
     "name" : MessageLookupByLibrary.simpleMessage("Name"),
     "public_key" : MessageLookupByLibrary.simpleMessage("Public Key"),
     "router_no_route" : m0,
+    "title_add_service_node" : MessageLookupByLibrary.simpleMessage("Add Service Node"),
+    "title_dashboard" : MessageLookupByLibrary.simpleMessage("Dashboard"),
     "welcome" : MessageLookupByLibrary.simpleMessage("Welcome,\nOXEN Service Node Operator"),
     "welcome_first_line" : MessageLookupByLibrary.simpleMessage("Here you can watch Service Nodes you run or contributed to.")
   };

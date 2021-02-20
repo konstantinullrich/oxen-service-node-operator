@@ -3,15 +3,17 @@ import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/oxen/service_node.dart';
+import 'package:oxen_service_node/src/stores/node_sync_store.dart';
+import 'package:oxen_service_node/src/utils/router/oxen_routes.dart';
 import 'package:oxen_service_node/src/utils/theme/palette.dart';
 import 'package:oxen_service_node/src/widgets/base_page.dart';
 import 'package:oxen_service_node/src/widgets/primary_button.dart';
-import 'package:oxen_service_node/src/widgets/scollable_with_bottom_section.dart';
+import 'package:oxen_service_node/src/widgets/scrollable_with_bottom_section.dart';
 import 'package:provider/provider.dart';
 
 class AddNewNodePage extends BasePage {
   @override
-  String get title => S.current.add_service_node_title;
+  String get title => S.current.title_add_service_node;
 
   @override
   Widget body(BuildContext context) => AddNewNodePageBody();
@@ -31,6 +33,7 @@ class AddNewNodePageBodyState extends State<AddNewNodePageBody> {
     if (publicKey.length == 64) return 0;
     if (publicKey.length < 64) return -1;
     if (publicKey.length > 64) return 1;
+    return -1;
   }
 
   @override
@@ -40,15 +43,16 @@ class AddNewNodePageBodyState extends State<AddNewNodePageBody> {
     super.dispose();
   }
 
-  void _saveServiceNode(Box<ServiceNode> serviceNodeSource) {
+  Future _saveServiceNode(Box<ServiceNode> serviceNodeSource) async {
     final serviceNode =
         ServiceNode(_nameController.text, _publicKeyController.text);
-    serviceNodeSource.add(serviceNode);
+    await serviceNodeSource.add(serviceNode);
   }
 
   @override
   Widget build(BuildContext context) {
     final serviceNodeSource = Provider.of<Box<ServiceNode>>(context);
+    final nodeSyncStatus = Provider.of<NodeSyncStore>(context);
 
     return ScrollableWithBottomSection(
       contentPadding: EdgeInsets.all(0),
@@ -106,8 +110,10 @@ class AddNewNodePageBodyState extends State<AddNewNodePageBody> {
                         color: OxenPalette.teal,
                         icon: Icon(Icons.content_paste_sharp),
                         onPressed: () async {
-                          final clipboard = await Clipboard.getData('text/plain');
-                          if (clipboard.text != null) _publicKeyController.text = clipboard.text;
+                          final clipboard =
+                              await Clipboard.getData('text/plain');
+                          if (clipboard.text != null)
+                            _publicKeyController.text = clipboard.text;
                         })),
                 validator: (value) {
                   final validPublicKey = _isValidPublicKey(value);
@@ -123,10 +129,11 @@ class AddNewNodePageBodyState extends State<AddNewNodePageBody> {
         ),
       ),
       bottomSection: PrimaryButton(
-          onPressed: () {
+          onPressed: () async {
             if (!_formKey.currentState.validate()) return;
-            _saveServiceNode(serviceNodeSource);
-            // Navigator.pushNamed(context, OxenRoutes.dashboard);
+            await _saveServiceNode(serviceNodeSource);
+            nodeSyncStatus.sync();
+            Navigator.pushNamed(context, OxenRoutes.dashboard);
           },
           text: S.of(context).add_service_node,
           color: Theme.of(context).primaryTextTheme.button.backgroundColor,

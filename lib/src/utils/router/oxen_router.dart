@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/screens/add_new_node_page.dart';
+import 'package:oxen_service_node/src/screens/dashboard_page.dart';
 import 'package:oxen_service_node/src/screens/welcome_page.dart';
 import 'package:oxen_service_node/src/stores/settings_store.dart';
 import 'package:oxen_service_node/src/utils/welcome_manager.dart';
@@ -25,6 +26,9 @@ class OxenRouter {
 
       case OxenRoutes.addServiceNode:
         return CupertinoPageRoute<void>(builder: (_) => AddNewNodePage());
+
+      case OxenRoutes.dashboard:
+        return MaterialPageRoute(builder: (_) => DashboardPage());
 
       default:
         return MaterialPageRoute<void>(

@@ -4,8 +4,11 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:hive/hive.dart';
 import 'package:oxen_service_node/src/oxen/daemon.dart';
 import 'package:oxen_service_node/src/oxen/service_node.dart';
+import 'package:oxen_service_node/src/screens/dashboard_page.dart';
 import 'package:oxen_service_node/src/screens/welcome_page.dart';
+import 'package:oxen_service_node/src/stores/node_sync_store.dart';
 import 'package:oxen_service_node/src/stores/settings_store.dart';
+import 'package:oxen_service_node/src/utils/default_settings_migration.dart';
 import 'package:oxen_service_node/src/utils/language.dart';
 import 'package:oxen_service_node/src/utils/router/oxen_router.dart';
 import 'package:oxen_service_node/src/utils/theme/theme_changer.dart';
@@ -28,16 +31,20 @@ Future<void> main() async {
   final serviceNodes = await Hive.openBox<ServiceNode>(ServiceNode.boxName);
   final daemons = await Hive.openBox<Daemon>(Daemon.boxName);
   final sharedPreferences = await SharedPreferences.getInstance();
-  final settingsStore = await SettingsStoreBase.load(sharedPreferences);
 
-  runApp(MultiProvider(
-      providers: [
-        Provider(create: (_) => serviceNodes),
-        Provider(create: (_) => daemons),
-        Provider(create: (_) => sharedPreferences),
-        Provider(create: (_) => settingsStore),
-      ],
-      child: OxenServiceNodeApp()));
+  await defaultSettingsMigration(1, sharedPreferences, daemons);
+
+  final settingsStore =
+      await SettingsStoreBase.load(sharedPreferences, daemons);
+  final nodeSyncStore = NodeSyncStore(serviceNodes, settingsStore);
+
+  runApp(MultiProvider(providers: [
+    Provider(create: (_) => serviceNodes),
+    Provider(create: (_) => daemons),
+    Provider(create: (_) => sharedPreferences),
+    Provider(create: (_) => settingsStore),
+    Provider(create: (_) => nodeSyncStore),
+  ], child: OxenServiceNodeApp()));
 }
 
 class OxenServiceNodeApp extends StatelessWidget {
@@ -85,7 +92,7 @@ class MaterialAppWithTheme extends StatelessWidget {
         supportedLocales: S.delegate.supportedLocales,
         locale: Locale(currentLanguage.currentLanguage),
         onGenerateRoute: (settings) => OxenRouter.generateRoute(
-          settings, sharedPreferences, settingsStore, welcomeManager),
-        home: WelcomePage());
+            settings, sharedPreferences, settingsStore, welcomeManager),
+        home: welcomeManager.isSetup ? WelcomePage() : DashboardPage());
   }
 }

@@ -86,10 +86,20 @@ class S {
   }
 
   /// `Add Service Node`
-  String get add_service_node_title {
+  String get title_add_service_node {
     return Intl.message(
       'Add Service Node',
-      name: 'add_service_node_title',
+      name: 'title_add_service_node',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dashboard`
+  String get title_dashboard {
+    return Intl.message(
+      'Dashboard',
+      name: 'title_dashboard',
       desc: '',
       args: [],
     );
