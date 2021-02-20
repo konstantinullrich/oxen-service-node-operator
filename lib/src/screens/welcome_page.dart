@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/utils/router/oxen_routes.dart';
-import 'file:///C:/Users/konst/IdeaProjects/oxen_service_node/lib/src/utils/theme/palette.dart';
+import 'package:oxen_service_node/src/utils/theme/palette.dart';
 import 'package:oxen_service_node/src/widgets/primary_button.dart';
 
 class WelcomePage extends StatelessWidget {

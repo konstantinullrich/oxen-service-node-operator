@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:hive/hive.dart';
+import 'package:oxen_service_node/src/oxen/daemon.dart';
+import 'package:oxen_service_node/src/oxen/service_node.dart';
 import 'package:oxen_service_node/src/screens/welcome_page.dart';
 import 'package:oxen_service_node/src/stores/settings_store.dart';
 import 'package:oxen_service_node/src/utils/language.dart';
@@ -8,6 +11,7 @@ import 'package:oxen_service_node/src/utils/router/oxen_router.dart';
 import 'package:oxen_service_node/src/utils/theme/theme_changer.dart';
 import 'package:oxen_service_node/src/utils/theme/themes.dart';
 import 'package:oxen_service_node/src/utils/welcome_manager.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,13 +20,22 @@ import 'generated/l10n.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  final appDir = await getApplicationDocumentsDirectory();
+  Hive.init(appDir.path);
+  Hive.registerAdapter(ServiceNodeAdapter());
+  Hive.registerAdapter(DaemonAdapter());
+
+  final serviceNodes = await Hive.openBox<ServiceNode>(ServiceNode.boxName);
+  final daemons = await Hive.openBox<Daemon>(Daemon.boxName);
   final sharedPreferences = await SharedPreferences.getInstance();
   final settingsStore = await SettingsStoreBase.load(sharedPreferences);
 
   runApp(MultiProvider(
       providers: [
+        Provider(create: (_) => serviceNodes),
+        Provider(create: (_) => daemons),
         Provider(create: (_) => sharedPreferences),
-        Provider(create: (_) => settingsStore)
+        Provider(create: (_) => settingsStore),
       ],
       child: OxenServiceNodeApp()));
 }

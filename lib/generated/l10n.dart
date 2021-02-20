@@ -94,6 +94,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Name`
+  String get name {
+    return Intl.message(
+      'Name',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Public Key`
+  String get public_key {
+    return Intl.message(
+      'Public Key',
+      name: 'public_key',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Public Key too long`
+  String get error_public_key_too_long {
+    return Intl.message(
+      'Public Key too long',
+      name: 'error_public_key_too_long',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Public Key too short`
+  String get error_public_key_too_short {
+    return Intl.message(
+      'Public Key too short',
+      name: 'error_public_key_too_short',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

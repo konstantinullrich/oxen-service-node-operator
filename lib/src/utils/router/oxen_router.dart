@@ -10,22 +10,28 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'oxen_routes.dart';
 
 class OxenRouter {
-  static Route<dynamic> generateRoute(RouteSettings settings, SharedPreferences sharedPreferences, SettingsStore settingsStore, WelcomeManager welcomeManager) {
+  static Route<dynamic> generateRoute(
+      RouteSettings settings,
+      SharedPreferences sharedPreferences,
+      SettingsStore settingsStore,
+      WelcomeManager welcomeManager) {
     switch (settings.name) {
       case OxenRoutes.welcome:
         return MaterialPageRoute<void>(builder: (_) => WelcomePage());
 
       case OxenRoutes.addServiceNodeFromWelcome:
         welcomeManager.isSetup = false;
-        return CupertinoPageRoute<void>(
-            builder: (_) => AddNewNodePage());
+        return CupertinoPageRoute<void>(builder: (_) => AddNewNodePage());
+
+      case OxenRoutes.addServiceNode:
+        return CupertinoPageRoute<void>(builder: (_) => AddNewNodePage());
 
       default:
         return MaterialPageRoute<void>(
             builder: (_) => Scaffold(
-              body: Center(
-                  child: Text(S.current.router_no_route(settings.name))),
-            ));
+                  body: Center(
+                      child: Text(S.current.router_no_route(settings.name))),
+                ));
     }
   }
 }

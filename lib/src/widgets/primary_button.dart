@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'file:///C:/Users/konst/IdeaProjects/oxen_service_node/lib/src/utils/theme/palette.dart';
+import 'package:oxen_service_node/src/utils/theme/palette.dart';
 
 class PrimaryButton extends StatelessWidget {
   const PrimaryButton(
