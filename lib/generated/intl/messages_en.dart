@@ -21,6 +21,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m0(name) => "No route defined for ${name}";
 
+  static m1(healthy_nodes, total) => "${healthy_nodes} out of ${total} nodes\nare operational";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "add_daemon" : MessageLookupByLibrary.simpleMessage("Add Daemon"),
@@ -34,6 +36,9 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_router_no_route" : m0,
     "error_text_daemon_address" : MessageLookupByLibrary.simpleMessage("Please enter a valid iPv4 address or domain name"),
     "error_text_daemon_port" : MessageLookupByLibrary.simpleMessage("Daemon port can only contain numbers between 0 and 65535"),
+    "health_all_nodes" : MessageLookupByLibrary.simpleMessage("All nodes are operational"),
+    "health_no_nodes" : MessageLookupByLibrary.simpleMessage("No nodes are operational!"),
+    "health_out_of_nodes" : m1,
     "name" : MessageLookupByLibrary.simpleMessage("Name"),
     "public_key" : MessageLookupByLibrary.simpleMessage("Public Key"),
     "settings_daemon" : MessageLookupByLibrary.simpleMessage("Daemon"),
@@ -50,6 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "title_edit_service_node" : MessageLookupByLibrary.simpleMessage("Edit Service Nodes"),
     "title_settings" : MessageLookupByLibrary.simpleMessage("Settings"),
     "welcome" : MessageLookupByLibrary.simpleMessage("Welcome,\nOXEN Service Node Operator"),
-    "welcome_first_line" : MessageLookupByLibrary.simpleMessage("Here you can watch Service Nodes you run or contributed to.")
+    "welcome_first_line" : MessageLookupByLibrary.simpleMessage("Here you can watch Service Nodes you run or contributed to."),
+    "your_service_nodes" : MessageLookupByLibrary.simpleMessage("Your Service Nodes")
   };
 }

@@ -195,6 +195,46 @@ class S {
     );
   }
 
+  /// `Your Service Nodes`
+  String get your_service_nodes {
+    return Intl.message(
+      'Your Service Nodes',
+      name: 'your_service_nodes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `All nodes are operational`
+  String get health_all_nodes {
+    return Intl.message(
+      'All nodes are operational',
+      name: 'health_all_nodes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{healthy_nodes} out of {total} nodes\nare operational`
+  String health_out_of_nodes(Object healthy_nodes, Object total) {
+    return Intl.message(
+      '$healthy_nodes out of $total nodes\nare operational',
+      name: 'health_out_of_nodes',
+      desc: '',
+      args: [healthy_nodes, total],
+    );
+  }
+
+  /// `No nodes are operational!`
+  String get health_no_nodes {
+    return Intl.message(
+      'No nodes are operational!',
+      name: 'health_no_nodes',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `App`
   String get settings_title_app {
     return Intl.message(

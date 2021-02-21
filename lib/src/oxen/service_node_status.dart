@@ -1,8 +1,7 @@
 import 'package:oxen_service_node/src/oxen/contributor.dart';
 
 class ServiceNodeStatus {
-  ServiceNodeStatus(
-      this.active,
+  ServiceNodeStatus(this.active,
       this.contributors,
       this.decommissionCount,
       this.earnedDowntimeBlocks,
@@ -50,6 +49,28 @@ class ServiceNodeStatus {
     List<Contributor> contributors = (map['contributors'] as List)
         .map((e) => Contributor.fromMap(e))
         .toList();
+    final keys = [
+      'decommission_count',
+      'earned_downtime_blocks',
+      'last_reward_block_height',
+      'last_reward_transaction_index',
+      'last_uptime_proof',
+      'registration_height',
+      'registration_hf_version',
+      'requested_unlock_height',
+      'state_height',
+      'storage_server_reachable_timestamp',
+      'swarm_id',
+      'total_contributed',
+      'total_reserved'
+    ];
+    for (final key in keys) {
+      try {
+        map[key] as int;
+      } catch (e) {
+        map[key] = (map[key] as double).truncate();
+      }
+    }
     return ServiceNodeStatus(
       map['active'] as bool,
       contributors,
@@ -63,7 +84,7 @@ class ServiceNodeStatus {
       map['registration_height'] as int,
       map['registration_hf_version'] as int,
       map['requested_unlock_height'] as int,
-      map['operator_address'] as String,
+      map['service_node_pubkey'] as String,
       (map['service_node_version'] as List).join('.'),
       map['state_height'] as int,
       map['storage_server_reachable'] as bool,

@@ -32,7 +32,7 @@ class Themes {
         color: OxenPalette.black // transaction raw, trade raw
       ),
       overline: TextStyle(
-        color: PaletteDark.darkThemeCloseButton // standart list row, transaction details
+        color: PaletteDark.darkThemeCloseButton // standard list row, transaction details
       )
     ),
     toggleButtonsTheme: ToggleButtonsThemeData(
@@ -79,10 +79,6 @@ class Themes {
         decorationColor: Palette.manatee // send page text
       )
     ),
-    cardColor: Palette.lavender,
-    cardTheme: CardTheme(
-      color: Palette.cadetBlue
-    ),
     buttonColor: Palette.darkGrey,
     primaryIconTheme: IconThemeData(
       color: Colors.white
@@ -122,7 +118,7 @@ class Themes {
         color: Palette.blueGrey // transaction raw, trade raw
       ),
       overline: TextStyle(
-        color: PaletteDark.darkThemeGrey // standart list row, transaction details
+        color: PaletteDark.darkThemeGrey // standard list row, transaction details
       )
     ),
     toggleButtonsTheme: ToggleButtonsThemeData(
@@ -168,10 +164,6 @@ class Themes {
         backgroundColor: PaletteDark.darkThemeGrey, // send page text
         decorationColor: PaletteDark.darkThemeTitle // send page text
       )
-    ),
-    cardColor: PaletteDark.darkThemeMidGrey,
-    cardTheme: CardTheme(
-      color: PaletteDark.darkThemeGrey
     ),
     buttonColor: PaletteDark.darkThemePinButton,
     primaryIconTheme: IconThemeData(

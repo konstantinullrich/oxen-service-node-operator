@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class Palette {
-  static const Color lightBlue = Color.fromRGBO(126, 147, 177, 1.0);
-  static const Color lightGrey = Color.fromRGBO(224, 233, 246, 1.0);
+  static const Color lightBlue = Color.fromRGBO(126, 147, 177, 1);
+  static const Color lightGrey = Color.fromRGBO(224, 233, 246, 1);
   static const Color indigo = Color.fromRGBO(232, 234, 246, 1.0);
   static const Color deepIndigo = Color.fromRGBO(197, 202, 233, 1.0);
   static const Color creamyGrey = Color.fromRGBO(245, 246, 249, 1.0);

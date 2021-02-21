@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/oxen/service_node.dart';
+import 'package:oxen_service_node/src/stores/node_sync_store.dart';
 import 'package:oxen_service_node/src/utils/router/oxen_routes.dart';
 import 'package:oxen_service_node/src/utils/theme/palette.dart';
 import 'package:oxen_service_node/src/widgets/base_page.dart';
@@ -29,6 +30,7 @@ class EditServiceNodesPage extends BasePage {
   @override
   Widget body(BuildContext context) {
     final serviceNodeSources = Provider.of<Box<ServiceNode>>(context);
+    final nodeSyncStore = Provider.of<NodeSyncStore>(context);
 
     final serviceNodes = serviceNodeSources.values.toList();
 
@@ -47,35 +49,37 @@ class EditServiceNodesPage extends BasePage {
 
                     final content = Container(
                         child: ListTile(
-                          leading: Icon(CupertinoIcons.chart_bar_circle),
+                            leading: Icon(CupertinoIcons.chart_bar_circle),
                             title: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          serviceNode.name,
-                          style: TextStyle(
-                              fontSize: 18.0,
-                              color: Theme.of(context)
-                                  .primaryTextTheme
-                                  .headline6
-                                  .color),
-                        ),
-                        Text(
-                          '${publicKey.substring(0, 16)}...${publicKey.substring(publicKey.length - 5)}',
-                          style: TextStyle(
-                              fontSize: 10.0,
-                              color: Theme.of(context)
-                                  .primaryTextTheme
-                                  .subtitle2
-                                  .color),
-                        ),
-                      ],
-                    )));
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  serviceNode.name,
+                                  style: TextStyle(
+                                      fontSize: 18.0,
+                                      color: Theme.of(context)
+                                          .primaryTextTheme
+                                          .headline6
+                                          .color),
+                                ),
+                                Text(
+                                  '${publicKey.substring(0, 16)}...${publicKey.substring(publicKey.length - 5)}',
+                                  style: TextStyle(
+                                      fontSize: 10.0,
+                                      color: Theme.of(context)
+                                          .primaryTextTheme
+                                          .subtitle2
+                                          .color),
+                                ),
+                              ],
+                            )));
 
                     return Dismissible(
                         key: Key('${serviceNode.key}'),
-                        onDismissed: (direction) async =>
-                            await serviceNodeSources.delete(serviceNode.key),
+                        onDismissed: (direction) async {
+                          await serviceNodeSources.delete(serviceNode.key);
+                          await nodeSyncStore.sync();
+                        },
                         direction: DismissDirection.endToStart,
                         background: Container(
                           padding: EdgeInsets.only(right: 10.0),

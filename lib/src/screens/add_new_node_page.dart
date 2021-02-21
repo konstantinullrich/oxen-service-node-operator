@@ -132,7 +132,7 @@ class AddNewNodePageBodyState extends State<AddNewNodePageBody> {
           onPressed: () async {
             if (!_formKey.currentState.validate()) return;
             await _saveServiceNode(serviceNodeSource);
-            nodeSyncStatus.sync();
+            await nodeSyncStatus.sync();
             Navigator.pushNamed(context, OxenRoutes.dashboard);
           },
           text: S.of(context).add_service_node,
