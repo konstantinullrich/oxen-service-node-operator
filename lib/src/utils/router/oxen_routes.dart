@@ -6,4 +6,5 @@ class OxenRoutes {
   static const dashboard = '/dashboard';
   static const settings = '/settings';
   static const settings_language = '/settings/language';
+  static const settings_daemon = '/settings/daemon';
 }

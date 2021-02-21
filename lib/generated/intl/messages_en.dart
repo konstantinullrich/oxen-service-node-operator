@@ -28,6 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "add_service_node" : MessageLookupByLibrary.simpleMessage("Add a Service Node"),
     "daemon_address" : MessageLookupByLibrary.simpleMessage("Daemon Address"),
     "daemon_port" : MessageLookupByLibrary.simpleMessage("Daemon Port"),
+    "delete" : MessageLookupByLibrary.simpleMessage("Delete"),
     "error_public_key_too_long" : MessageLookupByLibrary.simpleMessage("Public Key too long"),
     "error_public_key_too_short" : MessageLookupByLibrary.simpleMessage("Public Key too short"),
     "error_router_no_route" : m0,
@@ -45,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "title_add_daemon" : MessageLookupByLibrary.simpleMessage("Add Daemon"),
     "title_add_service_node" : MessageLookupByLibrary.simpleMessage("Add Service Node"),
     "title_dashboard" : MessageLookupByLibrary.simpleMessage("Dashboard"),
+    "title_edit_daemons" : MessageLookupByLibrary.simpleMessage("Edit Daemons"),
     "title_settings" : MessageLookupByLibrary.simpleMessage("Settings"),
     "welcome" : MessageLookupByLibrary.simpleMessage("Welcome,\nOXEN Service Node Operator"),
     "welcome_first_line" : MessageLookupByLibrary.simpleMessage("Here you can watch Service Nodes you run or contributed to.")

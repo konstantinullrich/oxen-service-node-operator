@@ -2,9 +2,6 @@
   uri: public.loki.foundation:22023
   is_default: true
 -
-  uri: nodes.hashvault.pro:22023
-  is_default: false
--
   uri: node.loki-pool.com:18081
   is_default: false
 -

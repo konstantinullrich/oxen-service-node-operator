@@ -20,8 +20,12 @@ class Daemon extends HiveObject {
   String get hostname => Uri.http(uri, '').host;
 
   Future<bool> isOnline() async {
-    final resBody = await sendRPCRequest('get_info');
-    return !(resBody['result']['offline'] as bool);
+    try {
+      final resBody = await sendRPCRequest('get_info');
+      return !(resBody['result']['offline'] as bool);
+    } catch (e) {
+      return false;
+    }
   }
 
   Future<Map<String, dynamic>> sendRPCRequest(String method,

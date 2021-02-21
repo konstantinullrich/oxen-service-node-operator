@@ -24,17 +24,20 @@ class SettingsPage extends BasePage {
     return Column(children: <Widget>[
       NavListHeader(S.of(context).settings_title_general),
       NavListTrailing(
-          leading: Icon(Icons.cloud_sharp),
-          text: S.of(context).settings_daemon,
-          trailing: Observer(builder: (_) {
-            return Text(
-              settingsStore.daemon == null ? '' : settingsStore.daemon.hostname,
-              textAlign: TextAlign.right,
-              style: TextStyle(
-                  fontSize: 16.0,
-                  color: Theme.of(context).primaryTextTheme.subtitle2.color),
-            );
-          })),
+        leading: Icon(Icons.cloud_sharp),
+        text: S.of(context).settings_daemon,
+        trailing: Observer(builder: (_) {
+          return Text(
+            settingsStore.daemon == null ? '' : settingsStore.daemon.hostname,
+            textAlign: TextAlign.right,
+            style: TextStyle(
+                fontSize: 16.0,
+                color: Theme.of(context).primaryTextTheme.subtitle2.color),
+          );
+        }),
+        onTap: () =>
+            Navigator.of(context).pushNamed(OxenRoutes.settings_daemon),
+      ),
       NavListArrow(
         leading: Icon(Icons.edit_sharp),
         text: S.of(context).settings_service_nodes,

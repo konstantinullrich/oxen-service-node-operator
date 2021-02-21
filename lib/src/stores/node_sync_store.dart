@@ -14,14 +14,17 @@ abstract class NodeSyncStoreBase with Store {
   Future sync() async {
     isSyncing = true;
     final serviceNodePublicKeys =
-        _serviceNodes.values.toList().map((e) => e.publicKey).toList();
+    _serviceNodes.values.toList().map((e) => e.publicKey).toList();
     if (serviceNodePublicKeys.isNotEmpty) {
       final params = {'service_node_pubkeys': serviceNodePublicKeys};
       final resultData = await _settingsStore.daemon
           .sendRPCRequest('get_service_nodes', params: params);
-      final result = resultData['result']['service_node_states']
-          as List;
-      nodes = result.map((e) => ServiceNodeStatus.load(e)).toList();
+      try {
+        final result = resultData['result']['service_node_states'] as List;
+        nodes = result.map((e) => ServiceNodeStatus.load(e)).toList();
+      } catch (e) {
+        nodes = [];
+      }
     }
     isSyncing = false;
   }

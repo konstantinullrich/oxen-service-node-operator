@@ -6,6 +6,7 @@
   "add_daemon": "Add Daemon",
 
   "title_add_daemon": "Add Daemon",
+  "title_edit_daemons": "Edit Daemons",
   "title_add_service_node": "Add Service Node",
   "title_dashboard": "Dashboard",
   "title_settings": "Settings",
@@ -14,6 +15,7 @@
   "public_key": "Public Key",
   "daemon_address": "Daemon Address",
   "daemon_port": "Daemon Port",
+  "delete": "Delete",
 
   "settings_title_app": "App",
   "settings_title_general": "General",

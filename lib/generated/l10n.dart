@@ -95,6 +95,16 @@ class S {
     );
   }
 
+  /// `Edit Daemons`
+  String get title_edit_daemons {
+    return Intl.message(
+      'Edit Daemons',
+      name: 'title_edit_daemons',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add Service Node`
   String get title_add_service_node {
     return Intl.message(
@@ -160,6 +170,16 @@ class S {
     return Intl.message(
       'Daemon Port',
       name: 'daemon_port',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Delete`
+  String get delete {
+    return Intl.message(
+      'Delete',
+      name: 'delete',
       desc: '',
       args: [],
     );

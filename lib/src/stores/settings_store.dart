@@ -74,4 +74,10 @@ abstract class SettingsStoreBase with Store {
       language.currentLanguage = languageCode;
     await _sharedPreferences.setString(currentLanguageCodeKey, languageCode);
   }
+
+  @action
+  Future setDaemon(Daemon newDaemon) async {
+    daemon = newDaemon;
+    await _sharedPreferences.setInt(currentNodeIdKey, daemon.key);
+  }
 }
