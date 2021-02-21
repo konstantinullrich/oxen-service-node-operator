@@ -16,12 +16,15 @@
   "public_key": "Public Key",
   "daemon_address": "Daemon Address",
   "daemon_port": "Daemon Port",
-  "delete": "Delete",
 
   "your_service_nodes": "Your Service Nodes",
   "health_all_nodes": "All nodes are operational",
   "health_out_of_nodes": "{healthy_nodes} out of {total} nodes\nare operational",
   "health_no_nodes": "No nodes are operational!",
+
+  "storage_server": "Storage Server",
+  "last_reward": "Last Reward",
+  "more": "More",
 
   "settings_title_app": "App",
   "settings_title_general": "General",

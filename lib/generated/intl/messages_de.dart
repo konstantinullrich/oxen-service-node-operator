@@ -21,6 +21,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m0(name) => "Für ${name} ist keine Route definiert";
 
+  static m1(healthy_nodes, total) => "${healthy_nodes} von ${total} Nodes\nsind betriebsbereit";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "add_daemon" : MessageLookupByLibrary.simpleMessage("Daemon hinzufügen"),
@@ -33,6 +35,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_router_no_route" : m0,
     "error_text_daemon_address" : MessageLookupByLibrary.simpleMessage("Bitte gebe eine valide iPv4 Adresse oder Domain Name ein."),
     "error_text_daemon_port" : MessageLookupByLibrary.simpleMessage("Der Daemon Port kann nur Nummern zwischen 0 und 65535 beinhalten."),
+    "health_all_nodes" : MessageLookupByLibrary.simpleMessage("Alle Nodes sind\nbetriebsbereit"),
+    "health_no_nodes" : MessageLookupByLibrary.simpleMessage("Kein Node ist\nbetriebsbereit!"),
+    "health_out_of_nodes" : m1,
+    "last_reward" : MessageLookupByLibrary.simpleMessage("Letzte Belohung"),
+    "more" : MessageLookupByLibrary.simpleMessage("Mehr"),
     "name" : MessageLookupByLibrary.simpleMessage("Name"),
     "public_key" : MessageLookupByLibrary.simpleMessage("Öffentlicher Schlüssel"),
     "settings_daemon" : MessageLookupByLibrary.simpleMessage("Daemon"),
@@ -42,6 +49,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings_service_nodes" : MessageLookupByLibrary.simpleMessage("Service Nodes"),
     "settings_title_app" : MessageLookupByLibrary.simpleMessage("App"),
     "settings_title_general" : MessageLookupByLibrary.simpleMessage("Generelle Einstellungen"),
+    "storage_server" : MessageLookupByLibrary.simpleMessage("Storage Server"),
     "title_add_daemon" : MessageLookupByLibrary.simpleMessage("Daemon hinzufügen"),
     "title_add_service_node" : MessageLookupByLibrary.simpleMessage("Service Node hinzufügen"),
     "title_dashboard" : MessageLookupByLibrary.simpleMessage("Dashboard"),
@@ -49,6 +57,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "title_edit_service_node" : MessageLookupByLibrary.simpleMessage("Service Nodes bearbeiten"),
     "title_settings" : MessageLookupByLibrary.simpleMessage("Einstellungen"),
     "welcome" : MessageLookupByLibrary.simpleMessage("Willkommen,\nOXEN Service Node Operator"),
-    "welcome_first_line" : MessageLookupByLibrary.simpleMessage("Hier kannst du die Service Nodes überwachen, die du bereibst oder beiträgst.")
+    "welcome_first_line" : MessageLookupByLibrary.simpleMessage("Hier kannst du die Service Nodes überwachen, die du bereibst oder beiträgst."),
+    "your_service_nodes" : MessageLookupByLibrary.simpleMessage("Deine Service Nodes")
   };
 }

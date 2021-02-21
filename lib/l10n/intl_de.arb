@@ -17,6 +17,15 @@
   "daemon_address": "Daemon Adresse",
   "daemon_port": "Daemon Port",
 
+  "your_service_nodes": "Deine Service Nodes",
+  "health_all_nodes": "Alle Nodes sind\nbetriebsbereit",
+  "health_out_of_nodes": "{healthy_nodes} von {total} Nodes\nsind betriebsbereit",
+  "health_no_nodes": "Kein Node ist\nbetriebsbereit!",
+
+  "storage_server": "Storage Server",
+  "last_reward": "Letzte Belohung",
+  "more": "Mehr",
+
   "settings_title_app": "App",
   "settings_title_general": "Generelle Einstellungen",
   "settings_language": "Sprache",
@@ -31,4 +40,3 @@
   "error_text_daemon_port" : "Der Daemon Port kann nur Nummern zwischen 0 und 65535 beinhalten.",
   "error_text_daemon_address": "Bitte gebe eine valide iPv4 Adresse oder Domain Name ein."
 }
-

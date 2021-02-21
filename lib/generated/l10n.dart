@@ -185,16 +185,6 @@ class S {
     );
   }
 
-  /// `Delete`
-  String get delete {
-    return Intl.message(
-      'Delete',
-      name: 'delete',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Your Service Nodes`
   String get your_service_nodes {
     return Intl.message(
@@ -230,6 +220,36 @@ class S {
     return Intl.message(
       'No nodes are operational!',
       name: 'health_no_nodes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Storage Server`
+  String get storage_server {
+    return Intl.message(
+      'Storage Server',
+      name: 'storage_server',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last Reward`
+  String get last_reward {
+    return Intl.message(
+      'Last Reward',
+      name: 'last_reward',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `More`
+  String get more {
+    return Intl.message(
+      'More',
+      name: 'more',
       desc: '',
       args: [],
     );

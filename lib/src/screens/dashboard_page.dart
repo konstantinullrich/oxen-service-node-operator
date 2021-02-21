@@ -146,30 +146,98 @@ class DashboardPage extends BasePage {
                 final serviceNodeKeyShort =
                     '${serviceNodeKey.substring(0, 12)}...${serviceNodeKey.substring(serviceNodeKey.length - 4)}';
                 final statusIcon = nodeStatus.isUnlocking
-                    ? Icon(Icons.access_time_sharp, color: OxenPalette.orange)
+                    ? Icon(Icons.access_time_sharp,
+                        color: OxenPalette.orange, size: 30)
                     : (nodeStatus.active
                         ? Icon(Icons.check_circle_sharp,
-                            color: OxenPalette.lime)
+                            color: OxenPalette.lime, size: 30)
                         : Icon(Icons.error_sharp,
-                            color: OxenPalette.red));
+                            color: OxenPalette.red, size: 30));
 
                 return Card(
-                    child: Padding(
-                  padding: EdgeInsets.all(10),
-                  child: Row(children: [
-                    Padding(
-                        padding: EdgeInsets.all(10), child: statusIcon),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          nodeSource.name,
-                          style: TextStyle(fontSize: 18),
+                    child: ExpansionTile(
+                  leading:
+                      Padding(padding: EdgeInsets.all(5), child: statusIcon),
+                  title: Text(
+                    nodeSource.name,
+                    style: TextStyle(fontSize: 18),
+                  ),
+                  subtitle: Text(serviceNodeKeyShort),
+                  children: [
+                    Row(children: [
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                          width: (MediaQuery.of(context).size.width - 1) * 0.25,
+                          height: 100,
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                    flex: 1,
+                                    child: Center(
+                                      child: Text(
+                                          '${nodeStatus.lastReward.blockHeight}',
+                                          style: TextStyle(fontSize: 20)),
+                                    )),
+                                Padding(
+                                    padding: EdgeInsets.only(bottom: 5),
+                                    child: Text(S.of(context).last_reward,
+                                        style: TextStyle(fontSize: 16)))
+                              ]),
                         ),
-                        Text(serviceNodeKeyShort)
-                      ],
-                    )
-                  ]),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                            width: MediaQuery.of(context).size.width * 0.25,
+                            height: 100,
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Expanded(
+                                      flex: 1,
+                                      child: Center(
+                                        child: Icon(
+                                            nodeStatus.storageServer.isReachable
+                                                ? Icons.check_circle_sharp
+                                                : Icons.error_sharp,
+                                            size: 30),
+                                      )),
+                                  Padding(
+                                      padding: EdgeInsets.only(bottom: 5),
+                                      child: Text(S.of(context).storage_server,
+                                          style: TextStyle(fontSize: 16)))
+                                ])),
+                      ),
+                      Expanded(
+                        flex: 1,
+                        child: Container(
+                            width: MediaQuery.of(context).size.width * 0.25,
+                            height: 100,
+                            child: FlatButton(
+                              padding: EdgeInsets.zero,
+                              onPressed: () {},
+                              child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Expanded(
+                                        flex: 1,
+                                        child: Center(
+                                          child:
+                                              Icon(Icons.info_sharp, size: 30),
+                                        )),
+                                    Padding(
+                                        padding: EdgeInsets.only(bottom: 5),
+                                        child: Text(S.of(context).more,
+                                            style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.normal)))
+                                  ]),
+                            )),
+                      )
+                    ])
+                  ],
                 ));
               }),
         ],
