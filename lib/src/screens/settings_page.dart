@@ -35,20 +35,20 @@ class SettingsPage extends BasePage {
                 color: Theme.of(context).primaryTextTheme.subtitle2.color),
           );
         }),
-        onTap: () =>
-            Navigator.of(context).pushNamed(OxenRoutes.settings_daemon),
+        onTap: () => Navigator.of(context).pushNamed(OxenRoutes.settingsDaemon),
       ),
       NavListArrow(
         leading: Icon(Icons.edit_sharp),
         text: S.of(context).settings_service_nodes,
-        onTap: () {},
+        onTap: () =>
+            Navigator.of(context).pushNamed(OxenRoutes.settingsServiceNode),
       ),
       NavListHeader(S.of(context).settings_title_app),
       NavListArrow(
         leading: Icon(Icons.language_sharp),
         text: S.of(context).settings_language,
         onTap: () =>
-            Navigator.of(context).pushNamed(OxenRoutes.settings_language),
+            Navigator.of(context).pushNamed(OxenRoutes.settingsLanguage),
       ),
       Observer(builder: (_) {
         return NavListTrailing(

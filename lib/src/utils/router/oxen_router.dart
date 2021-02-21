@@ -6,6 +6,7 @@ import 'package:oxen_service_node/src/screens/add_new_node_page.dart';
 import 'package:oxen_service_node/src/screens/change_language_page.dart';
 import 'package:oxen_service_node/src/screens/dashboard_page.dart';
 import 'package:oxen_service_node/src/screens/edit_daemons.dart';
+import 'package:oxen_service_node/src/screens/edit_service_nodes.dart';
 import 'package:oxen_service_node/src/screens/settings_page.dart';
 import 'package:oxen_service_node/src/screens/welcome_page.dart';
 import 'package:oxen_service_node/src/stores/settings_store.dart';
@@ -40,11 +41,14 @@ class OxenRouter {
       case OxenRoutes.settings:
         return CupertinoPageRoute(builder: (_) => SettingsPage());
 
-      case OxenRoutes.settings_language:
+      case OxenRoutes.settingsLanguage:
         return CupertinoPageRoute(builder: (_) => ChangeLanguagePage());
 
-      case OxenRoutes.settings_daemon:
+      case OxenRoutes.settingsDaemon:
         return CupertinoPageRoute(builder: (_) => EditDaemonsPage());
+
+      case OxenRoutes.settingsServiceNode:
+        return CupertinoPageRoute(builder: (_) => EditServiceNodesPage());
 
       default:
         return MaterialPageRoute<void>(

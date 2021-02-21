@@ -8,6 +8,7 @@
   "title_add_daemon": "Daemon hinzufügen",
   "title_edit_daemons": "Daemons bearbeiten",
   "title_add_service_node": "Service Node hinzufügen",
+  "title_edit_service_node": "Service Nodes bearbeiten",
   "title_dashboard": "Dashboard",
   "title_settings": "Einstellungen",
 

@@ -115,6 +115,16 @@ class S {
     );
   }
 
+  /// `Edit Service Nodes`
+  String get title_edit_service_node {
+    return Intl.message(
+      'Edit Service Nodes',
+      name: 'title_edit_service_node',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Dashboard`
   String get title_dashboard {
     return Intl.message(

@@ -46,6 +46,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "title_add_service_node" : MessageLookupByLibrary.simpleMessage("Service Node hinzufügen"),
     "title_dashboard" : MessageLookupByLibrary.simpleMessage("Dashboard"),
     "title_edit_daemons" : MessageLookupByLibrary.simpleMessage("Daemons bearbeiten"),
+    "title_edit_service_node" : MessageLookupByLibrary.simpleMessage("Service Nodes bearbeiten"),
     "title_settings" : MessageLookupByLibrary.simpleMessage("Einstellungen"),
     "welcome" : MessageLookupByLibrary.simpleMessage("Willkommen,\nOXEN Service Node Operator"),
     "welcome_first_line" : MessageLookupByLibrary.simpleMessage("Hier kannst du die Service Nodes überwachen, die du bereibst oder beiträgst.")

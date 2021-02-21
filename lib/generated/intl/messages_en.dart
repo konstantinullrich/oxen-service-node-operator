@@ -47,6 +47,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "title_add_service_node" : MessageLookupByLibrary.simpleMessage("Add Service Node"),
     "title_dashboard" : MessageLookupByLibrary.simpleMessage("Dashboard"),
     "title_edit_daemons" : MessageLookupByLibrary.simpleMessage("Edit Daemons"),
+    "title_edit_service_node" : MessageLookupByLibrary.simpleMessage("Edit Service Nodes"),
     "title_settings" : MessageLookupByLibrary.simpleMessage("Settings"),
     "welcome" : MessageLookupByLibrary.simpleMessage("Welcome,\nOXEN Service Node Operator"),
     "welcome_first_line" : MessageLookupByLibrary.simpleMessage("Here you can watch Service Nodes you run or contributed to.")
