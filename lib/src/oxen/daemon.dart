@@ -17,6 +17,8 @@ class Daemon extends HiveObject {
   @HiveField(0)
   String uri;
 
+  String get hostname => Uri.http(uri, '').host;
+
   Future<bool> isOnline() async {
     final resBody = await sendRPCRequest('get_info');
     return !(resBody['result']['offline'] as bool);

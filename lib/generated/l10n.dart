@@ -75,13 +75,23 @@ class S {
     );
   }
 
-  /// `No route defined for {name}`
-  String router_no_route(Object name) {
+  /// `Add Daemon`
+  String get add_daemon {
     return Intl.message(
-      'No route defined for $name',
-      name: 'router_no_route',
+      'Add Daemon',
+      name: 'add_daemon',
       desc: '',
-      args: [name],
+      args: [],
+    );
+  }
+
+  /// `Add Daemon`
+  String get title_add_daemon {
+    return Intl.message(
+      'Add Daemon',
+      name: 'title_add_daemon',
+      desc: '',
+      args: [],
     );
   }
 
@@ -100,6 +110,16 @@ class S {
     return Intl.message(
       'Dashboard',
       name: 'title_dashboard',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get title_settings {
+    return Intl.message(
+      'Settings',
+      name: 'title_settings',
       desc: '',
       args: [],
     );
@@ -125,6 +145,106 @@ class S {
     );
   }
 
+  /// `Daemon Address`
+  String get daemon_address {
+    return Intl.message(
+      'Daemon Address',
+      name: 'daemon_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Daemon Port`
+  String get daemon_port {
+    return Intl.message(
+      'Daemon Port',
+      name: 'daemon_port',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `App`
+  String get settings_title_app {
+    return Intl.message(
+      'App',
+      name: 'settings_title_app',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `General`
+  String get settings_title_general {
+    return Intl.message(
+      'General',
+      name: 'settings_title_general',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get settings_language {
+    return Intl.message(
+      'Language',
+      name: 'settings_language',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Daemon`
+  String get settings_daemon {
+    return Intl.message(
+      'Daemon',
+      name: 'settings_daemon',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Service Nodes`
+  String get settings_service_nodes {
+    return Intl.message(
+      'Service Nodes',
+      name: 'settings_service_nodes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Dark Theme`
+  String get settings_dark_theme {
+    return Intl.message(
+      'Dark Theme',
+      name: 'settings_dark_theme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Light Theme`
+  String get settings_light_theme {
+    return Intl.message(
+      'Light Theme',
+      name: 'settings_light_theme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `No route defined for {name}`
+  String error_router_no_route(Object name) {
+    return Intl.message(
+      'No route defined for $name',
+      name: 'error_router_no_route',
+      desc: '',
+      args: [name],
+    );
+  }
+
   /// `Public Key too long`
   String get error_public_key_too_long {
     return Intl.message(
@@ -144,6 +264,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Daemon port can only contain numbers between 0 and 65535`
+  String get error_text_daemon_port {
+    return Intl.message(
+      'Daemon port can only contain numbers between 0 and 65535',
+      name: 'error_text_daemon_port',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please enter a valid iPv4 address or domain name`
+  String get error_text_daemon_address {
+    return Intl.message(
+      'Please enter a valid iPv4 address or domain name',
+      name: 'error_text_daemon_address',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -152,6 +292,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
+      Locale.fromSubtags(languageCode: 'de'),
     ];
   }
 

@@ -3,11 +3,29 @@
   "welcome_first_line": "Here you can watch Service Nodes you run or contributed to.",
   "add_node_to_get_started": "Add a Service Node below to get started.",
   "add_service_node": "Add a Service Node",
-  "router_no_route" : "No route defined for {name}",
+  "add_daemon": "Add Daemon",
+
+  "title_add_daemon": "Add Daemon",
   "title_add_service_node": "Add Service Node",
   "title_dashboard": "Dashboard",
+  "title_settings": "Settings",
+
   "name": "Name",
   "public_key": "Public Key",
+  "daemon_address": "Daemon Address",
+  "daemon_port": "Daemon Port",
+
+  "settings_title_app": "App",
+  "settings_title_general": "General",
+  "settings_language": "Language",
+  "settings_daemon": "Daemon",
+  "settings_service_nodes": "Service Nodes",
+  "settings_dark_theme": "Dark Theme",
+  "settings_light_theme": "Light Theme",
+
+  "error_router_no_route" : "No route defined for {name}",
   "error_public_key_too_long": "Public Key too long",
-  "error_public_key_too_short" : "Public Key too short"
+  "error_public_key_too_short" : "Public Key too short",
+  "error_text_daemon_port" : "Daemon port can only contain numbers between 0 and 65535",
+  "error_text_daemon_address": "Please enter a valid iPv4 address or domain name"
 }

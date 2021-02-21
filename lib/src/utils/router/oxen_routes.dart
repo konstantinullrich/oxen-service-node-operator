@@ -4,4 +4,6 @@ class OxenRoutes {
   static const addServiceNode = '/new/service_node';
   static const addDaemon = '/new/daemon';
   static const dashboard = '/dashboard';
+  static const settings = '/settings';
+  static const settings_language = '/settings/language';
 }

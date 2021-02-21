@@ -2,6 +2,8 @@ import 'package:hive/hive.dart';
 import 'package:mobx/mobx.dart';
 import 'package:oxen_service_node/src/oxen/daemon.dart';
 import 'package:oxen_service_node/src/utils/language.dart';
+import 'package:oxen_service_node/src/utils/theme/theme_changer.dart';
+import 'package:oxen_service_node/src/utils/theme/themes.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 part 'settings_store.g.dart';
@@ -44,6 +46,10 @@ abstract class SettingsStoreBase with Store {
 
   SharedPreferences _sharedPreferences;
 
+  ThemeChanger themeChanger;
+
+  Language language;
+
   void loadSettings() {
     daemon = _fetchCurrentDaemon();
   }
@@ -51,5 +57,21 @@ abstract class SettingsStoreBase with Store {
   Daemon _fetchCurrentDaemon() {
     final id = _sharedPreferences.getInt(currentNodeIdKey) ?? 0;
     return _daemons.get(id);
+  }
+
+  @action
+  Future<void> toggleDarkTheme() async {
+    isDarkTheme = !isDarkTheme;
+    if (themeChanger != null)
+      themeChanger.theme = isDarkTheme ? Themes.darkTheme : Themes.lightTheme;
+    await _sharedPreferences.setBool(currentDarkThemeKey, isDarkTheme);
+  }
+
+  @action
+  Future setLanguageCode(String newLanguageCode) async {
+    languageCode = newLanguageCode;
+    if (language != null)
+      language.currentLanguage = languageCode;
+    await _sharedPreferences.setString(currentLanguageCodeKey, languageCode);
   }
 }

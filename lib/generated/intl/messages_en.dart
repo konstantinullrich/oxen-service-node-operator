@@ -23,15 +23,29 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
+    "add_daemon" : MessageLookupByLibrary.simpleMessage("Add Daemon"),
     "add_node_to_get_started" : MessageLookupByLibrary.simpleMessage("Add a Service Node below to get started."),
     "add_service_node" : MessageLookupByLibrary.simpleMessage("Add a Service Node"),
+    "daemon_address" : MessageLookupByLibrary.simpleMessage("Daemon Address"),
+    "daemon_port" : MessageLookupByLibrary.simpleMessage("Daemon Port"),
     "error_public_key_too_long" : MessageLookupByLibrary.simpleMessage("Public Key too long"),
     "error_public_key_too_short" : MessageLookupByLibrary.simpleMessage("Public Key too short"),
+    "error_router_no_route" : m0,
+    "error_text_daemon_address" : MessageLookupByLibrary.simpleMessage("Please enter a valid iPv4 address or domain name"),
+    "error_text_daemon_port" : MessageLookupByLibrary.simpleMessage("Daemon port can only contain numbers between 0 and 65535"),
     "name" : MessageLookupByLibrary.simpleMessage("Name"),
     "public_key" : MessageLookupByLibrary.simpleMessage("Public Key"),
-    "router_no_route" : m0,
+    "settings_daemon" : MessageLookupByLibrary.simpleMessage("Daemon"),
+    "settings_dark_theme" : MessageLookupByLibrary.simpleMessage("Dark Theme"),
+    "settings_language" : MessageLookupByLibrary.simpleMessage("Language"),
+    "settings_light_theme" : MessageLookupByLibrary.simpleMessage("Light Theme"),
+    "settings_service_nodes" : MessageLookupByLibrary.simpleMessage("Service Nodes"),
+    "settings_title_app" : MessageLookupByLibrary.simpleMessage("App"),
+    "settings_title_general" : MessageLookupByLibrary.simpleMessage("General"),
+    "title_add_daemon" : MessageLookupByLibrary.simpleMessage("Add Daemon"),
     "title_add_service_node" : MessageLookupByLibrary.simpleMessage("Add Service Node"),
     "title_dashboard" : MessageLookupByLibrary.simpleMessage("Dashboard"),
+    "title_settings" : MessageLookupByLibrary.simpleMessage("Settings"),
     "welcome" : MessageLookupByLibrary.simpleMessage("Welcome,\nOXEN Service Node Operator"),
     "welcome_first_line" : MessageLookupByLibrary.simpleMessage("Here you can watch Service Nodes you run or contributed to.")
   };

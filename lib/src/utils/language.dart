@@ -4,7 +4,7 @@ import 'package:intl/intl.dart';
 
 const Map<String, String> languages = {
   'en': 'English',
-  'de': 'Deutsch (German)'
+  'de': 'Deutsch'
 };
 
 class Language with ChangeNotifier {

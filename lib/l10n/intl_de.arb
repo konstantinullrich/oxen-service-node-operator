@@ -1,0 +1,32 @@
+{
+  "welcome": "Willkommen,\nOXEN Service Node Operator",
+  "welcome_first_line": "Hier kannst du die Service Nodes überwachen, die du bereibst oder beiträgst.",
+  "add_node_to_get_started": "Füge einen Service Node hinzu um loszulegen.",
+  "add_service_node": "Service Node hinzufügen",
+  "add_daemon": "Daemon hinzufügen",
+
+  "title_add_daemon": "Daemon hinzufügen",
+  "title_add_service_node": "Service Node hinzufügen",
+  "title_dashboard": "Dashboard",
+  "title_settings": "Einstellungen",
+
+  "name": "Name",
+  "public_key": "Öffentlicher Schlüssel",
+  "daemon_address": "Daemon Adresse",
+  "daemon_port": "Daemon Port",
+
+  "settings_title_app": "App",
+  "settings_title_general": "Generelle Einstellungen",
+  "settings_language": "Sprache",
+  "settings_daemon": "Daemon",
+  "settings_service_nodes": "Service Nodes",
+  "settings_dark_theme": "Dunkles Farbschema",
+  "settings_light_theme": "Helles Farbschema",
+
+  "error_router_no_route" : "Für {name} ist keine Route definiert",
+  "error_public_key_too_long": "Öffentlicher Schlüssel zu lang",
+  "error_public_key_too_short" : "Öffentlicher Schlüssel zu kurz",
+  "error_text_daemon_port" : "Der Daemon Port kann nur Nummern zwischen 0 und 65535 beinhalten.",
+  "error_text_daemon_address": "Bitte gebe eine valide iPv4 Adresse oder Domain Name ein."
+}
+
