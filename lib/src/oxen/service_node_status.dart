@@ -1,54 +1,36 @@
-import 'package:oxen_service_node/src/oxen/contributor.dart';
-
 class ServiceNodeStatus {
-  ServiceNodeStatus(this.active,
-      this.contributors,
+  ServiceNodeStatus(
+      this.active,
+      this.contribution,
       this.decommissionCount,
       this.earnedDowntimeBlocks,
       this.funded,
-      this.lastRewardBlockHeight,
-      this.lastRewardTransactionIndex,
+      this.lastReward,
       this.lastUptimeProof,
-      this.operatorAddress,
-      this.registrationHeight,
-      this.registrationHfVersion,
       this.requestedUnlockHeight,
-      this.serviceNodePubkey,
-      this.serviceNodeVersion,
+      this.nodeInfo,
       this.stateHeight,
-      this.storageServerReachable,
-      this.storageServerReachableTimestamp,
+      this.storageServer,
       this.swarmId,
-      this.totalContributed,
-      this.totalReserved,
       {this.stakingRequirement = 15000000000000});
 
   final bool active;
-  final List<Contributor> contributors;
+  final Contribution contribution;
+  final ServiceNodeInfo nodeInfo;
   final int decommissionCount;
   final int earnedDowntimeBlocks;
   final bool funded;
-  final int lastRewardBlockHeight;
-  final int lastRewardTransactionIndex;
+  final LastReward lastReward;
   final int lastUptimeProof;
-  final String operatorAddress;
-  final int registrationHeight;
-  final int registrationHfVersion;
   final int requestedUnlockHeight;
-  final String serviceNodePubkey;
-  final String serviceNodeVersion;
   final int stakingRequirement;
   final int stateHeight;
-  final bool storageServerReachable;
-  final int storageServerReachableTimestamp;
+  final StorageServerStatus storageServer;
   final int swarmId;
-  final int totalContributed;
-  final int totalReserved;
+
+  bool get isUnlocking => requestedUnlockHeight != 0;
 
   static ServiceNodeStatus load(Map map) {
-    List<Contributor> contributors = (map['contributors'] as List)
-        .map((e) => Contributor.fromMap(e))
-        .toList();
     final keys = [
       'decommission_count',
       'earned_downtime_blocks',
@@ -64,6 +46,7 @@ class ServiceNodeStatus {
       'total_contributed',
       'total_reserved'
     ];
+
     for (final key in keys) {
       try {
         map[key] as int;
@@ -71,27 +54,100 @@ class ServiceNodeStatus {
         map[key] = (map[key] as double).truncate();
       }
     }
+
+    final contribution = Contribution.fromMap(map);
+    final storageServerStatus = StorageServerStatus.fromMap(map);
+    final lastReward = LastReward.fromMap(map);
+    final serviceNodeInfo = ServiceNodeInfo.fromMap(map);
+
     return ServiceNodeStatus(
-      map['active'] as bool,
-      contributors,
-      map['decommission_count'] as int,
-      map['earned_downtime_blocks'] as int,
-      map['funded'] as bool,
-      map['last_reward_block_height'] as int,
-      map['last_reward_transaction_index'] as int,
-      map['last_uptime_proof'] as int,
-      map['operator_address'] as String,
-      map['registration_height'] as int,
-      map['registration_hf_version'] as int,
-      map['requested_unlock_height'] as int,
-      map['service_node_pubkey'] as String,
-      (map['service_node_version'] as List).join('.'),
-      map['state_height'] as int,
-      map['storage_server_reachable'] as bool,
-      map['storage_server_reachable_timestamp'] as int,
-      map['swarm_id'] as int,
-      map['total_contributed'] as int,
-      map['total_reserved'] as int,
-    );
+        map['active'] as bool,
+        contribution,
+        map['decommission_count'] as int,
+        map['earned_downtime_blocks'] as int,
+        map['funded'] as bool,
+        lastReward,
+        map['last_uptime_proof'] as int,
+        map['requested_unlock_height'] as int,
+        serviceNodeInfo,
+        map['state_height'] as int,
+        storageServerStatus,
+        map['swarm_id'] as int);
   }
+}
+
+class ServiceNodeInfo {
+  ServiceNodeInfo(this.operatorAddress, this.registrationHeight,
+      this.registrationHfVersion, this.publicKey, this.version);
+
+  ServiceNodeInfo.fromMap(Map map)
+      : operatorAddress = map['operator_address'] as String,
+        registrationHeight = map['registration_height'] as int,
+        registrationHfVersion = map['registration_hf_version'] as int,
+        publicKey = map['service_node_pubkey'] as String,
+        version = (map['service_node_version'] as List).join('.');
+
+  final String operatorAddress;
+  final int registrationHeight;
+  final int registrationHfVersion;
+  final String publicKey;
+  final String version;
+
+  bool equals(ServiceNodeInfo serviceNodeInfo) {
+    return serviceNodeInfo.operatorAddress == operatorAddress &&
+        serviceNodeInfo.registrationHeight == registrationHeight &&
+        serviceNodeInfo.registrationHfVersion == registrationHfVersion &&
+        serviceNodeInfo.publicKey == publicKey &&
+        serviceNodeInfo.version == version;
+  }
+}
+
+class StorageServerStatus {
+  StorageServerStatus(this.isReachable, this.timestamp);
+
+  StorageServerStatus.fromMap(Map map)
+      : isReachable = map['storage_server_reachable'] as bool,
+        timestamp = map['storage_server_reachable_timestamp'] as int;
+
+  final bool isReachable;
+  final int timestamp;
+}
+
+class Contributor {
+  Contributor(this.address, this.amount, this.reserved);
+
+  Contributor.fromMap(Map map)
+      : address = (map['address'] ?? '') as String,
+        amount = (map['amount'] ?? 0) as int,
+        reserved = (map['reserved'] ?? 0) as int;
+
+  final String address;
+  final int amount;
+  final int reserved;
+}
+
+class Contribution {
+  Contribution(this.contributors, this.totalContributed, this.totalReserved);
+
+  Contribution.fromMap(Map map)
+      : totalContributed = (map['total_contributed'] ?? 0) as int,
+        totalReserved = (map['total_reserved'] ?? 0) as int,
+        contributors = (map['contributors'] as List)
+            .map((e) => Contributor.fromMap(e))
+            .toList();
+
+  final int totalContributed;
+  final int totalReserved;
+  final List<Contributor> contributors;
+}
+
+class LastReward {
+  LastReward(this.blockHeight, this.transactionIndex);
+
+  LastReward.fromMap(Map map)
+      : blockHeight = (map['last_reward_block_height'] ?? 0) as int,
+        transactionIndex = (map['last_reward_transaction_index'] ?? 0) as int;
+
+  final int blockHeight;
+  final int transactionIndex;
 }

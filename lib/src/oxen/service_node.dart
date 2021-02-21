@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:oxen_service_node/src/oxen/service_node_status.dart';
 
 part 'service_node.g.dart';
 
@@ -17,4 +18,26 @@ class ServiceNode extends HiveObject {
 
   @HiveField(1)
   String publicKey;
+
+  @HiveField(2)
+  String operatorAddress;
+
+  @HiveField(3)
+  int registrationHeight;
+
+  @HiveField(4)
+  int registrationHfVersion;
+
+  @HiveField(5)
+  String version;
+
+  ServiceNodeInfo get nodeInfo => ServiceNodeInfo(operatorAddress,
+      registrationHeight, registrationHfVersion, publicKey, version);
+
+  set nodeInfo(ServiceNodeInfo value) {
+    operatorAddress = value.operatorAddress;
+    registrationHeight = value.registrationHeight;
+    registrationHfVersion = value.registrationHfVersion;
+    version = value.version;
+  }
 }

@@ -24,7 +24,14 @@ abstract class NodeSyncStoreBase with Store {
         final results = resultData['result']['service_node_states'] as List;
         nodes = [];
         for (final result in results) {
-          nodes.add(ServiceNodeStatus.load(result));
+          final serviceNodeStatus = ServiceNodeStatus.load(result);
+          final serviceNode = _serviceNodes.values.firstWhere((element) =>
+              element.publicKey == serviceNodeStatus.nodeInfo.publicKey);
+          if (!serviceNode.nodeInfo.equals(serviceNodeStatus.nodeInfo)) {
+            serviceNode.nodeInfo = serviceNodeStatus.nodeInfo;
+            await _serviceNodes.put(serviceNode.key, serviceNode);
+          }
+          nodes.add(serviceNodeStatus);
         }
       } catch (e) {
         nodes = [];

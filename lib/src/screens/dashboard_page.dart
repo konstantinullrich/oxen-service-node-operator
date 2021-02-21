@@ -92,75 +92,87 @@ class DashboardPage extends BasePage {
               : S.of(context).health_out_of_nodes(
                   operatorStatus.healthyNodes, operatorStatus.totalNodes));
 
-      return SingleChildScrollView(
-        child: ListView(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          children: [
-            Padding(
-              padding: EdgeInsets.only(top: 18, bottom: 28),
-              child: SizedBox(
-                height: 220.0,
-                child: Stack(
-                  children: <Widget>[
-                    Center(
-                      child: Container(
-                        width: 200,
-                        height: 200,
-                        child: CircularProgressIndicator(
-                          strokeWidth: 15,
-                          value: operatorStatus.healthPercentage,
-                          valueColor:
-                              AlwaysStoppedAnimation<Color>(OxenPalette.lime),
-                          backgroundColor: OxenPalette.lightRed,
-                        ),
+      return ListView(
+        shrinkWrap: true,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(top: 18, bottom: 28),
+            child: SizedBox(
+              height: 220.0,
+              child: Stack(
+                children: <Widget>[
+                  Center(
+                    child: Container(
+                      width: 200,
+                      height: 200,
+                      child: CircularProgressIndicator(
+                        strokeWidth: 15,
+                        value: operatorStatus.healthPercentage,
+                        valueColor:
+                            AlwaysStoppedAnimation<Color>(OxenPalette.lime),
+                        backgroundColor: OxenPalette.red,
                       ),
                     ),
-                    Center(
-                      child: Text(operatorStatusText,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              fontSize: 15.0, color: Palette.wildDarkBlue)),
-                    )
-                  ],
-                ),
+                  ),
+                  Center(
+                    child: Text(operatorStatusText,
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 15.0, color: Palette.wildDarkBlue)),
+                  )
+                ],
               ),
             ),
-            Text(
-              S.of(context).your_service_nodes,
-              textAlign: TextAlign.center,
-              style: TextStyle(fontSize: 18.0, color: Palette.wildDarkBlue),
-            ),
-            ListView.builder(
-                shrinkWrap: true,
-                itemCount: nodeSyncStatus.nodes != null
-                    ? nodeSyncStatus.nodes.length
-                    : 0,
-                itemBuilder: (BuildContext context, int index) {
-                  final nodeStatus = nodeSyncStatus.nodes[index];
-                  final serviceNodeKey = nodeStatus.serviceNodePubkey;
-                  final nodeSource = nodes.values.firstWhere((e) {
-                    return e.publicKey == serviceNodeKey;
-                  });
-                  final serviceNodeKeyShort =
-                      '${serviceNodeKey.substring(0, 12)}...${serviceNodeKey.substring(serviceNodeKey.length - 4)}';
+          ),
+          Padding(
+              padding: EdgeInsets.only(bottom: 28),
+              child: Text(
+                S.of(context).your_service_nodes,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18.0, color: Palette.wildDarkBlue),
+              )),
+          ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: nodeSyncStatus.nodes != null
+                  ? nodeSyncStatus.nodes.length
+                  : 0,
+              itemBuilder: (BuildContext context, int index) {
+                final nodeStatus = nodeSyncStatus.nodes[index];
+                final serviceNodeKey = nodeStatus.nodeInfo.publicKey;
+                final nodeSource = nodes.values.firstWhere((e) {
+                  return e.publicKey == serviceNodeKey;
+                });
+                final serviceNodeKeyShort =
+                    '${serviceNodeKey.substring(0, 12)}...${serviceNodeKey.substring(serviceNodeKey.length - 4)}';
+                final statusIcon = nodeStatus.isUnlocking
+                    ? Icon(Icons.access_time_sharp, color: OxenPalette.orange)
+                    : (nodeStatus.active
+                        ? Icon(Icons.check_circle_sharp,
+                            color: OxenPalette.lime)
+                        : Icon(Icons.error_sharp,
+                            color: OxenPalette.red));
 
-                  return Card(
-                      child: Padding(
-                        padding: EdgeInsets.all(10),
-                        child: Row(children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(nodeSource.name, style: TextStyle(fontSize: 18),),
-                              Text(serviceNodeKeyShort)
-                            ],
-                          )
-                        ]),
-                      ));
-                }),
-          ],
-        ),
+                return Card(
+                    child: Padding(
+                  padding: EdgeInsets.all(10),
+                  child: Row(children: [
+                    Padding(
+                        padding: EdgeInsets.all(10), child: statusIcon),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          nodeSource.name,
+                          style: TextStyle(fontSize: 18),
+                        ),
+                        Text(serviceNodeKeyShort)
+                      ],
+                    )
+                  ]),
+                ));
+              }),
+        ],
       );
     });
   }
