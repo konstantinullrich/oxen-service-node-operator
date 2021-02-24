@@ -18,7 +18,7 @@ class StandardSwitchState extends State<StandardSwitch> {
       child: AnimatedContainer(
         padding: EdgeInsets.only(left: 4.0, right: 4.0),
         alignment: widget.value ? Alignment.centerRight : Alignment.centerLeft,
-        duration: Duration(milliseconds: 250),
+        duration: Duration(milliseconds: 200),
         width: 55.0,
         height: 33.0,
         decoration: BoxDecoration(

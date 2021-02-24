@@ -68,7 +68,7 @@ class WelcomePage extends StatelessWidget {
           child: Column(children: <Widget>[
             PrimaryButton(
                 onPressed: () {
-                  Navigator.pushNamed(context, OxenRoutes.addServiceNodeFromWelcome);
+                  Navigator.pushNamed(context, OxenRoutes.addServiceNode);
                 },
                 text: S.of(context).add_service_node,
                 color:

@@ -4,8 +4,8 @@ import 'package:oxen_service_node/src/utils/theme/theme_changer.dart';
 import 'package:oxen_service_node/src/utils/theme/themes.dart';
 import 'package:provider/provider.dart';
 
-class NavBar extends StatelessWidget implements ObstructingPreferredSizeWidget {
-  factory NavBar(
+class OxenAppBar extends StatelessWidget implements ObstructingPreferredSizeWidget {
+  factory OxenAppBar(
       {BuildContext context,
       Widget leading,
       Widget middle,
@@ -14,7 +14,7 @@ class NavBar extends StatelessWidget implements ObstructingPreferredSizeWidget {
     final _themeChanger = Provider.of<ThemeChanger>(context);
     final _isDarkTheme = _themeChanger.theme == Themes.darkTheme;
 
-    return NavBar._internal(
+    return OxenAppBar._internal(
         leading: leading,
         middle: middle,
         trailing: trailing,
@@ -23,7 +23,7 @@ class NavBar extends StatelessWidget implements ObstructingPreferredSizeWidget {
             _isDarkTheme ? Theme.of(context).backgroundColor : backgroundColor);
   }
 
-  factory NavBar.withShadow(
+  factory OxenAppBar.withShadow(
       {BuildContext context,
       Widget leading,
       Widget middle,
@@ -32,7 +32,7 @@ class NavBar extends StatelessWidget implements ObstructingPreferredSizeWidget {
     final _themeChanger = Provider.of<ThemeChanger>(context);
     final _isDarkTheme = _themeChanger.theme == Themes.darkTheme;
 
-    return NavBar._internal(
+    return OxenAppBar._internal(
       leading: leading,
       middle: middle,
       trailing: trailing,
@@ -52,7 +52,7 @@ class NavBar extends StatelessWidget implements ObstructingPreferredSizeWidget {
     );
   }
 
-  NavBar._internal(
+  OxenAppBar._internal(
       {this.leading,
       this.middle,
       this.trailing,

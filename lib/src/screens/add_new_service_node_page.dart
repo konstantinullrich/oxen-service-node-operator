@@ -11,20 +11,20 @@ import 'package:oxen_service_node/src/widgets/primary_button.dart';
 import 'package:oxen_service_node/src/widgets/scrollable_with_bottom_section.dart';
 import 'package:provider/provider.dart';
 
-class AddNewNodePage extends BasePage {
+class AddNewServiceNodePage extends BasePage {
   @override
   String get title => S.current.title_add_service_node;
 
   @override
-  Widget body(BuildContext context) => AddNewNodePageBody();
+  Widget body(BuildContext context) => AddNewServiceNodePageBody();
 }
 
-class AddNewNodePageBody extends StatefulWidget {
+class AddNewServiceNodePageBody extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() => AddNewNodePageBodyState();
+  State<StatefulWidget> createState() => AddNewServiceNodePageBodyState();
 }
 
-class AddNewNodePageBodyState extends State<AddNewNodePageBody> {
+class AddNewServiceNodePageBodyState extends State<AddNewServiceNodePageBody> {
   final _nameController = TextEditingController();
   final _publicKeyController = TextEditingController();
   final _formKey = GlobalKey<FormState>();

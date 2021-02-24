@@ -13,7 +13,6 @@ import 'package:oxen_service_node/src/utils/language.dart';
 import 'package:oxen_service_node/src/utils/router/oxen_router.dart';
 import 'package:oxen_service_node/src/utils/theme/theme_changer.dart';
 import 'package:oxen_service_node/src/utils/theme/themes.dart';
-import 'package:oxen_service_node/src/utils/welcome_manager.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -37,6 +36,8 @@ Future<void> main() async {
   final settingsStore =
       await SettingsStoreBase.load(sharedPreferences, daemons);
   final nodeSyncStore = NodeSyncStore(serviceNodes, settingsStore);
+
+  if (serviceNodes.isNotEmpty) await nodeSyncStore.sync();
 
   runApp(MultiProvider(providers: [
     Provider(create: (_) => serviceNodes),
@@ -73,9 +74,11 @@ class MaterialAppWithTheme extends StatelessWidget {
     final settingsStore = Provider.of<SettingsStore>(context);
     final currentLanguage = Provider.of<Language>(context);
     final theme = Provider.of<ThemeChanger>(context);
+    final serviceNodes = Provider.of<Box<ServiceNode>>(context);
     final statusBarColor =
         settingsStore.isDarkTheme ? Colors.black : Colors.white;
-    final welcomeManager = WelcomeManager.load(sharedPreferences);
+
+    final isSetup = serviceNodes.isEmpty;
 
     SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(statusBarColor: statusBarColor));
@@ -92,7 +95,7 @@ class MaterialAppWithTheme extends StatelessWidget {
         supportedLocales: S.delegate.supportedLocales,
         locale: Locale(currentLanguage.currentLanguage),
         onGenerateRoute: (settings) => OxenRouter.generateRoute(
-            settings, sharedPreferences, settingsStore, welcomeManager),
-        home: welcomeManager.isSetup ? WelcomePage() : DashboardPage());
+            settings, sharedPreferences, settingsStore),
+        home: isSetup ? WelcomePage() : DashboardPage());
   }
 }

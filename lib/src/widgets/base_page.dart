@@ -4,7 +4,7 @@ import 'package:oxen_service_node/src/utils/theme/theme_changer.dart';
 import 'package:oxen_service_node/src/utils/theme/themes.dart';
 import 'package:provider/provider.dart';
 
-import 'nav_bar.dart';
+import 'oxen_app_bar.dart';
 
 enum AppBarStyle { regular, withShadow }
 
@@ -66,7 +66,7 @@ abstract class BasePage extends StatelessWidget {
 
     switch (appBarStyle) {
       case AppBarStyle.regular:
-        return NavBar(
+        return OxenAppBar(
             context: context,
             leading: leading(context),
             middle: middle(context),
@@ -76,7 +76,7 @@ abstract class BasePage extends StatelessWidget {
                 : backgroundColor);
 
       case AppBarStyle.withShadow:
-        return NavBar.withShadow(
+        return OxenAppBar.withShadow(
             context: context,
             leading: leading(context),
             middle: middle(context),
@@ -86,7 +86,7 @@ abstract class BasePage extends StatelessWidget {
                 : backgroundColor);
 
       default:
-        return NavBar(
+        return OxenAppBar(
             context: context,
             leading: leading(context),
             middle: middle(context),
