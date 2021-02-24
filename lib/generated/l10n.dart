@@ -255,6 +255,86 @@ class S {
     );
   }
 
+  /// `Swarm ID`
+  String get swarm_id {
+    return Intl.message(
+      'Swarm ID',
+      name: 'swarm_id',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last Reward Height`
+  String get last_reward_height {
+    return Intl.message(
+      'Last Reward Height',
+      name: 'last_reward_height',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Earned Downtime Blocks`
+  String get earned_downtime_blocks {
+    return Intl.message(
+      'Earned Downtime Blocks',
+      name: 'earned_downtime_blocks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Registration Height`
+  String get registration_height {
+    return Intl.message(
+      'Registration Height',
+      name: 'registration_height',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Registration Hardfork Version`
+  String get registration_hf_version {
+    return Intl.message(
+      'Registration Hardfork Version',
+      name: 'registration_hf_version',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Node Version`
+  String get service_node_version {
+    return Intl.message(
+      'Node Version',
+      name: 'service_node_version',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Node Operator`
+  String get service_node_operator {
+    return Intl.message(
+      'Node Operator',
+      name: 'service_node_operator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last Uptime Proof`
+  String get last_uptime_proof {
+    return Intl.message(
+      'Last Uptime Proof',
+      name: 'last_uptime_proof',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `App`
   String get settings_title_app {
     return Intl.message(

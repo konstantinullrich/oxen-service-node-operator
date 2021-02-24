@@ -1,6 +1,6 @@
 {
   "welcome": "Willkommen,\nOXEN Service Node Operator",
-  "welcome_first_line": "Hier kannst du die Service Nodes überwachen, die du bereibst oder beiträgst.",
+  "welcome_first_line": "Hier kannst du die Service Nodes überwachen, die du bereibst oder zu den du beiträgst.",
   "add_node_to_get_started": "Füge einen Service Node hinzu um loszulegen.",
   "add_service_node": "Service Node hinzufügen",
   "add_daemon": "Daemon hinzufügen",
@@ -25,6 +25,15 @@
   "storage_server": "Storage Server",
   "last_reward": "Letzte Belohung",
   "more": "Mehr",
+
+  "swarm_id": "Swarm ID",
+  "last_reward_height": "Letzte Belohungs Höhe",
+  "earned_downtime_blocks": "Verdiente Downtime Blöcke",
+  "registration_height": "Registrierungs Höhe",
+  "registration_hf_version": "Registrierte Hardfork Version",
+  "service_node_version": "Node Version",
+  "service_node_operator": "Node Operator",
+  "last_uptime_proof": "Letzter Uptime Proof",
 
   "settings_title_app": "App",
   "settings_title_general": "Generelle Einstellungen",

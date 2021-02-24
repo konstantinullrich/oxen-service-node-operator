@@ -16,16 +16,15 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'oxen_routes.dart';
 
 class OxenRouter {
-  static Route<dynamic> generateRoute(
-      RouteSettings settings,
-      SharedPreferences sharedPreferences,
-      SettingsStore settingsStore) {
+  static Route<dynamic> generateRoute(RouteSettings settings,
+      SharedPreferences sharedPreferences, SettingsStore settingsStore) {
     switch (settings.name) {
       case OxenRoutes.welcome:
         return MaterialPageRoute<void>(builder: (_) => WelcomePage());
 
       case OxenRoutes.addServiceNode:
-        return CupertinoPageRoute<void>(builder: (_) => AddNewServiceNodePage());
+        return CupertinoPageRoute<void>(
+            builder: (_) => AddNewServiceNodePage());
 
       case OxenRoutes.addDaemon:
         return CupertinoPageRoute<void>(builder: (_) => AddNewDaemonPage());
@@ -46,13 +45,16 @@ class OxenRouter {
         return CupertinoPageRoute(builder: (_) => EditServiceNodesPage());
 
       case OxenRoutes.detailsServiceNode:
-        return CupertinoPageRoute(builder: (_) => DetailsServiceNodePage(settings.arguments as String));
+        return CupertinoPageRoute(
+            builder: (_) =>
+                DetailsServiceNodePage(settings.arguments as String));
 
       default:
         return MaterialPageRoute<void>(
             builder: (_) => Scaffold(
                   body: Center(
-                      child: Text(S.current.error_router_no_route(settings.name))),
+                      child:
+                          Text(S.current.error_router_no_route(settings.name))),
                 ));
     }
   }

@@ -26,6 +26,15 @@
   "last_reward": "Last Reward",
   "more": "More",
 
+  "swarm_id": "Swarm ID",
+  "last_reward_height": "Last Reward Height",
+  "earned_downtime_blocks": "Earned Downtime Blocks",
+  "registration_height": "Registration Height",
+  "registration_hf_version": "Registration Hardfork Version",
+  "service_node_version": "Node Version",
+  "service_node_operator": "Node Operator",
+  "last_uptime_proof": "Last Uptime Proof",
+
   "settings_title_app": "App",
   "settings_title_general": "General",
   "settings_language": "Language",

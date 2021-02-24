@@ -6,7 +6,7 @@ class ServiceNodeStatus {
       this.earnedDowntimeBlocks,
       this.funded,
       this.lastReward,
-      this.lastUptimeProof,
+      this._lastUptimeProof,
       this.requestedUnlockHeight,
       this.nodeInfo,
       this.stateHeight,
@@ -21,14 +21,17 @@ class ServiceNodeStatus {
   final int earnedDowntimeBlocks;
   final bool funded;
   final LastReward lastReward;
-  final int lastUptimeProof;
-  final int requestedUnlockHeight;
   final int stakingRequirement;
   final int stateHeight;
   final StorageServerStatus storageServer;
+  final int requestedUnlockHeight;
   final int swarmId;
+  final int _lastUptimeProof;
 
   bool get isUnlocking => requestedUnlockHeight != 0;
+
+  DateTime get lastUptimeProof =>
+      DateTime.fromMillisecondsSinceEpoch(_lastUptimeProof * 1000);
 
   static ServiceNodeStatus load(Map map) {
     final keys = [
