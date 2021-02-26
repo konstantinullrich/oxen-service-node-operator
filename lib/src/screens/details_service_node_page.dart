@@ -18,7 +18,6 @@ class DetailsServiceNodePage extends BasePage {
   @override
   Widget body(BuildContext context) {
     final nodeSyncStatus = Provider.of<NodeSyncStore>(context);
-    // TODO: implement body
     return ListView(
       children: [
         Observer(builder: (_) {
