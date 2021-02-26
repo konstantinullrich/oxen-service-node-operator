@@ -1,6 +1,6 @@
-# oxen_service_node
+# OXEN Service Node Operator
 
-A new Flutter project.
+With this app you can watch Service Nodes you run or contributed to.
 
 ## Build
 
@@ -18,3 +18,9 @@ A new Flutter project.
     ```shell script
     flutter pub run flutter_launcher_icons:main
     ```
+
+## Support
+You can support this project by contributing to the code or donating some Oxen.
+```
+L8JP28nNYhZDpSeitA65CD9j5nN2FVaxPBnU3wdfwYzDPfhbZUGACRcRYa8pZ1dJZPA1xg2VgALBzNZwMVqwWqf3BDn6h8u
+```
