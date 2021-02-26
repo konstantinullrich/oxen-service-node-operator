@@ -16,9 +16,6 @@ class DetailsServiceNodePage extends BasePage {
   static const int MINIMUM_CREDIT = 60;
 
   @override
-  String get title => publicKey.substring(0, 20); // TODO: implement title
-
-  @override
   Widget body(BuildContext context) {
     final nodeSyncStatus = Provider.of<NodeSyncStore>(context);
     // TODO: implement body
