@@ -1,6 +1,7 @@
 name: Oxen Service Node Build
 
 on:
+  workflow_dispatch:
   pull_request:
     branches:
       - trunk
