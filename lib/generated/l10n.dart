@@ -45,10 +45,10 @@ class S {
     );
   }
 
-  /// `Here you can watch Service Nodes you run or contributed to.`
+  /// `Here you can watch Service Nodes you run or contribute to.`
   String get welcome_first_line {
     return Intl.message(
-      'Here you can watch Service Nodes you run or contributed to.',
+      'Here you can watch Service Nodes you run or contribute to.',
       name: 'welcome_first_line',
       desc: '',
       args: [],
