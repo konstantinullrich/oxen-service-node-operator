@@ -21,8 +21,7 @@ class NavListMultiHeader extends StatelessWidget {
             children: <Widget>[
               Text(
                 title,
-                style: TextStyle(
-                    fontSize: 15.0, color: Palette.wildDarkBlue),
+                style: TextStyle(fontSize: 15.0, color: Palette.wildDarkBlue),
               ),
               Text(
                 subtitle,

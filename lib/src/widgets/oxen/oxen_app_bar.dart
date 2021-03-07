@@ -4,7 +4,8 @@ import 'package:oxen_service_node/src/utils/theme/theme_changer.dart';
 import 'package:oxen_service_node/src/utils/theme/themes.dart';
 import 'package:provider/provider.dart';
 
-class OxenAppBar extends StatelessWidget implements ObstructingPreferredSizeWidget {
+class OxenAppBar extends StatelessWidget
+    implements ObstructingPreferredSizeWidget {
   factory OxenAppBar(
       {BuildContext context,
       Widget leading,

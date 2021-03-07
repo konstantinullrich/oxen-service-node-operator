@@ -7,6 +7,7 @@ import 'package:oxen_service_node/src/stores/node_sync_store.dart';
 import 'package:oxen_service_node/src/utils/router/oxen_routes.dart';
 import 'package:oxen_service_node/src/utils/theme/palette.dart';
 import 'package:oxen_service_node/src/widgets/base_page.dart';
+import 'package:oxen_service_node/src/widgets/oxen/oxen_text_field.dart';
 import 'package:oxen_service_node/src/widgets/primary_button.dart';
 import 'package:oxen_service_node/src/widgets/scrollable_with_bottom_section.dart';
 import 'package:provider/provider.dart';
@@ -62,59 +63,27 @@ class AddNewServiceNodePageBodyState extends State<AddNewServiceNodePageBody> {
           padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 30),
           child: Column(children: <Widget>[
             Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: TextFormField(
-                  style: TextStyle(
-                      fontSize: 18.0,
-                      color: Theme.of(context).accentTextTheme.overline.color),
-                  controller: _nameController,
-                  decoration: InputDecoration(
-                      hintStyle: TextStyle(
-                          fontSize: 18.0, color: Theme.of(context).hintColor),
-                      hintText: S.of(context).name,
-                      focusedBorder: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: OxenPalette.teal, width: 2.0)),
-                      enabledBorder: OutlineInputBorder(
-                          borderSide: BorderSide(
-                              color: Theme.of(context).focusColor,
-                              width: 1.0)))),
+              padding: EdgeInsets.only(top: 20),
+              child: OxenTextField(
+                controller: _nameController,
+                hintText: S.of(context).name,
+              ),
             ),
             Padding(
-              padding: const EdgeInsets.only(top: 20),
-              child: TextFormField(
-                style: TextStyle(
-                    fontSize: 18.0,
-                    color: Theme.of(context).accentTextTheme.overline.color),
+              padding: EdgeInsets.only(top: 20),
+              child: OxenTextField(
                 controller: _publicKeyController,
-                decoration: InputDecoration(
-                    hintStyle: TextStyle(
-                        fontSize: 18.0, color: Theme.of(context).hintColor),
-                    hintText: S.of(context).public_key,
-                    focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: OxenPalette.teal, width: 2.0)),
-                    enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                            color: Theme.of(context).focusColor, width: 1.0)),
-                    errorBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: OxenPalette.red, width: 1.0)),
-                    focusedErrorBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(color: OxenPalette.red, width: 1.0)),
-                    errorStyle: TextStyle(color: OxenPalette.red),
-                    suffixIcon: IconButton(
-                        splashColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        color: OxenPalette.teal,
-                        icon: Icon(Icons.content_paste_sharp),
-                        onPressed: () async {
-                          final clipboard =
-                              await Clipboard.getData('text/plain');
-                          if (clipboard.text != null)
-                            _publicKeyController.text = clipboard.text;
-                        })),
+                hintText: S.of(context).public_key,
+                suffixIcon: IconButton(
+                    splashColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    color: OxenPalette.teal,
+                    icon: Icon(Icons.content_paste_sharp),
+                    onPressed: () async {
+                      final clipboard = await Clipboard.getData('text/plain');
+                      if (clipboard.text != null)
+                        _publicKeyController.text = clipboard.text;
+                    }),
                 validator: (value) {
                   final validPublicKey = _isValidPublicKey(value);
                   if (value.isEmpty || validPublicKey == -1)

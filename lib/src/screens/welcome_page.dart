@@ -26,7 +26,8 @@ class WelcomePage extends StatelessWidget {
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.all(20),
-                child: Image.asset('assets/images/oxen.png', height: 124, width: 400),
+                child: Image.asset('assets/images/oxen.png',
+                    height: 124, width: 400),
               ),
               Padding(
                 padding: EdgeInsets.all(10),
@@ -72,9 +73,9 @@ class WelcomePage extends StatelessWidget {
                 },
                 text: S.of(context).add_service_node,
                 color:
-                Theme.of(context).primaryTextTheme.button.backgroundColor,
+                    Theme.of(context).primaryTextTheme.button.backgroundColor,
                 borderColor:
-                Theme.of(context).primaryTextTheme.button.decorationColor),
+                    Theme.of(context).primaryTextTheme.button.decorationColor),
           ]))
     ]);
   }

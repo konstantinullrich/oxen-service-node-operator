@@ -107,7 +107,7 @@ class DashboardPage extends BasePage {
                         strokeWidth: 15,
                         value: operatorStatus.healthPercentage,
                         valueColor:
-                            AlwaysStoppedAnimation<Color>(OxenPalette.lime),
+                        AlwaysStoppedAnimation<Color>(OxenPalette.lime),
                         backgroundColor: OxenPalette.red,
                       ),
                     ),

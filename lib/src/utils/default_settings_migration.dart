@@ -25,7 +25,6 @@ Future defaultSettingsMigration(int version,
           await resetToDefault(daemons);
           await changeCurrentNodeToDefault(
               sharedPreferences: sharedPreferences, nodes: daemons);
-
           break;
         default:
           break;

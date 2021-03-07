@@ -1,11 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:devicelocale/devicelocale.dart';
+import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-const Map<String, String> languages = {
-  'en': 'English',
-  'de': 'Deutsch'
-};
+const Map<String, String> languages = {'en': 'English', 'de': 'Deutsch'};
 
 class Language with ChangeNotifier {
   Language(this._currentLanguage);

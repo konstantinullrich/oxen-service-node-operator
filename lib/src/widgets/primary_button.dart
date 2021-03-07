@@ -24,9 +24,7 @@ class PrimaryButton extends StatelessWidget {
         minWidth: double.infinity,
         height: 56.0,
         child: FlatButton(
-          onPressed: isDisabled
-              ? onDisabledPressed
-              : onPressed,
+          onPressed: isDisabled ? onDisabledPressed : onPressed,
           color: isDisabled ? Colors.transparent : color,
           shape: RoundedRectangleBorder(
               side: BorderSide(color: borderColor),

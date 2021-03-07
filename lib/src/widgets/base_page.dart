@@ -4,7 +4,7 @@ import 'package:oxen_service_node/src/utils/theme/theme_changer.dart';
 import 'package:oxen_service_node/src/utils/theme/themes.dart';
 import 'package:provider/provider.dart';
 
-import 'oxen_app_bar.dart';
+import 'oxen/oxen_app_bar.dart';
 
 enum AppBarStyle { regular, withShadow }
 
@@ -48,12 +48,12 @@ abstract class BasePage extends StatelessWidget {
     return title == null
         ? null
         : Text(
-      title,
-      style: TextStyle(
-          fontSize: 16.0,
-          fontWeight: FontWeight.w600,
-          color: Theme.of(context).primaryTextTheme.headline6.color),
-    );
+            title,
+            style: TextStyle(
+                fontSize: 16.0,
+                fontWeight: FontWeight.w600,
+                color: Theme.of(context).primaryTextTheme.headline6.color),
+          );
   }
 
   Widget trailing(BuildContext context) => null;
@@ -108,13 +108,12 @@ abstract class BasePage extends StatelessWidget {
 
     return Scaffold(
         backgroundColor:
-        _isDarkTheme ? Theme.of(context).backgroundColor : backgroundColor,
+            _isDarkTheme ? Theme.of(context).backgroundColor : backgroundColor,
         resizeToAvoidBottomPadding: resizeToAvoidBottomPadding,
         appBar: appBar(context),
         body: SafeArea(child: body(context)),
         floatingActionButton: floatingActionButton(context),
         bottomNavigationBar: bottomNavigationBar(context),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat
-    );
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat);
   }
 }

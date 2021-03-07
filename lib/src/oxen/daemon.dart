@@ -9,8 +9,7 @@ part 'daemon.g.dart';
 class Daemon extends HiveObject {
   Daemon(this.uri);
 
-  Daemon.fromMap(Map map)
-      : uri = (map['uri'] ?? '') as String;
+  Daemon.fromMap(Map map) : uri = (map['uri'] ?? '') as String;
 
   static const boxName = 'Daemons';
 

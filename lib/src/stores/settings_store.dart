@@ -70,8 +70,7 @@ abstract class SettingsStoreBase with Store {
   @action
   Future setLanguageCode(String newLanguageCode) async {
     languageCode = newLanguageCode;
-    if (language != null)
-      language.currentLanguage = languageCode;
+    if (language != null) language.currentLanguage = languageCode;
     await _sharedPreferences.setString(currentLanguageCodeKey, languageCode);
   }
 
