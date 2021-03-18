@@ -21,7 +21,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m0(name) => "Für ${name} ist keine Route definiert";
 
-  static m1(healthy_nodes, total) => "${healthy_nodes} von ${total} Nodes\nsind betriebsbereit";
+  static m1(nextReward) => "~ in ${nextReward} Blöcken";
+
+  static m2(healthy_nodes, total) => "${healthy_nodes} von ${total} Nodes\nsind betriebsbereit";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -36,14 +38,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_router_no_route" : m0,
     "error_text_daemon_address" : MessageLookupByLibrary.simpleMessage("Bitte gebe eine valide iPv4 Adresse oder Domain Name ein."),
     "error_text_daemon_port" : MessageLookupByLibrary.simpleMessage("Der Daemon Port kann nur Nummern zwischen 0 und 65535 beinhalten."),
+    "estimated_reward_block" : m1,
     "health_all_nodes" : MessageLookupByLibrary.simpleMessage("Alle Nodes sind\nbetriebsbereit"),
     "health_no_nodes" : MessageLookupByLibrary.simpleMessage("Kein Node ist\nbetriebsbereit!"),
-    "health_out_of_nodes" : m1,
+    "health_out_of_nodes" : m2,
     "last_reward" : MessageLookupByLibrary.simpleMessage("Letzte Belohung"),
     "last_reward_height" : MessageLookupByLibrary.simpleMessage("Letzte Belohungs Höhe"),
     "last_uptime_proof" : MessageLookupByLibrary.simpleMessage("Letzter Uptime Proof"),
     "more" : MessageLookupByLibrary.simpleMessage("Mehr"),
     "name" : MessageLookupByLibrary.simpleMessage("Name"),
+    "next_reward" : MessageLookupByLibrary.simpleMessage("Nächste Belohnung:"),
     "public_key" : MessageLookupByLibrary.simpleMessage("Öffentlicher Schlüssel"),
     "registration_height" : MessageLookupByLibrary.simpleMessage("Registrierungs Höhe"),
     "registration_hf_version" : MessageLookupByLibrary.simpleMessage("Registrierte Hardfork Version"),

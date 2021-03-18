@@ -335,6 +335,46 @@ class S {
     );
   }
 
+  /// `Next Reward:`
+  String get next_reward {
+    return Intl.message(
+      'Next Reward:',
+      name: 'next_reward',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `~ in {nextReward} Blocks`
+  String estimated_reward_block(Object nextReward) {
+    return Intl.message(
+      '~ in $nextReward Blocks',
+      name: 'estimated_reward_block',
+      desc: '',
+      args: [nextReward],
+    );
+  }
+
+  /// `Node is unlocking`
+  String get unlocking_node {
+    return Intl.message(
+      'Node is unlocking',
+      name: 'unlocking_node',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `in {unlockBlock} Blocks`
+  String estimated_node_unlock(Object unlockBlock) {
+    return Intl.message(
+      'in $unlockBlock Blocks',
+      name: 'estimated_node_unlock',
+      desc: '',
+      args: [unlockBlock],
+    );
+  }
+
   /// `App`
   String get settings_title_app {
     return Intl.message(

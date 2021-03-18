@@ -21,7 +21,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m0(name) => "No route defined for ${name}";
 
-  static m1(healthy_nodes, total) => "${healthy_nodes} out of ${total} nodes\nare operational";
+  static m3(unlockBlock) => "in ${unlockBlock} Blocks";
+
+  static m1(nextReward) => "~ in ${nextReward} Blocks";
+
+  static m2(healthy_nodes, total) => "${healthy_nodes} out of ${total} nodes\nare operational";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -36,14 +40,17 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_router_no_route" : m0,
     "error_text_daemon_address" : MessageLookupByLibrary.simpleMessage("Please enter a valid iPv4 address or domain name"),
     "error_text_daemon_port" : MessageLookupByLibrary.simpleMessage("Daemon port can only contain numbers between 0 and 65535"),
+    "estimated_node_unlock" : m3,
+    "estimated_reward_block" : m1,
     "health_all_nodes" : MessageLookupByLibrary.simpleMessage("All nodes are operational"),
     "health_no_nodes" : MessageLookupByLibrary.simpleMessage("No nodes are operational!"),
-    "health_out_of_nodes" : m1,
+    "health_out_of_nodes" : m2,
     "last_reward" : MessageLookupByLibrary.simpleMessage("Last Reward"),
     "last_reward_height" : MessageLookupByLibrary.simpleMessage("Last Reward Height"),
     "last_uptime_proof" : MessageLookupByLibrary.simpleMessage("Last Uptime Proof"),
     "more" : MessageLookupByLibrary.simpleMessage("More"),
     "name" : MessageLookupByLibrary.simpleMessage("Name"),
+    "next_reward" : MessageLookupByLibrary.simpleMessage("Next Reward:"),
     "public_key" : MessageLookupByLibrary.simpleMessage("Public Key"),
     "registration_height" : MessageLookupByLibrary.simpleMessage("Registration Height"),
     "registration_hf_version" : MessageLookupByLibrary.simpleMessage("Registration Hardfork Version"),
@@ -64,6 +71,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "title_edit_daemons" : MessageLookupByLibrary.simpleMessage("Edit Daemons"),
     "title_edit_service_node" : MessageLookupByLibrary.simpleMessage("Edit Service Nodes"),
     "title_settings" : MessageLookupByLibrary.simpleMessage("Settings"),
+    "unlocking_node" : MessageLookupByLibrary.simpleMessage("Node is unlocking"),
     "welcome" : MessageLookupByLibrary.simpleMessage("Welcome,\nOXEN Service Node Operator"),
     "welcome_first_line" : MessageLookupByLibrary.simpleMessage("Here you can watch Service Nodes you run or contribute to."),
     "your_service_nodes" : MessageLookupByLibrary.simpleMessage("Your Service Nodes")
