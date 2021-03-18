@@ -16,15 +16,19 @@ abstract class NodeSyncStoreBase with Store {
     isSyncing = true;
     final serviceNodePublicKeys =
         _serviceNodes.values.map((e) => e.publicKey).toList();
-    if (serviceNodePublicKeys.isNotEmpty) {
-      final params = {'service_node_pubkeys': serviceNodePublicKeys};
-      try {
-        final resultData = await _settingsStore.daemon
-            .sendRPCRequest('get_service_nodes', params: params);
-        final results = resultData['result']['service_node_states'] as List;
-        currentHeight = resultData['result']['height'] as int;
+
+    try {
+      final resultData =
+          await _settingsStore.daemon.sendRPCRequest('get_service_nodes');
+      final results = (resultData['result']['service_node_states'] as List);
+      currentHeight = resultData['result']['height'] as int;
+      networkSize =
+          results.where((element) => element['active'] as bool).length;
+      if (serviceNodePublicKeys.isNotEmpty) {
+        final myNodes = results.where((element) =>
+            serviceNodePublicKeys.contains(element['service_node_pubkey']));
         nodes = [];
-        for (final result in results) {
+        for (final result in myNodes) {
           final serviceNodeStatus = ServiceNodeStatus.load(result);
           final serviceNode = _serviceNodes.values.firstWhere((element) =>
               element.publicKey == serviceNodeStatus.nodeInfo.publicKey);
@@ -34,11 +38,13 @@ abstract class NodeSyncStoreBase with Store {
           }
           nodes.add(serviceNodeStatus);
         }
-      } catch (e) {
-        currentHeight = 0;
-        nodes = [];
       }
+    } catch (e) {
+      nodes = [];
+      networkSize = 0;
+      currentHeight = 0;
     }
+
     isSyncing = false;
   }
 
@@ -47,6 +53,9 @@ abstract class NodeSyncStoreBase with Store {
 
   @observable
   int currentHeight;
+
+  @observable
+  int networkSize;
 
   @observable
   List<ServiceNodeStatus> nodes;
