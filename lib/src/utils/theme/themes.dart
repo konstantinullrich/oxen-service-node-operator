@@ -10,7 +10,6 @@ class Themes {
       scaffoldBackgroundColor: Colors.white,
       hintColor: Palette.lightBlue,
       focusColor: Palette.lightGrey,
-      // focused and enabled border color for text fields
       primaryTextTheme: TextTheme(
           headline6: TextStyle(color: OxenPalette.black),
           caption: TextStyle(
@@ -20,18 +19,10 @@ class Themes {
               color: OxenPalette.black,
               backgroundColor: OxenPalette.tealWithOpacity,
               decorationColor: OxenPalette.teal),
-          headline5: TextStyle(
-              color: OxenPalette.black // account list tile, contact page
-              ),
-          subtitle2: TextStyle(color: Palette.wildDarkBlue // filters
-              ),
-          subtitle1:
-              TextStyle(color: OxenPalette.black // transaction raw, trade raw
-                  ),
-          overline: TextStyle(
-              color: PaletteDark
-                  .darkThemeCloseButton // standard list row, transaction details
-              )),
+          headline5: TextStyle(color: OxenPalette.black),
+          subtitle2: TextStyle(color: Palette.wildDarkBlue),
+          subtitle1: TextStyle(color: OxenPalette.black),
+          overline: TextStyle(color: PaletteDark.darkThemeCloseButton)),
       toggleButtonsTheme: ToggleButtonsThemeData(
           selectedColor: OxenPalette.teal,
           disabledColor: Palette.wildDarkBlue,
@@ -42,39 +33,27 @@ class Themes {
       dividerTheme: DividerThemeData(color: Palette.lightGrey),
       accentTextTheme: TextTheme(
           headline6: TextStyle(
-              color: Colors.grey,
-              backgroundColor: Palette.creamyGrey // pin button color
-              ),
+              color: Colors.grey, backgroundColor: Palette.creamyGrey),
           caption: TextStyle(
               color: Palette.wildDarkBlue,
-              // clear button color, exchange page
               backgroundColor: Palette.brightBlue,
-              // button blue background color
-              decorationColor: Palette.cloudySky // button blue border color
-              ),
+              decorationColor: Palette.cloudySky),
           button: TextStyle(
-              backgroundColor: Palette.indigo, // button indigo background color
-              decorationColor: Palette.deepIndigo // button indigo border color
-              ),
+              backgroundColor: Palette.indigo,
+              decorationColor: Palette.deepIndigo),
           subtitle2: TextStyle(
-              color: OxenPalette.black,
-              backgroundColor: Palette.lightLavender // send page border color
-              ),
+              color: OxenPalette.black, backgroundColor: Palette.lightLavender),
           headline5: TextStyle(
-            color: Palette.lightGrey2, // receive page
-            backgroundColor: Colors.white, // restore button background color
-            decorationColor: Palette.darkGrey, // restore button border color
+            color: Palette.lightGrey2,
+            backgroundColor: Colors.white,
+            decorationColor: Palette.darkGrey,
           ),
           subtitle1: TextStyle(
-              color: Palette.lightBlue, // restore button description
-              backgroundColor:
-                  Palette.lightGrey2 // change language background color
-              ),
+              color: Palette.lightBlue, backgroundColor: Palette.lightGrey2),
           overline: TextStyle(
-              color: OxenPalette.blue, // send page text
-              backgroundColor: OxenPalette.blue, // send page text
-              decorationColor: Palette.manatee // send page text
-              )),
+              color: OxenPalette.blue,
+              backgroundColor: OxenPalette.blue,
+              decorationColor: Palette.manatee)),
       buttonColor: Palette.darkGrey,
       primaryIconTheme: IconThemeData(color: Colors.white),
       accentIconTheme: IconThemeData(color: Colors.white));
@@ -86,29 +65,17 @@ class Themes {
       scaffoldBackgroundColor: PaletteDark.darkThemeBlack,
       hintColor: PaletteDark.darkThemeGrey,
       focusColor: PaletteDark.darkThemeGreyWithOpacity,
-      // focused and enabled border color for text fields
       primaryTextTheme: TextTheme(
           headline6: TextStyle(color: PaletteDark.darkThemeTitle),
           caption: TextStyle(color: Colors.white),
           button: TextStyle(
               color: Palette.wildDarkBlue,
               backgroundColor: OxenPalette.tealWithOpacity,
-              // button indigo background color
-              decorationColor: OxenPalette.teal // button indigo border color
-              ),
-          headline5: TextStyle(
-              color:
-                  PaletteDark.darkThemeGrey // account list tile, contact page
-              ),
-          subtitle2: TextStyle(color: PaletteDark.darkThemeGrey // filters
-              ),
-          subtitle1:
-              TextStyle(color: Palette.blueGrey // transaction raw, trade raw
-                  ),
-          overline: TextStyle(
-              color: PaletteDark
-                  .darkThemeGrey // standard list row, transaction details
-              )),
+              decorationColor: OxenPalette.teal),
+          headline5: TextStyle(color: PaletteDark.darkThemeGrey),
+          subtitle2: TextStyle(color: PaletteDark.darkThemeGrey),
+          subtitle1: TextStyle(color: Palette.blueGrey),
+          overline: TextStyle(color: PaletteDark.darkThemeGrey)),
       toggleButtonsTheme: ToggleButtonsThemeData(
           selectedColor: OxenPalette.teal,
           disabledColor: Palette.wildDarkBlue,
@@ -121,46 +88,29 @@ class Themes {
       accentTextTheme: TextTheme(
           headline6: TextStyle(
               color: PaletteDark.darkThemeTitle,
-              backgroundColor:
-                  PaletteDark.darkThemePinDigitButton // pin button color
-              ),
+              backgroundColor: PaletteDark.darkThemePinDigitButton),
           caption: TextStyle(
               color: PaletteDark.darkThemeTitleViolet,
-              // clear button color, exchange page
               backgroundColor: PaletteDark.darkThemeBlueButton,
-              // button blue background color
-              decorationColor: PaletteDark
-                  .darkThemeBlueButtonBorder // button blue border color
-              ),
+              decorationColor: PaletteDark.darkThemeBlueButtonBorder),
           button: TextStyle(
               backgroundColor: PaletteDark.darkThemeIndigoButton,
-              // button indigo background color
-              decorationColor: PaletteDark
-                  .darkThemeIndigoButtonBorder // button indigo border color
-              ),
+              decorationColor: PaletteDark.darkThemeIndigoButtonBorder),
           subtitle2: TextStyle(
               color: PaletteDark.wildDarkBlueWithOpacity,
-              backgroundColor:
-                  PaletteDark.darkThemeDarkGrey // send page border color
-              ),
+              backgroundColor: PaletteDark.darkThemeDarkGrey),
           headline5: TextStyle(
             color: PaletteDark.darkThemeBlack,
-            // receive page
             backgroundColor: PaletteDark.darkThemeMidGrey,
-            // restore button background color
-            decorationColor:
-                PaletteDark.darkThemeDarkGrey, // restore button border color
+            decorationColor: PaletteDark.darkThemeDarkGrey,
           ),
           subtitle1: TextStyle(
-              color: Palette.wildDarkBlue, // restore button description
-              backgroundColor: PaletteDark
-                  .darkThemeMidGrey // change language background color
-              ),
+              color: Palette.wildDarkBlue,
+              backgroundColor: PaletteDark.darkThemeMidGrey),
           overline: TextStyle(
-              color: PaletteDark.darkThemeTitle, // send page text
-              backgroundColor: PaletteDark.darkThemeGrey, // send page text
-              decorationColor: PaletteDark.darkThemeTitle // send page text
-              )),
+              color: PaletteDark.darkThemeTitle,
+              backgroundColor: PaletteDark.darkThemeGrey,
+              decorationColor: PaletteDark.darkThemeTitle)),
       buttonColor: PaletteDark.darkThemePinButton,
       primaryIconTheme: IconThemeData(color: PaletteDark.darkThemeViolet),
       accentIconTheme:

@@ -27,11 +27,13 @@ class ServiceNodeCard extends StatelessWidget {
     return Card(
         child: ExpansionTile(
       leading: Padding(padding: EdgeInsets.all(5), child: statusIcon),
-      title: Text(
-        name,
-        style: TextStyle(fontSize: 18),
-      ),
-      subtitle: Text(serviceNodeKeyShort),
+      title: Text(name,
+          style: TextStyle(
+              fontSize: 18,
+              color: Theme.of(context).primaryTextTheme.caption.color)),
+      subtitle: Text(serviceNodeKeyShort,
+          style: TextStyle(
+              color: Theme.of(context).primaryTextTheme.caption.color)),
       children: [
         Row(children: [
           Expanded(

@@ -34,6 +34,8 @@
   "service_node_version": "Node Version",
   "service_node_operator": "Node Operator",
   "last_uptime_proof": "Letzter Uptime Proof",
+  "next_reward": "Nächste Belohnung:",
+  "estimated_reward_block": "~ in {nextReward} Blöcken",
 
   "settings_title_app": "App",
   "settings_title_general": "Generelle Einstellungen",
