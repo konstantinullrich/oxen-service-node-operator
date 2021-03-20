@@ -21,6 +21,8 @@ abstract class BasePage extends StatelessWidget {
 
   void onClose(BuildContext context) => Navigator.of(context).pop();
 
+  final GlobalKey<ScaffoldState> scaffoldKey = new GlobalKey<ScaffoldState>();
+
   Widget leading(BuildContext context) {
     if (ModalRoute.of(context).isFirst) {
       return null;
@@ -107,6 +109,7 @@ abstract class BasePage extends StatelessWidget {
     final _isDarkTheme = _themeChanger.theme == Themes.darkTheme;
 
     return Scaffold(
+        key: scaffoldKey,
         backgroundColor:
             _isDarkTheme ? Theme.of(context).backgroundColor : backgroundColor,
         resizeToAvoidBottomPadding: resizeToAvoidBottomPadding,

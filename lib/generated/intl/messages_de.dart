@@ -19,32 +19,47 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'de';
 
-  static m0(name) => "Für ${name} ist keine Route definiert";
+  static m0(title) => "${title} in die Zwischenablage kopiert";
 
-  static m1(nextReward) => "~ in ${nextReward} Blöcken";
+  static m1(name) => "Für ${name} ist keine Route definiert";
 
-  static m2(healthy_nodes, total) => "${healthy_nodes} von ${total} Nodes\nsind betriebsbereit";
+  static m2(nextReward) => "~ in ${nextReward} Blöcken";
+
+  static m3(healthy_nodes, total) => "${healthy_nodes} von ${total} Nodes\nsind betriebsbereit";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "add_daemon" : MessageLookupByLibrary.simpleMessage("Daemon hinzufügen"),
     "add_node_to_get_started" : MessageLookupByLibrary.simpleMessage("Füge einen Service Node hinzu um loszulegen."),
     "add_service_node" : MessageLookupByLibrary.simpleMessage("Service Node hinzufügen"),
+    "copied_to_clipboard" : m0,
     "daemon_address" : MessageLookupByLibrary.simpleMessage("Daemon Adresse"),
     "daemon_port" : MessageLookupByLibrary.simpleMessage("Daemon Port"),
     "earned_downtime_blocks" : MessageLookupByLibrary.simpleMessage("Verdiente Downtime Blöcke"),
     "error_public_key_too_long" : MessageLookupByLibrary.simpleMessage("Öffentlicher Schlüssel zu lang"),
     "error_public_key_too_short" : MessageLookupByLibrary.simpleMessage("Öffentlicher Schlüssel zu kurz"),
-    "error_router_no_route" : m0,
+    "error_router_no_route" : m1,
     "error_text_daemon_address" : MessageLookupByLibrary.simpleMessage("Bitte gebe eine valide iPv4 Adresse oder Domain Name ein."),
     "error_text_daemon_port" : MessageLookupByLibrary.simpleMessage("Der Daemon Port kann nur Nummern zwischen 0 und 65535 beinhalten."),
-    "estimated_reward_block" : m1,
+    "estimated_reward_block" : m2,
     "health_all_nodes" : MessageLookupByLibrary.simpleMessage("Alle Nodes sind\nbetriebsbereit"),
     "health_no_nodes" : MessageLookupByLibrary.simpleMessage("Kein Node ist\nbetriebsbereit!"),
-    "health_out_of_nodes" : m2,
+    "health_out_of_nodes" : m3,
     "last_reward" : MessageLookupByLibrary.simpleMessage("Letzte Belohung"),
     "last_reward_height" : MessageLookupByLibrary.simpleMessage("Letzte Belohungs Höhe"),
     "last_uptime_proof" : MessageLookupByLibrary.simpleMessage("Letzter Uptime Proof"),
+    "month_april" : MessageLookupByLibrary.simpleMessage("April"),
+    "month_august" : MessageLookupByLibrary.simpleMessage("August"),
+    "month_december" : MessageLookupByLibrary.simpleMessage("Dezember"),
+    "month_february" : MessageLookupByLibrary.simpleMessage("Februar"),
+    "month_january" : MessageLookupByLibrary.simpleMessage("Januar"),
+    "month_july" : MessageLookupByLibrary.simpleMessage("Juli"),
+    "month_june" : MessageLookupByLibrary.simpleMessage("Juni"),
+    "month_march" : MessageLookupByLibrary.simpleMessage("März"),
+    "month_may" : MessageLookupByLibrary.simpleMessage("Mai"),
+    "month_november" : MessageLookupByLibrary.simpleMessage("November"),
+    "month_october" : MessageLookupByLibrary.simpleMessage("Oktober"),
+    "month_september" : MessageLookupByLibrary.simpleMessage("September"),
     "more" : MessageLookupByLibrary.simpleMessage("Mehr"),
     "name" : MessageLookupByLibrary.simpleMessage("Name"),
     "next_reward" : MessageLookupByLibrary.simpleMessage("Nächste Belohnung:"),
