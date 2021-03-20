@@ -375,6 +375,136 @@ class S {
     );
   }
 
+  /// `Copied {title} to clipboard`
+  String copied_to_clipboard(Object title) {
+    return Intl.message(
+      'Copied $title to clipboard',
+      name: 'copied_to_clipboard',
+      desc: '',
+      args: [title],
+    );
+  }
+
+  /// `January`
+  String get month_january {
+    return Intl.message(
+      'January',
+      name: 'month_january',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `February`
+  String get month_february {
+    return Intl.message(
+      'February',
+      name: 'month_february',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `March`
+  String get month_march {
+    return Intl.message(
+      'March',
+      name: 'month_march',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `April`
+  String get month_april {
+    return Intl.message(
+      'April',
+      name: 'month_april',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `May`
+  String get month_may {
+    return Intl.message(
+      'May',
+      name: 'month_may',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `June`
+  String get month_june {
+    return Intl.message(
+      'June',
+      name: 'month_june',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `July`
+  String get month_july {
+    return Intl.message(
+      'July',
+      name: 'month_july',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `August`
+  String get month_august {
+    return Intl.message(
+      'August',
+      name: 'month_august',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `September`
+  String get month_september {
+    return Intl.message(
+      'September',
+      name: 'month_september',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `October`
+  String get month_october {
+    return Intl.message(
+      'October',
+      name: 'month_october',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `November`
+  String get month_november {
+    return Intl.message(
+      'November',
+      name: 'month_november',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `December`
+  String get month_december {
+    return Intl.message(
+      'December',
+      name: 'month_december',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `App`
   String get settings_title_app {
     return Intl.message(

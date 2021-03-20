@@ -16,7 +16,6 @@ abstract class NodeSyncStoreBase with Store {
     isSyncing = true;
     final serviceNodePublicKeys =
         _serviceNodes.values.map((e) => e.publicKey).toList();
-
     try {
       final resultData =
           await _settingsStore.daemon.sendRPCRequest('get_service_nodes');
@@ -44,9 +43,27 @@ abstract class NodeSyncStoreBase with Store {
       networkSize = 0;
       currentHeight = 0;
     }
-
     isSyncing = false;
   }
+
+  @action
+  Future startSync() async {
+    print('[Sync] Started');
+    while (runSyncLoop) {
+      await sync();
+      print('[Sync] Ran Sync');
+      await Future.delayed(Duration(seconds: 20));
+    }
+    print('[Sync] Stopped!!!!');
+  }
+
+  @action
+  void stopSync() {
+    runSyncLoop = false;
+  }
+
+  @observable
+  bool runSyncLoop = true;
 
   @observable
   bool isSyncing;

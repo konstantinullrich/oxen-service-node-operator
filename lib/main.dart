@@ -37,7 +37,10 @@ Future<void> main() async {
       await SettingsStoreBase.load(sharedPreferences, daemons);
   final nodeSyncStore = NodeSyncStore(serviceNodes, settingsStore);
 
-  if (serviceNodes.isNotEmpty) await nodeSyncStore.sync();
+  if (serviceNodes.isNotEmpty) {
+    await nodeSyncStore.sync();
+    nodeSyncStore.startSync();
+  }
 
   runApp(MultiProvider(providers: [
     Provider(create: (_) => serviceNodes),
