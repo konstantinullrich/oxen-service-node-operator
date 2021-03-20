@@ -1,0 +1,11 @@
+-
+  version: 1.0.1
+  changes:
+    - Added Next Block Estimation
+    - Added changelog
+    - Added estimated Date for Future Blocks (Suggested by - Zugzwanged -)
+    - Copyable the SN-Key and Operator Address (Suggested by - Zugzwanged -)
+-
+  version: 1.0.0
+  changes:
+    - Initial release

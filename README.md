@@ -22,5 +22,5 @@ With this app you can watch Service Nodes you run or contributed to.
 ## Support
 You can support this project by contributing to the code or donating some Oxen.
 ```
-L8JP28nNYhZDpSeitA65CD9j5nN2FVaxPBnU3wdfwYzDPfhbZUGACRcRYa8pZ1dJZPA1xg2VgALBzNZwMVqwWqf3BDn6h8u
+LYaGyKd3xFsV6icJ3yCfM9cXi7HqWpK1cKQx3RzRawfriWdDGGfoGPyCek1ubcVtPHc4rj38CJuwmNFCNs4yamHKJCHpmnU
 ```
