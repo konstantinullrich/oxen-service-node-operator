@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_router_no_route" : m1,
     "error_text_daemon_address" : MessageLookupByLibrary.simpleMessage("Please enter a valid iPv4 address or domain name"),
     "error_text_daemon_port" : MessageLookupByLibrary.simpleMessage("Daemon port can only contain numbers between 0 and 65535"),
+    "error_you_are_already_monitoring" : MessageLookupByLibrary.simpleMessage("You are already monitoring that node"),
     "estimated_node_unlock" : m4,
     "estimated_reward_block" : m2,
     "health_all_nodes" : MessageLookupByLibrary.simpleMessage("All nodes are operational"),

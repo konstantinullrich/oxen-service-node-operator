@@ -37,6 +37,9 @@ class AddNewServiceNodePageBodyState extends State<AddNewServiceNodePageBody> {
     return -1;
   }
 
+  bool _isDuplicate(String publicKey, Box<ServiceNode> serviceNodeSource) =>
+      serviceNodeSource.values.any((element) => element.publicKey == publicKey);
+
   @override
   void dispose() {
     _nameController.dispose();
@@ -52,8 +55,8 @@ class AddNewServiceNodePageBodyState extends State<AddNewServiceNodePageBody> {
 
   @override
   Widget build(BuildContext context) {
-    final serviceNodeSource = Provider.of<Box<ServiceNode>>(context);
-    final nodeSyncStatus = Provider.of<NodeSyncStore>(context);
+    final serviceNodeSource = context.read<Box<ServiceNode>>();
+    final nodeSyncStatus = context.read<NodeSyncStore>();
 
     return ScrollableWithBottomSection(
       contentPadding: EdgeInsets.all(0),
@@ -86,10 +89,13 @@ class AddNewServiceNodePageBodyState extends State<AddNewServiceNodePageBody> {
                     }),
                 validator: (value) {
                   final validPublicKey = _isValidPublicKey(value);
+                  final isDuplicate = _isDuplicate(value, serviceNodeSource);
                   if (value.isEmpty || validPublicKey == -1)
                     return S.of(context).error_public_key_too_short;
                   else if (validPublicKey == 1)
                     return S.of(context).error_public_key_too_long;
+                  else if (isDuplicate)
+                    return S.of(context).error_you_are_already_monitoring;
                   return null;
                 },
               ),

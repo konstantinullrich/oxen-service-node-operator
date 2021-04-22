@@ -64,6 +64,7 @@
   "error_router_no_route" : "No route defined for {name}",
   "error_public_key_too_long": "Public Key too long",
   "error_public_key_too_short" : "Public Key too short",
+  "error_you_are_already_monitoring": "You are already monitoring that node",
   "error_text_daemon_port" : "Daemon port can only contain numbers between 0 and 65535",
   "error_text_daemon_address": "Please enter a valid iPv4 address or domain name"
 }

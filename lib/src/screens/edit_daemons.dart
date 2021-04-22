@@ -19,11 +19,11 @@ class EditDaemonsPage extends BasePage {
   Widget trailing(BuildContext context) {
     return SizedBox(
       width: 30,
-      child: FlatButton(
+      child: IconButton(
           padding: EdgeInsets.all(0),
           onPressed: () =>
               Navigator.of(context).pushNamed(OxenRoutes.addDaemon),
-          child: Icon(Icons.add_sharp,
+          icon: Icon(Icons.add_sharp,
               color: Theme.of(context).primaryTextTheme.caption.color,
               size: 24)),
     );
