@@ -62,6 +62,7 @@
   "error_router_no_route" : "Für {name} ist keine Route definiert",
   "error_public_key_too_long": "Öffentlicher Schlüssel zu lang",
   "error_public_key_too_short" : "Öffentlicher Schlüssel zu kurz",
+  "error_you_are_already_monitoring": "Du überwachst diesen Node bereits",
   "error_text_daemon_port" : "Der Daemon Port kann nur Nummern zwischen 0 und 65535 beinhalten.",
   "error_text_daemon_address": "Bitte gebe eine valide iPv4 Adresse oder Domain Name ein."
 }

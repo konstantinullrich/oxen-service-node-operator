@@ -605,6 +605,16 @@ class S {
     );
   }
 
+  /// `You are already monitoring that node`
+  String get error_you_are_already_monitoring {
+    return Intl.message(
+      'You are already monitoring that node',
+      name: 'error_you_are_already_monitoring',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Daemon port can only contain numbers between 0 and 65535`
   String get error_text_daemon_port {
     return Intl.message(
