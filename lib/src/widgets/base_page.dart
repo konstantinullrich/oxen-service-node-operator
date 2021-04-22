@@ -36,12 +36,12 @@ abstract class BasePage extends StatelessWidget {
       width: isModalBackButton ? 37 : 20,
       child: ButtonTheme(
         minWidth: double.minPositive,
-        child: FlatButton(
+        child: IconButton(
             highlightColor: Colors.transparent,
             splashColor: Colors.transparent,
             padding: EdgeInsets.all(0),
             onPressed: () => onClose(context),
-            child: isModalBackButton ? _closeButton : _backButton),
+            icon: isModalBackButton ? _closeButton : _backButton),
       ),
     );
   }

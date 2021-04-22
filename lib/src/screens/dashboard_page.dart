@@ -50,14 +50,15 @@ class DashboardPage extends BasePage {
       width: 30,
       child: Observer(builder: (_) {
         if (nodeSyncStatus.isSyncing) return Spinner(icon: Icons.sync);
-        return FlatButton(
-            padding: EdgeInsets.all(0),
-            child: Icon(Icons.sync,
-                color: Theme.of(context).primaryTextTheme.caption.color,
-                size: 24),
-            onPressed: () {
-              nodeSyncStatus.sync();
-            });
+        return IconButton(
+          padding: EdgeInsets.all(0),
+          onPressed: () {
+            nodeSyncStatus.sync();
+          },
+          icon: Icon(Icons.sync,
+              color: Theme.of(context).primaryTextTheme.caption.color,
+              size: 24),
+        );
       }),
     );
   }
@@ -66,10 +67,10 @@ class DashboardPage extends BasePage {
   Widget trailing(BuildContext context) {
     return SizedBox(
       width: 30,
-      child: FlatButton(
+      child: IconButton(
           padding: EdgeInsets.all(0),
           onPressed: () => Navigator.of(context).pushNamed(OxenRoutes.settings),
-          child: Icon(Icons.settings_sharp,
+          icon: Icon(Icons.settings_sharp,
               color: Theme.of(context).primaryTextTheme.caption.color,
               size: 24)),
     );
@@ -107,7 +108,7 @@ class DashboardPage extends BasePage {
                         strokeWidth: 15,
                         value: operatorStatus.healthPercentage,
                         valueColor:
-                        AlwaysStoppedAnimation<Color>(OxenPalette.lime),
+                            AlwaysStoppedAnimation<Color>(OxenPalette.lime),
                         backgroundColor: OxenPalette.red,
                       ),
                     ),
