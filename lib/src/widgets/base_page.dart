@@ -112,7 +112,7 @@ abstract class BasePage extends StatelessWidget {
         key: scaffoldKey,
         backgroundColor:
             _isDarkTheme ? Theme.of(context).backgroundColor : backgroundColor,
-        resizeToAvoidBottomPadding: resizeToAvoidBottomPadding,
+        resizeToAvoidBottomInset: resizeToAvoidBottomPadding,
         appBar: appBar(context),
         body: SafeArea(child: body(context)),
         floatingActionButton: floatingActionButton(context),

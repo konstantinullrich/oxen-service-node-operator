@@ -21,7 +21,7 @@ class DetailsServiceNodePage extends BasePage {
 
   void copyToClipboard(String title, String data) {
     Clipboard.setData(ClipboardData(text: data));
-    scaffoldKey.currentState.showSnackBar(
+    ScaffoldMessenger.of(scaffoldKey.currentContext).showSnackBar(
       SnackBar(
         content: Text(S.current.copied_to_clipboard(title)),
         backgroundColor: Colors.green,
@@ -37,7 +37,7 @@ class DetailsServiceNodePage extends BasePage {
 
   @override
   Widget body(BuildContext context) {
-    final nodeSyncStatus = Provider.of<NodeSyncStore>(context);
+    final nodeSyncStatus = context.watch<NodeSyncStore>();
 
     return ListView(
       children: [

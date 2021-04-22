@@ -77,8 +77,8 @@ class DashboardPage extends BasePage {
 
   @override
   Widget body(BuildContext context) {
-    final nodeSyncStatus = Provider.of<NodeSyncStore>(context);
-    final nodes = Provider.of<Box<ServiceNode>>(context);
+    final nodeSyncStatus = context.watch<NodeSyncStore>();
+    final nodes = context.watch<Box<ServiceNode>>();
 
     return Observer(builder: (_) {
       final operatorStatus = OperatorStatus.load(nodeSyncStatus.nodes);

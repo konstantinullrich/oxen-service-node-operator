@@ -39,6 +39,7 @@ abstract class NodeSyncStoreBase with Store {
         }
       }
     } catch (e) {
+      print(e);
       nodes = [];
       networkSize = 0;
       currentHeight = 0;

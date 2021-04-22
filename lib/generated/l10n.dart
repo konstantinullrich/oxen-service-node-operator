@@ -205,13 +205,13 @@ class S {
     );
   }
 
-  /// `{healthy_nodes} out of {total} nodes\nare operational`
-  String health_out_of_nodes(Object healthy_nodes, Object total) {
+  /// `{healthyNodes} out of {total} nodes\nare operational`
+  String health_out_of_nodes(Object healthyNodes, Object total) {
     return Intl.message(
-      '$healthy_nodes out of $total nodes\nare operational',
+      '$healthyNodes out of $total nodes\nare operational',
       name: 'health_out_of_nodes',
       desc: '',
-      args: [healthy_nodes, total],
+      args: [healthyNodes, total],
     );
   }
 

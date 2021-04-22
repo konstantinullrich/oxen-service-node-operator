@@ -25,7 +25,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m2(nextReward) => "~ in ${nextReward} Blöcken";
 
-  static m3(healthy_nodes, total) => "${healthy_nodes} von ${total} Nodes\nsind betriebsbereit";
+  static m3(healthyNodes, total) => "${healthyNodes} von ${total} Nodes\nsind betriebsbereit";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {

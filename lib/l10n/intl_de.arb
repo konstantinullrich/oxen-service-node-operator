@@ -19,7 +19,7 @@
 
   "your_service_nodes": "Deine Service Nodes",
   "health_all_nodes": "Alle Nodes sind\nbetriebsbereit",
-  "health_out_of_nodes": "{healthy_nodes} von {total} Nodes\nsind betriebsbereit",
+  "health_out_of_nodes": "{healthyNodes} von {total} Nodes\nsind betriebsbereit",
   "health_no_nodes": "Kein Node ist\nbetriebsbereit!",
 
   "storage_server": "Storage Server",
