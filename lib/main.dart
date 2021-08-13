@@ -10,17 +10,29 @@ import 'package:oxen_service_node/src/stores/node_sync_store.dart';
 import 'package:oxen_service_node/src/stores/settings_store.dart';
 import 'package:oxen_service_node/src/utils/default_settings_migration.dart';
 import 'package:oxen_service_node/src/utils/language.dart';
+import 'package:oxen_service_node/src/utils/notification_service.dart';
 import 'package:oxen_service_node/src/utils/router/oxen_router.dart';
 import 'package:oxen_service_node/src/utils/theme/theme_changer.dart';
 import 'package:oxen_service_node/src/utils/theme/themes.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:workmanager/workmanager.dart';
 
 import 'generated/l10n.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Workmanager().initialize(
+    callbackDispatcher,
+    isInDebugMode: true,
+  );
+
+  Workmanager().registerPeriodicTask(
+      "Oxen_Service_Node_Operator_1",
+      "simpleNotifyTask",
+      frequency: Duration(minutes: 15),
+  );
 
   final appDir = await getApplicationDocumentsDirectory();
   Hive.init(appDir.path);
