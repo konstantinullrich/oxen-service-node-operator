@@ -23,9 +23,9 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m1(name) => "No route defined for ${name}";
 
-  static m4(unlockBlock) => "in ${unlockBlock} Blocks";
+  static m4(unlockBlock) => "in ${unlockBlock} blocks";
 
-  static m2(nextReward) => "~ in ${nextReward} Blocks";
+  static m2(nextReward) => "~ in ${nextReward} blocks";
 
   static m3(healthyNodes, total) => "${healthyNodes} out of ${total} nodes\nare operational";
 
@@ -49,9 +49,11 @@ class MessageLookup extends MessageLookupByLibrary {
     "health_all_nodes" : MessageLookupByLibrary.simpleMessage("All nodes are operational"),
     "health_no_nodes" : MessageLookupByLibrary.simpleMessage("No nodes are operational!"),
     "health_out_of_nodes" : m3,
+    "hours" : MessageLookupByLibrary.simpleMessage("hours"),
     "last_reward" : MessageLookupByLibrary.simpleMessage("Last Reward"),
     "last_reward_height" : MessageLookupByLibrary.simpleMessage("Last Reward Height"),
     "last_uptime_proof" : MessageLookupByLibrary.simpleMessage("Last Uptime Proof"),
+    "minutes_ago" : MessageLookupByLibrary.simpleMessage("minutes ago"),
     "month_april" : MessageLookupByLibrary.simpleMessage("April"),
     "month_august" : MessageLookupByLibrary.simpleMessage("August"),
     "month_december" : MessageLookupByLibrary.simpleMessage("December"),

@@ -9,6 +9,8 @@ import 'package:oxen_service_node/src/widgets/base_page.dart';
 import 'package:oxen_service_node/src/widgets/nav/nav_list_multiheader.dart';
 import 'package:oxen_service_node/src/widgets/nav/nav_list_progress.dart';
 import 'package:provider/provider.dart';
+import 'package:intl/intl.dart';
+import 'dart:io' show Platform;
 
 class DetailsServiceNodePage extends BasePage {
   DetailsServiceNodePage(this.publicKey);
@@ -38,6 +40,7 @@ class DetailsServiceNodePage extends BasePage {
   @override
   Widget body(BuildContext context) {
     final nodeSyncStatus = context.watch<NodeSyncStore>();
+    final localeName = Platform.localeName;
 
     return ListView(
       children: [
@@ -68,9 +71,9 @@ class DetailsServiceNodePage extends BasePage {
                                   S.of(context).estimated_node_unlock(
                                       node.requestedUnlockHeight -
                                           nodeSyncStatus.currentHeight),
-                                  style: TextStyle(fontSize: 30)),
+                                  style: TextStyle(fontSize: 20)),
                               Text(
-                                  "~ ${estimateFutureDateForHeight(node.requestedUnlockHeight - nodeSyncStatus.currentHeight).toHumanString()}",
+                                  "~ ${DateFormat.yMMMd(localeName).add_jms().format(estimateFutureDateForHeight(node.requestedUnlockHeight - nodeSyncStatus.currentHeight))}",
                                   style: TextStyle(fontSize: 20))
                             ],
                           ),
@@ -93,10 +96,12 @@ class DetailsServiceNodePage extends BasePage {
                             Text(S.of(context).next_reward,
                                 style: TextStyle(fontSize: 30)),
                             Text(
-                                S.of(context).estimated_reward_block(nextReward),
-                                style: TextStyle(fontSize: 30)),
+                                S
+                                    .of(context)
+                                    .estimated_reward_block(nextReward),
+                                style: TextStyle(fontSize: 20)),
                             Text(
-                                "~ ${estimateFutureDateForHeight(nextReward).toHumanString()}",
+                                "~ ${DateFormat.yMMMd(localeName).add_jms().format(estimateFutureDateForHeight(nextReward))}",
                                 style: TextStyle(fontSize: 20))
                           ],
                         ),
@@ -108,10 +113,9 @@ class DetailsServiceNodePage extends BasePage {
                 NavListMultiHeader(S.of(context).last_reward_height,
                     '${node.lastReward.blockHeight}'),
                 NavListMultiHeader(S.of(context).last_uptime_proof,
-                    '${node.lastUptimeProof.toHumanString()}'),
-                NavListProgress(S.of(context).earned_downtime_blocks,
-                    node.earnedDowntimeBlocks, DECOMMISSION_MAX_CREDIT,
-                    threshold: MINIMUM_CREDIT),
+                    '${DateFormat.yMMMd(localeName).add_jms().format(node.lastUptimeProof)} (${(DateTime.now().difference(node.lastUptimeProof).inSeconds / 60).toStringAsFixed(2)} ${S.of(context).minutes_ago})'),
+                NavListMultiHeader(S.of(context).earned_downtime_blocks,
+                    '${node.earnedDowntimeBlocks}/${DECOMMISSION_MAX_CREDIT} (${(node.earnedDowntimeBlocks / 60 * AVERAGE_BLOCK_MINUTES).toStringAsFixed(2)} ${S.of(context).hours})'),
                 Padding(padding: EdgeInsets.only(top: 15.0), child: Divider()),
                 NavListMultiHeader(
                     S.of(context).public_key, '${node.nodeInfo.publicKey}',

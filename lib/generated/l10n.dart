@@ -345,10 +345,10 @@ class S {
     );
   }
 
-  /// `~ in {nextReward} Blocks`
+  /// `~ in {nextReward} blocks`
   String estimated_reward_block(Object nextReward) {
     return Intl.message(
-      '~ in $nextReward Blocks',
+      '~ in $nextReward blocks',
       name: 'estimated_reward_block',
       desc: '',
       args: [nextReward],
@@ -365,10 +365,10 @@ class S {
     );
   }
 
-  /// `in {unlockBlock} Blocks`
+  /// `in {unlockBlock} blocks`
   String estimated_node_unlock(Object unlockBlock) {
     return Intl.message(
-      'in $unlockBlock Blocks',
+      'in $unlockBlock blocks',
       name: 'estimated_node_unlock',
       desc: '',
       args: [unlockBlock],
@@ -382,6 +382,26 @@ class S {
       name: 'copied_to_clipboard',
       desc: '',
       args: [title],
+    );
+  }
+
+  /// `hours`
+  String get hours {
+    return Intl.message(
+      'hours',
+      name: 'hours',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `minutes ago`
+  String get minutes_ago {
+    return Intl.message(
+      'minutes ago',
+      name: 'minutes_ago',
+      desc: '',
+      args: [],
     );
   }
 
