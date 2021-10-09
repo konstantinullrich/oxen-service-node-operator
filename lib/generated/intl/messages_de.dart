@@ -64,6 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "more" : MessageLookupByLibrary.simpleMessage("Mehr"),
     "name" : MessageLookupByLibrary.simpleMessage("Name"),
     "next_reward" : MessageLookupByLibrary.simpleMessage("Nächste Belohnung:"),
+    "public_ip" : MessageLookupByLibrary.simpleMessage("IP Adresse"),
     "public_key" : MessageLookupByLibrary.simpleMessage("Öffentlicher Schlüssel"),
     "registration_height" : MessageLookupByLibrary.simpleMessage("Registrierungs Höhe"),
     "registration_hf_version" : MessageLookupByLibrary.simpleMessage("Registrierte Hardfork Version"),

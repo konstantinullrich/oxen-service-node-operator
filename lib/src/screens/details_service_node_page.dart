@@ -114,6 +114,10 @@ class DetailsServiceNodePage extends BasePage {
                     threshold: MINIMUM_CREDIT),
                 Padding(padding: EdgeInsets.only(top: 15.0), child: Divider()),
                 NavListMultiHeader(
+                    S.of(context).public_ip, '${node.nodeInfo.ipAddress}',
+                    onTap: () => copyToClipboard(
+                        S.of(context).public_key, node.nodeInfo.ipAddress)),
+                NavListMultiHeader(
                     S.of(context).public_key, '${node.nodeInfo.publicKey}',
                     onTap: () => copyToClipboard(
                         S.of(context).public_key, node.nodeInfo.publicKey)),

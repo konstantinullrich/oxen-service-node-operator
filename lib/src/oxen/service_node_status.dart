@@ -81,19 +81,22 @@ class ServiceNodeStatus {
 
 class ServiceNodeInfo {
   ServiceNodeInfo(this.operatorAddress, this.registrationHeight,
-      this.registrationHfVersion, this.publicKey, this.version);
+      this.registrationHfVersion, this.publicKey, this.ipAddress,
+      this.version);
 
   ServiceNodeInfo.fromMap(Map map)
       : operatorAddress = map['operator_address'] as String,
         registrationHeight = map['registration_height'] as int,
         registrationHfVersion = map['registration_hf_version'] as int,
         publicKey = map['service_node_pubkey'] as String,
+        ipAddress = map['public_ip'] as String,
         version = (map['service_node_version'] as List).join('.');
 
   final String operatorAddress;
   final int registrationHeight;
   final int registrationHfVersion;
   final String publicKey;
+  final String ipAddress;
   final String version;
 
   bool equals(ServiceNodeInfo serviceNodeInfo) {
@@ -101,6 +104,7 @@ class ServiceNodeInfo {
         serviceNodeInfo.registrationHeight == registrationHeight &&
         serviceNodeInfo.registrationHfVersion == registrationHfVersion &&
         serviceNodeInfo.publicKey == publicKey &&
+        serviceNodeInfo.ipAddress == ipAddress &&
         serviceNodeInfo.version == version;
   }
 }

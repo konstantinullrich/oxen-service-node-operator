@@ -165,6 +165,16 @@ class S {
     );
   }
 
+  /// `IP Address`
+  String get public_ip {
+    return Intl.message(
+      'IP Address',
+      name: 'public_ip',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Daemon Address`
   String get daemon_address {
     return Intl.message(
