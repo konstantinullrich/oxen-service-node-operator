@@ -85,7 +85,7 @@ class DashboardPage extends BasePage {
       final operatorStatus = OperatorStatus.load(nodeSyncStatus.nodes);
 
       final operatorStatusText = operatorStatus.healthPercentage == 1.0
-          ? S.of(context).health_all_nodes
+          ? S.of(context).health_all_nodes(operatorStatus.totalNodes)
           : (operatorStatus.healthPercentage == 0
               ? S.of(context).health_no_nodes
               : S.of(context).health_out_of_nodes(

@@ -27,6 +27,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m3(healthyNodes, total) => "${healthyNodes} von ${total} Nodes\nsind betriebsbereit";
 
+  static m5(total) => "Alle ${total} Node(s)\nsind betriebsbereit";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "add_daemon" : MessageLookupByLibrary.simpleMessage("Daemon hinzufügen"),
@@ -43,7 +45,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_text_daemon_port" : MessageLookupByLibrary.simpleMessage("Der Daemon Port kann nur Nummern zwischen 0 und 65535 beinhalten."),
     "error_you_are_already_monitoring" : MessageLookupByLibrary.simpleMessage("Du überwachst diesen Node bereits"),
     "estimated_reward_block" : m2,
-    "health_all_nodes" : MessageLookupByLibrary.simpleMessage("Alle Nodes sind\nbetriebsbereit"),
+    "health_all_nodes" : m5,
     "health_no_nodes" : MessageLookupByLibrary.simpleMessage("Kein Node ist\nbetriebsbereit!"),
     "health_out_of_nodes" : m3,
     "last_reward" : MessageLookupByLibrary.simpleMessage("Letzte Belohung"),

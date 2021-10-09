@@ -195,13 +195,13 @@ class S {
     );
   }
 
-  /// `All nodes are operational`
-  String get health_all_nodes {
+  /// `All {total} nodes are operational`
+  String health_all_nodes(Object total) {
     return Intl.message(
-      'All nodes are operational',
+      'All $total nodes operational',
       name: 'health_all_nodes',
       desc: '',
-      args: [],
+      args: [total],
     );
   }
 
