@@ -113,7 +113,7 @@ class DetailsServiceNodePage extends BasePage {
                 NavListMultiHeader(S.of(context).last_reward_height,
                     '${node.lastReward.blockHeight}'),
                 NavListMultiHeader(S.of(context).last_uptime_proof,
-                    '${DateFormat.yMMMd(localeName).add_jms().format(node.lastUptimeProof)} (${(DateTime.now().difference(node.lastUptimeProof).inSeconds / 60).toStringAsFixed(2)} ${S.of(context).minutes_ago})'),
+                    '${DateFormat.yMMMd(localeName).add_jms().format(node.lastUptimeProof)} (${S.of(context).minutes_ago((DateTime.now().difference(node.lastUptimeProof).inSeconds / 60).toStringAsFixed(2))})'),
                 NavListMultiHeader(S.of(context).earned_downtime_blocks,
                     '${node.earnedDowntimeBlocks}/${DECOMMISSION_MAX_CREDIT} (${(node.earnedDowntimeBlocks / 60 * AVERAGE_BLOCK_MINUTES).toStringAsFixed(2)} ${S.of(context).hours})'),
                 Padding(padding: EdgeInsets.only(top: 15.0), child: Divider()),

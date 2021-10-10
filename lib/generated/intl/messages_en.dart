@@ -23,13 +23,15 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m1(name) => "No route defined for ${name}";
 
-  static m4(unlockBlock) => "in ${unlockBlock} blocks";
+  static m6(unlockBlock) => "in ${unlockBlock} blocks";
 
   static m2(nextReward) => "~ in ${nextReward} blocks";
 
-  static m3(healthyNodes, total) => "${healthyNodes} out of ${total} nodes\nare operational";
+  static m3(total) => "All ${total} nodes operational";
 
-  static m5(total) => "All ${total} node(s) operational";
+  static m4(healthyNodes, total) => "${healthyNodes} out of ${total} nodes\nare operational";
+
+  static m5(minutes) => "${minutes} minutes ago";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -46,16 +48,16 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_text_daemon_address" : MessageLookupByLibrary.simpleMessage("Please enter a valid iPv4 address or domain name"),
     "error_text_daemon_port" : MessageLookupByLibrary.simpleMessage("Daemon port can only contain numbers between 0 and 65535"),
     "error_you_are_already_monitoring" : MessageLookupByLibrary.simpleMessage("You are already monitoring that node"),
-    "estimated_node_unlock" : m4,
+    "estimated_node_unlock" : m6,
     "estimated_reward_block" : m2,
-    "health_all_nodes" : m5,
+    "health_all_nodes" : m3,
     "health_no_nodes" : MessageLookupByLibrary.simpleMessage("No nodes are operational!"),
-    "health_out_of_nodes" : m3,
+    "health_out_of_nodes" : m4,
     "hours" : MessageLookupByLibrary.simpleMessage("hours"),
     "last_reward" : MessageLookupByLibrary.simpleMessage("Last Reward"),
     "last_reward_height" : MessageLookupByLibrary.simpleMessage("Last Reward Height"),
     "last_uptime_proof" : MessageLookupByLibrary.simpleMessage("Last Uptime Proof"),
-    "minutes_ago" : MessageLookupByLibrary.simpleMessage("minutes ago"),
+    "minutes_ago" : m5,
     "month_april" : MessageLookupByLibrary.simpleMessage("April"),
     "month_august" : MessageLookupByLibrary.simpleMessage("August"),
     "month_december" : MessageLookupByLibrary.simpleMessage("December"),
