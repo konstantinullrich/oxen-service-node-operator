@@ -27,7 +27,7 @@ class PaletteDark {
   static const Color darkThemeGreyWithOpacity =
       Color.fromRGBO(100, 115, 137, 0.5);
   static const Color darkThemeMidGrey = Color.fromRGBO(20, 26, 38, 1.0);
-  static const Color darkThemeBackground = Color.fromRGBO(39, 41, 50, 1.0);
+  static const Color darkThemeBackground = Color.fromRGBO(31, 28, 71, 1.0);
   static const Color darkThemeBackgroundDark = Color.fromRGBO(9, 12, 18, 1.0);
   static const Color darkThemeDarkGrey = Color.fromRGBO(218, 228, 243, 0.06);
   static const Color darkThemeBlack = Color.fromRGBO(7, 10, 14, 1.0);
@@ -59,11 +59,13 @@ class OxenPalette {
   static const Color purple = Color.fromRGBO(101, 65, 146, 1.0); // #654192
   static const Color blue = Color.fromRGBO(63, 75, 245, 1.0); // #3F4BF5
   static const Color black = Color.fromRGBO(0, 0, 0, 1.0); // #000000
+  static const Color iceBlue = Color.fromRGBO(153, 255, 255, 1.0); // #99FFFF
 
   // Opacity
   static const Color tealWithOpacity = Color.fromRGBO(18, 199, 186, 0.2);
   static const Color lightRedWithOpacity = Color.fromRGBO(255, 122, 135, 0.5);
   static const Color limeWithOpacity = Color.fromRGBO(195, 245, 58, 0.5);
+  static const Color iceBlueWithOpacity = Color.fromRGBO(153, 255, 255, 0.5);
 
   // Default
   static const Color red = Color.fromRGBO(255, 51, 51, 1.0);

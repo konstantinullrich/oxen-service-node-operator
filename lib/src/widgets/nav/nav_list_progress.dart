@@ -10,7 +10,7 @@ class NavListProgress extends StatelessWidget {
   final int maxValue;
 
   Color get progressColor =>
-      value > threshold ? OxenPalette.lime : OxenPalette.red;
+      value > threshold ? OxenPalette.iceBlue : OxenPalette.red;
 
   double get progress => value / maxValue;
 
