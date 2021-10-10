@@ -31,13 +31,18 @@ class ServiceNode extends HiveObject {
   @HiveField(5)
   String version;
 
+  @HiveField(6)
+  String ipAddress;
+
   ServiceNodeInfo get nodeInfo => ServiceNodeInfo(operatorAddress,
-      registrationHeight, registrationHfVersion, publicKey, version);
+      registrationHeight, registrationHfVersion, publicKey, ipAddress,
+      version);
 
   set nodeInfo(ServiceNodeInfo value) {
     operatorAddress = value.operatorAddress;
     registrationHeight = value.registrationHeight;
     registrationHfVersion = value.registrationHfVersion;
     version = value.version;
+    ipAddress = value.ipAddress;
   }
 }
