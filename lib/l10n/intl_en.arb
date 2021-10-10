@@ -19,7 +19,7 @@
   "daemon_port": "Daemon Port",
 
   "your_service_nodes": "Your Service Nodes",
-  "health_all_nodes": "All nodes are operational",
+  "health_all_nodes": "All {total} nodes operational",
   "health_out_of_nodes": "{healthyNodes} out of {total} nodes\nare operational",
   "health_no_nodes": "No nodes are operational!",
 

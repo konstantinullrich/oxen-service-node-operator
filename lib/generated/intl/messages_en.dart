@@ -29,6 +29,8 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m3(healthyNodes, total) => "${healthyNodes} out of ${total} nodes\nare operational";
 
+  static m5(total) => "All ${total} node(s) operational";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "add_daemon" : MessageLookupByLibrary.simpleMessage("Add Daemon"),
@@ -46,7 +48,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_you_are_already_monitoring" : MessageLookupByLibrary.simpleMessage("You are already monitoring that node"),
     "estimated_node_unlock" : m4,
     "estimated_reward_block" : m2,
-    "health_all_nodes" : MessageLookupByLibrary.simpleMessage("All nodes are operational"),
+    "health_all_nodes" : m5,
     "health_no_nodes" : MessageLookupByLibrary.simpleMessage("No nodes are operational!"),
     "health_out_of_nodes" : m3,
     "hours" : MessageLookupByLibrary.simpleMessage("hours"),
