@@ -91,6 +91,8 @@ class DashboardPage extends BasePage {
               : S.of(context).health_out_of_nodes(
                   operatorStatus.healthyNodes, operatorStatus.totalNodes));
 
+      nodeSyncStatus.nodes.sort((a, b) => a.lastReward.blockHeight.compareTo(b.lastReward.blockHeight));
+
       return ListView(
         shrinkWrap: true,
         children: [
