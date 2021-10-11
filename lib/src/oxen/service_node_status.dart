@@ -1,12 +1,14 @@
 class ServiceNodeStatus {
   ServiceNodeStatus(
       this.active,
+      this.checkpointBlocks,
       this.contribution,
       this.decommissionCount,
       this.earnedDowntimeBlocks,
       this.funded,
       this.lastReward,
       this._lastUptimeProof,
+      this.pulseBlocks,
       this.requestedUnlockHeight,
       this.nodeInfo,
       this.stateHeight,
@@ -15,12 +17,14 @@ class ServiceNodeStatus {
       {this.stakingRequirement = 15000000000000});
 
   final bool active;
+  final CheckpointParticipation checkpointBlocks;
   final Contribution contribution;
   final ServiceNodeInfo nodeInfo;
   final int decommissionCount;
   final int earnedDowntimeBlocks;
   final bool funded;
   final LastReward lastReward;
+  final PulseParticipation pulseBlocks;
   final int stakingRequirement;
   final int stateHeight;
   final StorageServerStatus storageServer;
@@ -62,15 +66,19 @@ class ServiceNodeStatus {
     final storageServerStatus = StorageServerStatus.fromMap(map);
     final lastReward = LastReward.fromMap(map);
     final serviceNodeInfo = ServiceNodeInfo.fromMap(map);
+    final checkpointBlocks = CheckpointParticipation.fromMap(map);
+    final pulseBlocks = PulseParticipation.fromMap(map);
 
     return ServiceNodeStatus(
         map['active'] as bool,
+        checkpointBlocks,
         contribution,
         map['decommission_count'] as int,
         map['earned_downtime_blocks'] as int,
         map['funded'] as bool,
         lastReward,
         map['last_uptime_proof'] as int,
+        pulseBlocks,
         map['requested_unlock_height'] as int,
         serviceNodeInfo,
         map['state_height'] as int,
@@ -118,6 +126,54 @@ class StorageServerStatus {
 
   final bool isReachable;
   final int timestamp;
+}
+
+class Checkpoint {
+  Checkpoint(this.height, this.voted);
+
+  Checkpoint.fromMap(Map map)
+      : height = map['height'] as int,
+        voted = map['voted'] as bool;
+
+  final int height;
+  final bool voted;
+}
+
+class CheckpointParticipation {
+  CheckpointParticipation(this.checkpoints);
+
+  CheckpointParticipation.fromMap(Map map)
+      : checkpoints = (map['active']
+            ? (map['checkpoint_participation'] as List)
+                .map((e) => Checkpoint.fromMap(e))
+                .toList()
+            : []);
+
+  final List<Checkpoint> checkpoints;
+}
+
+class Pulse {
+  Pulse(this.height, this.voted);
+
+  Pulse.fromMap(Map map)
+      : height = map['height'] as int,
+        voted = map['voted'] as bool;
+
+  final int height;
+  final bool voted;
+}
+
+class PulseParticipation {
+  PulseParticipation(this.pulses);
+
+  PulseParticipation.fromMap(Map map)
+      : pulses = (map['active']
+            ? (map['pulse_participation'] as List)
+                .map((e) => Pulse.fromMap(e))
+                .toList()
+            : []);
+
+  final List<Pulse> pulses;
 }
 
 class Contributor {

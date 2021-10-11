@@ -40,6 +40,8 @@
   "unlocking_node": "Node is unlocking",
   "estimated_node_unlock": "in {unlockBlock} blocks",
   "copied_to_clipboard": "Copied {title} to clipboard",
+  "checkpoints": "Checkpoints",
+  "pulses": "Pulses",
 
   "hours": "hours":,
   "minutes_ago": "minutes ago":,
