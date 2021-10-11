@@ -1,4 +1,12 @@
 -
+  version: 1.0.2
+  changes:
+    - Added Node's IP (Implemented by ianmacd)
+    - Change Colors (Implemented by ianmacd)
+    - Sort nodes by last Reward Block Height (Implemented by ianmacd)
+    - Show the total Numbers of all operational Nodes (Implemented by ianmacd)
+    - More minor improvements
+-
   version: 1.0.1
   changes:
     - Added Next Block Estimation
