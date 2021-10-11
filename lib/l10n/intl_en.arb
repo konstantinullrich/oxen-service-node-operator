@@ -41,8 +41,8 @@
   "estimated_node_unlock": "in {unlockBlock} blocks",
   "copied_to_clipboard": "Copied {title} to clipboard",
 
-  "hours": "hours":,
-  "minutes_ago": "minutes ago":,
+  "hours": "hours",
+  "minutes_ago": "{minutes} minutes ago",
 
   "month_january": "January",
   "month_february": "February",

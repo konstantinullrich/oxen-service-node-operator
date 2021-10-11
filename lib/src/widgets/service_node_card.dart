@@ -21,7 +21,8 @@ class ServiceNodeCard extends StatelessWidget {
     final statusIcon = isUnlocking
         ? Icon(Icons.access_time_sharp, color: OxenPalette.orange, size: 30)
         : (active
-            ? Icon(Icons.check_circle_sharp, color: OxenPalette.iceBlue, size: 30)
+            ? Icon(Icons.check_circle_sharp,
+                color: OxenPalette.iceBlue, size: 30)
             : Icon(Icons.error_sharp, color: OxenPalette.red, size: 30));
 
     return Card(

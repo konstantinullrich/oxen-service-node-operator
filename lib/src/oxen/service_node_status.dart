@@ -81,8 +81,7 @@ class ServiceNodeStatus {
 
 class ServiceNodeInfo {
   ServiceNodeInfo(this.operatorAddress, this.registrationHeight,
-      this.registrationHfVersion, this.publicKey, this.ipAddress,
-      this.version);
+      this.registrationHfVersion, this.publicKey, this.ipAddress, this.version);
 
   ServiceNodeInfo.fromMap(Map map)
       : operatorAddress = map['operator_address'] as String,

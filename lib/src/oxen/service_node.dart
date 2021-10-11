@@ -35,8 +35,7 @@ class ServiceNode extends HiveObject {
   String ipAddress;
 
   ServiceNodeInfo get nodeInfo => ServiceNodeInfo(operatorAddress,
-      registrationHeight, registrationHfVersion, publicKey, ipAddress,
-      version);
+      registrationHeight, registrationHfVersion, publicKey, ipAddress, version);
 
   set nodeInfo(ServiceNodeInfo value) {
     operatorAddress = value.operatorAddress;

@@ -25,9 +25,11 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m2(nextReward) => "~ in ${nextReward} Blöcken";
 
-  static m3(healthyNodes, total) => "${healthyNodes} von ${total} Nodes\nsind betriebsbereit";
+  static m3(total) => "Alle ${total} Node(s) sind\nbetriebsbereit";
 
-  static m5(total) => "Alle ${total} Node(s)\nsind betriebsbereit";
+  static m4(healthyNodes, total) => "${healthyNodes} von ${total} Nodes\nsind betriebsbereit";
+
+  static m5(minutes) => "vor ${minutes} Minuten";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
@@ -45,14 +47,14 @@ class MessageLookup extends MessageLookupByLibrary {
     "error_text_daemon_port" : MessageLookupByLibrary.simpleMessage("Der Daemon Port kann nur Nummern zwischen 0 und 65535 beinhalten."),
     "error_you_are_already_monitoring" : MessageLookupByLibrary.simpleMessage("Du überwachst diesen Node bereits"),
     "estimated_reward_block" : m2,
-    "health_all_nodes" : m5,
+    "health_all_nodes" : m3,
     "health_no_nodes" : MessageLookupByLibrary.simpleMessage("Kein Node ist\nbetriebsbereit!"),
-    "health_out_of_nodes" : m3,
+    "health_out_of_nodes" : m4,
     "hours" : MessageLookupByLibrary.simpleMessage("Stunden"),
     "last_reward" : MessageLookupByLibrary.simpleMessage("Letzte Belohung"),
     "last_reward_height" : MessageLookupByLibrary.simpleMessage("Letzte Belohungs Höhe"),
     "last_uptime_proof" : MessageLookupByLibrary.simpleMessage("Letzter Uptime Proof"),
-    "minutes_ago" : MessageLookupByLibrary.simpleMessage("Minuten früher"),
+    "minutes_ago" : m5,
     "month_april" : MessageLookupByLibrary.simpleMessage("April"),
     "month_august" : MessageLookupByLibrary.simpleMessage("August"),
     "month_december" : MessageLookupByLibrary.simpleMessage("Dezember"),

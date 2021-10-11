@@ -39,8 +39,8 @@
   "estimated_reward_block": "~ in {nextReward} Blöcken",
   "copied_to_clipboard": "{title} in die Zwischenablage kopiert",
 
-  "hours": "Stunden":,
-  "minutes_ago": "Minuten früher":,
+  "hours": "Stunden",
+  "minutes_ago": "vor {minutes} Minuten",
 
   "month_january": "Januar",
   "month_february": "Februar",

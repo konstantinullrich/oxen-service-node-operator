@@ -205,7 +205,7 @@ class S {
     );
   }
 
-  /// `All {total} nodes are operational`
+  /// `All {total} nodes operational`
   String health_all_nodes(Object total) {
     return Intl.message(
       'All $total nodes operational',
@@ -405,13 +405,13 @@ class S {
     );
   }
 
-  /// `minutes ago`
-  String get minutes_ago {
+  /// `{minutes} minutes ago`
+  String minutes_ago(Object minutes) {
     return Intl.message(
-      'minutes ago',
+      '$minutes minutes ago',
       name: 'minutes_ago',
       desc: '',
-      args: [],
+      args: [minutes],
     );
   }
 
