@@ -6,6 +6,7 @@ import 'package:oxen_service_node/src/stores/node_sync_store.dart';
 import 'package:oxen_service_node/src/utils/theme/palette.dart';
 import 'package:oxen_service_node/src/utils/date_formatter.dart';
 import 'package:oxen_service_node/src/widgets/base_page.dart';
+import 'package:oxen_service_node/src/widgets/nav/nav_list_header.dart';
 import 'package:oxen_service_node/src/widgets/nav/nav_list_multiheader.dart';
 import 'package:oxen_service_node/src/widgets/nav/nav_list_progress.dart';
 import 'package:provider/provider.dart';
@@ -49,6 +50,10 @@ class DetailsServiceNodePage extends BasePage {
               .firstWhere((element) => element.nodeInfo.publicKey == publicKey);
           final nextReward = nodeSyncStatus.networkSize -
               (nodeSyncStatus.currentHeight - node.lastReward.blockHeight);
+          final checkpoints = node.checkpointBlocks.checkpoints;
+          checkpoints.sort((a, b) => b.height.compareTo(a.height));
+          final pulses = node.pulseBlocks.pulses;
+          pulses.sort((a, b) => b.height.compareTo(a.height));
 
           return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -116,6 +121,60 @@ class DetailsServiceNodePage extends BasePage {
                     '${DateFormat.yMMMd(localeName).add_jms().format(node.lastUptimeProof)} (${S.of(context).minutes_ago((DateTime.now().difference(node.lastUptimeProof).inSeconds / 60).toStringAsFixed(2))})'),
                 NavListMultiHeader(S.of(context).earned_downtime_blocks,
                     '${node.earnedDowntimeBlocks}/${DECOMMISSION_MAX_CREDIT} (${(node.earnedDowntimeBlocks / 60 * AVERAGE_BLOCK_MINUTES).toStringAsFixed(2)} ${S.of(context).hours})'),
+                if (node.active)
+                  Center(
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                        Container(
+                          child: Table(
+                            children: [
+                              TableRow(children: [
+                                NavListHeader(S.of(context).checkpoint_blocks),
+                                NavListHeader(S.of(context).pulse_blocks),
+                              ]),
+                              TableRow(children: [
+                                ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: checkpoints.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Container(
+                                      padding: EdgeInsets.only(
+                                          left: 20.0, right: 20.0),
+                                      child: Text(
+                                          checkpoints[index].height.toString(),
+                                          style: TextStyle(
+                                              color: checkpoints[index].voted
+                                                  ? Colors.green
+                                                  : Colors.red,
+                                              fontSize: 16.0)),
+                                    );
+                                  },
+                                ),
+                                ListView.builder(
+                                  shrinkWrap: true,
+                                  itemCount: pulses.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Container(
+                                      padding: EdgeInsets.only(
+                                          left: 20.0, right: 20.0),
+                                      child: Text(
+                                          pulses[index].height.toString(),
+                                          style: TextStyle(
+                                              color: pulses[index].voted
+                                                  ? Colors.green
+                                                  : Colors.red,
+                                              fontSize: 16.0)),
+                                    );
+                                  },
+                                ),
+                              ])
+                            ],
+                          ),
+                        ),
+                      ])),
                 Padding(padding: EdgeInsets.only(top: 15.0), child: Divider()),
                 NavListMultiHeader(
                     S.of(context).public_ip, '${node.nodeInfo.ipAddress}',

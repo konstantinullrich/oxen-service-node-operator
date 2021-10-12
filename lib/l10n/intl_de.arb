@@ -38,6 +38,8 @@
   "next_reward": "Nächste Belohnung:",
   "estimated_reward_block": "~ in {nextReward} Blöcken",
   "copied_to_clipboard": "{title} in die Zwischenablage kopiert",
+  "checkpoints": "Checkpoint Blöcke",
+  "pulses": "Pulse Blöcke",
 
   "hours": "Stunden",
   "minutes_ago": "vor {minutes} Minuten",

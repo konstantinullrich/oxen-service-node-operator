@@ -295,6 +295,26 @@ class S {
     );
   }
 
+  /// `Checkpoints`
+  String get checkpoint_blocks {
+    return Intl.message(
+      'Checkpoints',
+      name: 'checkpoint_blocks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pulses`
+  String get pulse_blocks {
+    return Intl.message(
+      'Pulses',
+      name: 'pulse_blocks',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Registration Height`
   String get registration_height {
     return Intl.message(
