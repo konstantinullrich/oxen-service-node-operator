@@ -19,80 +19,121 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'de';
 
-  static m0(title) => "${title} in die Zwischenablage kopiert";
+  static m0(networkSize, currentHeight) =>
+      "${networkSize} Nodes bei Höhe ${currentHeight}";
 
-  static m1(name) => "Für ${name} ist keine Route definiert";
+  static m1(title) => "${title} in die Zwischenablage kopiert";
 
-  static m2(nextReward) => "~ in ${nextReward} Blöcken";
+  static m2(name) => "Für ${name} ist keine Route definiert";
 
-  static m3(total) => "Alle ${total} Node(s) sind\nbetriebsbereit";
+  static m3(nextReward) => "~ in ${nextReward} Blöcken";
 
-  static m4(healthyNodes, total) => "${healthyNodes} von ${total} Nodes\nsind betriebsbereit";
+  static m4(total) => "Alle ${total} Node(s) sind\nbetriebsbereit";
 
-  static m5(minutes) => "vor ${minutes} Minuten";
+  static m5(healthyNodes, total) =>
+      "${healthyNodes} von ${total} Nodes\nsind betriebsbereit";
+
+  static m6(minutes) => "vor ${minutes} Minuten";
 
   final messages = _notInlinedMessages(_notInlinedMessages);
-  static _notInlinedMessages(_) => <String, Function> {
-    "add_daemon" : MessageLookupByLibrary.simpleMessage("Daemon hinzufügen"),
-    "add_node_to_get_started" : MessageLookupByLibrary.simpleMessage("Füge einen Service Node hinzu um loszulegen."),
-    "add_service_node" : MessageLookupByLibrary.simpleMessage("Service Node hinzufügen"),
-    "copied_to_clipboard" : m0,
-    "daemon_address" : MessageLookupByLibrary.simpleMessage("Daemon Adresse"),
-    "daemon_port" : MessageLookupByLibrary.simpleMessage("Daemon Port"),
-    "earned_downtime_blocks" : MessageLookupByLibrary.simpleMessage("Verdiente Downtime Blöcke"),
-    "error_public_key_too_long" : MessageLookupByLibrary.simpleMessage("Öffentlicher Schlüssel zu lang"),
-    "error_public_key_too_short" : MessageLookupByLibrary.simpleMessage("Öffentlicher Schlüssel zu kurz"),
-    "error_router_no_route" : m1,
-    "error_text_daemon_address" : MessageLookupByLibrary.simpleMessage("Bitte gebe eine valide iPv4 Adresse oder Domain Name ein."),
-    "error_text_daemon_port" : MessageLookupByLibrary.simpleMessage("Der Daemon Port kann nur Nummern zwischen 0 und 65535 beinhalten."),
-    "error_you_are_already_monitoring" : MessageLookupByLibrary.simpleMessage("Du überwachst diesen Node bereits"),
-    "estimated_reward_block" : m2,
-    "health_all_nodes" : m3,
-    "health_no_nodes" : MessageLookupByLibrary.simpleMessage("Kein Node ist\nbetriebsbereit!"),
-    "health_out_of_nodes" : m4,
-    "hours" : MessageLookupByLibrary.simpleMessage("Stunden"),
-    "last_reward" : MessageLookupByLibrary.simpleMessage("Letzte Belohung"),
-    "last_reward_height" : MessageLookupByLibrary.simpleMessage("Letzte Belohungs Höhe"),
-    "last_uptime_proof" : MessageLookupByLibrary.simpleMessage("Letzter Uptime Proof"),
-    "minutes_ago" : m5,
-    "month_april" : MessageLookupByLibrary.simpleMessage("April"),
-    "month_august" : MessageLookupByLibrary.simpleMessage("August"),
-    "month_december" : MessageLookupByLibrary.simpleMessage("Dezember"),
-    "month_february" : MessageLookupByLibrary.simpleMessage("Februar"),
-    "month_january" : MessageLookupByLibrary.simpleMessage("Januar"),
-    "month_july" : MessageLookupByLibrary.simpleMessage("Juli"),
-    "month_june" : MessageLookupByLibrary.simpleMessage("Juni"),
-    "month_march" : MessageLookupByLibrary.simpleMessage("März"),
-    "month_may" : MessageLookupByLibrary.simpleMessage("Mai"),
-    "month_november" : MessageLookupByLibrary.simpleMessage("November"),
-    "month_october" : MessageLookupByLibrary.simpleMessage("Oktober"),
-    "month_september" : MessageLookupByLibrary.simpleMessage("September"),
-    "more" : MessageLookupByLibrary.simpleMessage("Mehr"),
-    "name" : MessageLookupByLibrary.simpleMessage("Name"),
-    "next_reward" : MessageLookupByLibrary.simpleMessage("Nächste Belohnung:"),
-    "public_ip" : MessageLookupByLibrary.simpleMessage("IP Adresse"),
-    "public_key" : MessageLookupByLibrary.simpleMessage("Öffentlicher Schlüssel"),
-    "registration_height" : MessageLookupByLibrary.simpleMessage("Registrierungs Höhe"),
-    "registration_hf_version" : MessageLookupByLibrary.simpleMessage("Registrierte Hardfork Version"),
-    "service_node_operator" : MessageLookupByLibrary.simpleMessage("Node Operator"),
-    "service_node_version" : MessageLookupByLibrary.simpleMessage("Node Version"),
-    "settings_daemon" : MessageLookupByLibrary.simpleMessage("Daemon"),
-    "settings_dark_theme" : MessageLookupByLibrary.simpleMessage("Dunkles Farbschema"),
-    "settings_language" : MessageLookupByLibrary.simpleMessage("Sprache"),
-    "settings_light_theme" : MessageLookupByLibrary.simpleMessage("Helles Farbschema"),
-    "settings_service_nodes" : MessageLookupByLibrary.simpleMessage("Service Nodes"),
-    "settings_title_app" : MessageLookupByLibrary.simpleMessage("App"),
-    "settings_title_general" : MessageLookupByLibrary.simpleMessage("Generelle Einstellungen"),
-    "storage_server" : MessageLookupByLibrary.simpleMessage("Storage Server"),
-    "swarm_id" : MessageLookupByLibrary.simpleMessage("Swarm ID"),
-    "title_add_daemon" : MessageLookupByLibrary.simpleMessage("Daemon hinzufügen"),
-    "title_add_service_node" : MessageLookupByLibrary.simpleMessage("Service Node hinzufügen"),
-    "title_dashboard" : MessageLookupByLibrary.simpleMessage("Dashboard"),
-    "title_edit_daemons" : MessageLookupByLibrary.simpleMessage("Daemons bearbeiten"),
-    "title_edit_service_node" : MessageLookupByLibrary.simpleMessage("Service Nodes bearbeiten"),
-    "title_settings" : MessageLookupByLibrary.simpleMessage("Einstellungen"),
-    "welcome" : MessageLookupByLibrary.simpleMessage("Willkommen,\nOXEN Service Node Operator"),
-    "welcome_first_line" : MessageLookupByLibrary.simpleMessage("Hier kannst du die Service Nodes überwachen, die du bereibst oder zu den du beiträgst."),
-    "your_service_nodes" : MessageLookupByLibrary.simpleMessage("Deine Service Nodes")
-  };
+  static _notInlinedMessages(_) => <String, Function>{
+        "add_daemon": MessageLookupByLibrary.simpleMessage("Daemon hinzufügen"),
+        "add_node_to_get_started": MessageLookupByLibrary.simpleMessage(
+            "Füge einen Service Node hinzu um loszulegen."),
+        "add_service_node":
+            MessageLookupByLibrary.simpleMessage("Service Node hinzufügen"),
+        "all_service_nodes": m0,
+        "checkpoints":
+            MessageLookupByLibrary.simpleMessage("Checkpoint Blöcke"),
+        "copied_to_clipboard": m1,
+        "daemon_address":
+            MessageLookupByLibrary.simpleMessage("Daemon Adresse"),
+        "daemon_port": MessageLookupByLibrary.simpleMessage("Daemon Port"),
+        "earned_downtime_blocks":
+            MessageLookupByLibrary.simpleMessage("Verdiente Downtime Blöcke"),
+        "error_public_key_too_long": MessageLookupByLibrary.simpleMessage(
+            "Öffentlicher Schlüssel zu lang"),
+        "error_public_key_too_short": MessageLookupByLibrary.simpleMessage(
+            "Öffentlicher Schlüssel zu kurz"),
+        "error_router_no_route": m2,
+        "error_text_daemon_address": MessageLookupByLibrary.simpleMessage(
+            "Bitte gebe eine valide iPv4 Adresse oder Domain Name ein."),
+        "error_text_daemon_port": MessageLookupByLibrary.simpleMessage(
+            "Der Daemon Port kann nur Nummern zwischen 0 und 65535 beinhalten."),
+        "error_you_are_already_monitoring":
+            MessageLookupByLibrary.simpleMessage(
+                "Du überwachst diesen Node bereits"),
+        "estimated_reward_block": m3,
+        "health_all_nodes": m4,
+        "health_no_nodes": MessageLookupByLibrary.simpleMessage(
+            "Kein Node ist\nbetriebsbereit!"),
+        "health_out_of_nodes": m5,
+        "hours": MessageLookupByLibrary.simpleMessage("Stunden"),
+        "last_reward": MessageLookupByLibrary.simpleMessage("Letzte Belohung"),
+        "last_reward_height":
+            MessageLookupByLibrary.simpleMessage("Letzte Belohungs Höhe"),
+        "last_uptime_proof":
+            MessageLookupByLibrary.simpleMessage("Letzter Uptime Proof"),
+        "minutes_ago": m6,
+        "month_april": MessageLookupByLibrary.simpleMessage("April"),
+        "month_august": MessageLookupByLibrary.simpleMessage("August"),
+        "month_december": MessageLookupByLibrary.simpleMessage("Dezember"),
+        "month_february": MessageLookupByLibrary.simpleMessage("Februar"),
+        "month_january": MessageLookupByLibrary.simpleMessage("Januar"),
+        "month_july": MessageLookupByLibrary.simpleMessage("Juli"),
+        "month_june": MessageLookupByLibrary.simpleMessage("Juni"),
+        "month_march": MessageLookupByLibrary.simpleMessage("März"),
+        "month_may": MessageLookupByLibrary.simpleMessage("Mai"),
+        "month_november": MessageLookupByLibrary.simpleMessage("November"),
+        "month_october": MessageLookupByLibrary.simpleMessage("Oktober"),
+        "month_september": MessageLookupByLibrary.simpleMessage("September"),
+        "more": MessageLookupByLibrary.simpleMessage("Mehr"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
+        "next_reward":
+            MessageLookupByLibrary.simpleMessage("Nächste Belohnung:"),
+        "public_ip": MessageLookupByLibrary.simpleMessage("IP Adresse"),
+        "public_key":
+            MessageLookupByLibrary.simpleMessage("Öffentlicher Schlüssel"),
+        "pulses": MessageLookupByLibrary.simpleMessage("Pulse Blöcke"),
+        "registration_height":
+            MessageLookupByLibrary.simpleMessage("Registrierungs Höhe"),
+        "registration_hf_version": MessageLookupByLibrary.simpleMessage(
+            "Registrierte Hardfork Version"),
+        "service_node_operator":
+            MessageLookupByLibrary.simpleMessage("Node Operator"),
+        "service_node_version":
+            MessageLookupByLibrary.simpleMessage("Node Version"),
+        "settings_daemon": MessageLookupByLibrary.simpleMessage("Daemon"),
+        "settings_dark_theme":
+            MessageLookupByLibrary.simpleMessage("Dunkles Farbschema"),
+        "settings_language": MessageLookupByLibrary.simpleMessage("Sprache"),
+        "settings_light_theme":
+            MessageLookupByLibrary.simpleMessage("Helles Farbschema"),
+        "settings_service_nodes":
+            MessageLookupByLibrary.simpleMessage("Service Nodes"),
+        "settings_title_app": MessageLookupByLibrary.simpleMessage("App"),
+        "settings_title_general":
+            MessageLookupByLibrary.simpleMessage("Generelle Einstellungen"),
+        "software_versions": MessageLookupByLibrary.simpleMessage(
+            "Node / Storage Server / Lokinet Version"),
+        "storage_server":
+            MessageLookupByLibrary.simpleMessage("Storage Server"),
+        "swarm_id": MessageLookupByLibrary.simpleMessage("Swarm ID"),
+        "title_add_daemon":
+            MessageLookupByLibrary.simpleMessage("Daemon hinzufügen"),
+        "title_add_service_node":
+            MessageLookupByLibrary.simpleMessage("Service Node hinzufügen"),
+        "title_dashboard": MessageLookupByLibrary.simpleMessage("Dashboard"),
+        "title_edit_daemons":
+            MessageLookupByLibrary.simpleMessage("Daemons bearbeiten"),
+        "title_edit_service_node":
+            MessageLookupByLibrary.simpleMessage("Service Nodes bearbeiten"),
+        "title_settings": MessageLookupByLibrary.simpleMessage("Einstellungen"),
+        "welcome": MessageLookupByLibrary.simpleMessage(
+            "Willkommen,\nOXEN Service Node Operator"),
+        "welcome_first_line": MessageLookupByLibrary.simpleMessage(
+            "Hier kannst du die Service Nodes überwachen, die du bereibst oder zu den du beiträgst."),
+        "your_service_nodes":
+            MessageLookupByLibrary.simpleMessage("Deine Service Nodes")
+      };
 }

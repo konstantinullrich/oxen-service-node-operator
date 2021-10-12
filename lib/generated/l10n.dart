@@ -14,22 +14,23 @@ import 'intl/messages_all.dart';
 
 class S {
   S();
-  
+
   static S current;
-  
-  static const AppLocalizationDelegate delegate =
-    AppLocalizationDelegate();
+
+  static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
-    final localeName = Intl.canonicalizedLocale(name); 
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
+    final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
       S.current = S();
-      
+
       return S.current;
     });
-  } 
+  }
 
   static S of(BuildContext context) {
     return Localizations.of<S>(context, S);
@@ -195,6 +196,16 @@ class S {
     );
   }
 
+  /// `{networkSize} nodes at height {currentHeight}`
+  String all_service_nodes(Object networkSize, Object currentHeight) {
+    return Intl.message(
+      '$networkSize nodes at height $currentHeight',
+      name: 'all_service_nodes',
+      desc: '',
+      args: [networkSize, currentHeight],
+    );
+  }
+
   /// `Your Service Nodes`
   String get your_service_nodes {
     return Intl.message(
@@ -335,6 +346,16 @@ class S {
     );
   }
 
+  /// `Node / Storage Server / Lokinet Version`
+  String get software_versions {
+    return Intl.message(
+      'Node / Storage Server / Lokinet Version',
+      name: 'software_versions',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Last Uptime Proof`
   String get last_uptime_proof {
     return Intl.message(
@@ -392,6 +413,26 @@ class S {
       name: 'copied_to_clipboard',
       desc: '',
       args: [title],
+    );
+  }
+
+  /// `Checkpoints`
+  String get checkpoints {
+    return Intl.message(
+      'Checkpoints',
+      name: 'checkpoints',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pulses`
+  String get pulses {
+    return Intl.message(
+      'Pulses',
+      name: 'pulses',
+      desc: '',
+      args: [],
     );
   }
 

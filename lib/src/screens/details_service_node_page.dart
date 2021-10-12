@@ -1,16 +1,16 @@
+import 'dart:io' show Platform;
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:intl/intl.dart';
 import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/stores/node_sync_store.dart';
 import 'package:oxen_service_node/src/utils/theme/palette.dart';
-import 'package:oxen_service_node/src/utils/date_formatter.dart';
 import 'package:oxen_service_node/src/widgets/base_page.dart';
+import 'package:oxen_service_node/src/widgets/nav/nav_list_header.dart';
 import 'package:oxen_service_node/src/widgets/nav/nav_list_multiheader.dart';
-import 'package:oxen_service_node/src/widgets/nav/nav_list_progress.dart';
 import 'package:provider/provider.dart';
-import 'package:intl/intl.dart';
-import 'dart:io' show Platform;
 
 class DetailsServiceNodePage extends BasePage {
   DetailsServiceNodePage(this.publicKey);
@@ -49,6 +49,10 @@ class DetailsServiceNodePage extends BasePage {
               .firstWhere((element) => element.nodeInfo.publicKey == publicKey);
           final nextReward = nodeSyncStatus.networkSize -
               (nodeSyncStatus.currentHeight - node.lastReward.blockHeight);
+          final checkpoints = node.checkpointBlocks.checkpoints;
+          checkpoints.sort((a, b) => b.height.compareTo(a.height));
+          final pulses = node.pulseBlocks.pulses;
+          pulses.sort((a, b) => b.height.compareTo(a.height));
 
           return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -113,14 +117,70 @@ class DetailsServiceNodePage extends BasePage {
                 NavListMultiHeader(S.of(context).last_reward_height,
                     '${node.lastReward.blockHeight}'),
                 NavListMultiHeader(S.of(context).last_uptime_proof,
-                    '${DateFormat.yMMMd(localeName).add_jms().format(node.lastUptimeProof)} (${S.of(context).minutes_ago((DateTime.now().difference(node.lastUptimeProof).inSeconds / 60).toStringAsFixed(2))})'),
+                    '${DateFormat.yMMMd(localeName).add_jms().format(node.lastUptimeProof)} (${S.of(context).minutes_ago(DateTime.now().difference(node.lastUptimeProof).inMinutes)})'),
                 NavListMultiHeader(S.of(context).earned_downtime_blocks,
-                    '${node.earnedDowntimeBlocks}/${DECOMMISSION_MAX_CREDIT} (${(node.earnedDowntimeBlocks / 60 * AVERAGE_BLOCK_MINUTES).toStringAsFixed(2)} ${S.of(context).hours})'),
+                    '${node.earnedDowntimeBlocks} / $DECOMMISSION_MAX_CREDIT (${(node.earnedDowntimeBlocks / 60 * AVERAGE_BLOCK_MINUTES).toStringAsFixed(0)} ${S.of(context).hours})'),
+                if (node.active)
+                  Center(
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                        Container(
+                          child: Table(
+                            children: [
+                              TableRow(children: [
+                                NavListHeader(S.of(context).checkpoints),
+                                NavListHeader(S.of(context).pulses),
+                              ]),
+                              TableRow(children: [
+                                ListView.builder(
+                                  physics: NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: checkpoints.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Container(
+                                      padding: EdgeInsets.only(
+                                          left: 20.0, right: 20.0),
+                                      child: Text(
+                                          checkpoints[index].height.toString(),
+                                          style: TextStyle(
+                                              color: checkpoints[index].voted
+                                                  ? Colors.green
+                                                  : Colors.red,
+                                              fontSize: 16.0)),
+                                    );
+                                  },
+                                ),
+                                ListView.builder(
+                                  physics: NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: pulses.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Container(
+                                      padding: EdgeInsets.only(
+                                          left: 20.0, right: 20.0),
+                                      child: Text(
+                                          pulses[index].height.toString(),
+                                          style: TextStyle(
+                                              color: pulses[index].voted
+                                                  ? Colors.green
+                                                  : Colors.red,
+                                              fontSize: 16.0)),
+                                    );
+                                  },
+                                ),
+                              ])
+                            ],
+                          ),
+                        ),
+                      ])),
                 Padding(padding: EdgeInsets.only(top: 15.0), child: Divider()),
                 NavListMultiHeader(
                     S.of(context).public_ip, '${node.nodeInfo.ipAddress}',
                     onTap: () => copyToClipboard(
-                        S.of(context).public_key, node.nodeInfo.ipAddress)),
+                        S.of(context).public_ip, node.nodeInfo.ipAddress)),
                 NavListMultiHeader(
                     S.of(context).public_key, '${node.nodeInfo.publicKey}',
                     onTap: () => copyToClipboard(
@@ -130,14 +190,16 @@ class DetailsServiceNodePage extends BasePage {
                     onTap: () => copyToClipboard(
                         S.of(context).service_node_operator,
                         node.nodeInfo.operatorAddress)),
-                NavListMultiHeader(S.of(context).swarm_id, '${node.swarmId}'),
+                NavListMultiHeader(S.of(context).swarm_id, '${node.swarmId}',
+                    forceSmallText: true),
                 Padding(padding: EdgeInsets.only(top: 15.0), child: Divider()),
                 NavListMultiHeader(S.of(context).registration_height,
                     '${node.nodeInfo.registrationHeight}'),
                 NavListMultiHeader(S.of(context).registration_hf_version,
                     '${node.nodeInfo.registrationHfVersion}'),
-                NavListMultiHeader(S.of(context).service_node_version,
-                    '${node.nodeInfo.version}'),
+                NavListMultiHeader(S.of(context).software_versions,
+                    '${node.nodeInfo.nodeVersion} / ${node.nodeInfo.storageServerVersion} / ${node.nodeInfo.lokinetVersion}'),
+                Padding(padding: EdgeInsets.only(top: 15))
               ]);
         })
       ],

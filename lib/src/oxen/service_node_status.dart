@@ -1,12 +1,14 @@
 class ServiceNodeStatus {
   ServiceNodeStatus(
       this.active,
+      this.checkpointBlocks,
       this.contribution,
       this.decommissionCount,
       this.earnedDowntimeBlocks,
       this.funded,
       this.lastReward,
       this._lastUptimeProof,
+      this.pulseBlocks,
       this.requestedUnlockHeight,
       this.nodeInfo,
       this.stateHeight,
@@ -15,12 +17,14 @@ class ServiceNodeStatus {
       {this.stakingRequirement = 15000000000000});
 
   final bool active;
+  final CheckpointParticipation checkpointBlocks;
   final Contribution contribution;
   final ServiceNodeInfo nodeInfo;
   final int decommissionCount;
   final int earnedDowntimeBlocks;
   final bool funded;
   final LastReward lastReward;
+  final PulseParticipation pulseBlocks;
   final int stakingRequirement;
   final int stateHeight;
   final StorageServerStatus storageServer;
@@ -62,15 +66,19 @@ class ServiceNodeStatus {
     final storageServerStatus = StorageServerStatus.fromMap(map);
     final lastReward = LastReward.fromMap(map);
     final serviceNodeInfo = ServiceNodeInfo.fromMap(map);
+    final checkpointBlocks = CheckpointParticipation.fromMap(map);
+    final pulseBlocks = PulseParticipation.fromMap(map);
 
     return ServiceNodeStatus(
         map['active'] as bool,
+        checkpointBlocks,
         contribution,
         map['decommission_count'] as int,
         map['earned_downtime_blocks'] as int,
         map['funded'] as bool,
         lastReward,
         map['last_uptime_proof'] as int,
+        pulseBlocks,
         map['requested_unlock_height'] as int,
         serviceNodeInfo,
         map['state_height'] as int,
@@ -80,8 +88,15 @@ class ServiceNodeStatus {
 }
 
 class ServiceNodeInfo {
-  ServiceNodeInfo(this.operatorAddress, this.registrationHeight,
-      this.registrationHfVersion, this.publicKey, this.ipAddress, this.version);
+  ServiceNodeInfo(
+      this.operatorAddress,
+      this.registrationHeight,
+      this.registrationHfVersion,
+      this.publicKey,
+      this.ipAddress,
+      this.nodeVersion,
+      this.storageServerVersion,
+      this.lokinetVersion);
 
   ServiceNodeInfo.fromMap(Map map)
       : operatorAddress = map['operator_address'] as String,
@@ -89,14 +104,19 @@ class ServiceNodeInfo {
         registrationHfVersion = map['registration_hf_version'] as int,
         publicKey = map['service_node_pubkey'] as String,
         ipAddress = map['public_ip'] as String,
-        version = (map['service_node_version'] as List).join('.');
+        nodeVersion = (map['service_node_version'] as List).join('.'),
+        storageServerVersion =
+            (map['storage_server_version'] as List).join('.'),
+        lokinetVersion = (map['lokinet_version'] as List).join('.');
 
   final String operatorAddress;
   final int registrationHeight;
   final int registrationHfVersion;
   final String publicKey;
   final String ipAddress;
-  final String version;
+  final String nodeVersion;
+  final String storageServerVersion;
+  final String lokinetVersion;
 
   bool equals(ServiceNodeInfo serviceNodeInfo) {
     return serviceNodeInfo.operatorAddress == operatorAddress &&
@@ -104,7 +124,9 @@ class ServiceNodeInfo {
         serviceNodeInfo.registrationHfVersion == registrationHfVersion &&
         serviceNodeInfo.publicKey == publicKey &&
         serviceNodeInfo.ipAddress == ipAddress &&
-        serviceNodeInfo.version == version;
+        serviceNodeInfo.nodeVersion == nodeVersion &&
+        serviceNodeInfo.storageServerVersion == storageServerVersion &&
+        serviceNodeInfo.lokinetVersion == lokinetVersion;
   }
 }
 
@@ -117,6 +139,54 @@ class StorageServerStatus {
 
   final bool isReachable;
   final int timestamp;
+}
+
+class Checkpoint {
+  Checkpoint(this.height, this.voted);
+
+  Checkpoint.fromMap(Map map)
+      : height = map['height'] as int,
+        voted = map['voted'] as bool;
+
+  final int height;
+  final bool voted;
+}
+
+class CheckpointParticipation {
+  CheckpointParticipation(this.checkpoints);
+
+  CheckpointParticipation.fromMap(Map map)
+      : checkpoints = (map['active']
+            ? (map['checkpoint_participation'] as List)
+                .map((e) => Checkpoint.fromMap(e))
+                .toList()
+            : []);
+
+  final List<Checkpoint> checkpoints;
+}
+
+class Pulse {
+  Pulse(this.height, this.voted);
+
+  Pulse.fromMap(Map map)
+      : height = map['height'] as int,
+        voted = map['voted'] as bool;
+
+  final int height;
+  final bool voted;
+}
+
+class PulseParticipation {
+  PulseParticipation(this.pulses);
+
+  PulseParticipation.fromMap(Map map)
+      : pulses = (map['active']
+            ? (map['pulse_participation'] as List)
+                .map((e) => Pulse.fromMap(e))
+                .toList()
+            : []);
+
+  final List<Pulse> pulses;
 }
 
 class Contributor {

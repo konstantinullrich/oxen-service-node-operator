@@ -1,4 +1,10 @@
 -
+  version: 1.0.3
+  changes:
+    - Added Storage Server and Lokinet Versions (Implemented by ianmacd)
+    - Added current Number of Nodes and current block height. (Implemented by ianmacd)
+    - More minor improvements
+-
   version: 1.0.2
   changes:
     - Added Node's IP (Implemented by ianmacd)
