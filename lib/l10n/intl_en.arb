@@ -11,6 +11,7 @@
   "title_edit_service_node": "Edit Service Nodes",
   "title_dashboard": "Dashboard",
   "title_settings": "Settings",
+  "title_changelog": "Changelog",
 
   "name": "Name",
   "public_key": "Public Key",

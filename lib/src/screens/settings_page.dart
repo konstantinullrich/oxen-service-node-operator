@@ -24,43 +24,45 @@ class SettingsPage extends BasePage {
     return Column(children: <Widget>[
       NavListHeader(S.of(context).settings_title_general),
       NavListTrailing(
-        leading: Icon(Icons.cloud_sharp),
-        text: S.of(context).settings_daemon,
-        trailing: Observer(builder: (_) {
-          return Text(
-            settingsStore.daemon == null ? '' : settingsStore.daemon.hostname,
-            textAlign: TextAlign.right,
-            style: TextStyle(
-                fontSize: 16.0,
-                color: Theme.of(context).primaryTextTheme.subtitle2.color),
-          );
-        }),
-        onTap: () => Navigator.of(context).pushNamed(OxenRoutes.settingsDaemon),
-      ),
+          leading: Icon(Icons.cloud_sharp),
+          text: S.of(context).settings_daemon,
+          trailing: Observer(builder: (_) {
+            return Text(
+              settingsStore.daemon == null ? '' : settingsStore.daemon.hostname,
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                  fontSize: 16.0,
+                  color: Theme.of(context).primaryTextTheme.subtitle2.color),
+            );
+          }),
+          onTap: () =>
+              Navigator.of(context).pushNamed(OxenRoutes.settingsDaemon)),
       NavListArrow(
-        leading: Icon(Icons.edit_sharp),
-        text: S.of(context).settings_service_nodes,
-        onTap: () =>
-            Navigator.of(context).pushNamed(OxenRoutes.settingsServiceNode),
-      ),
+          leading: Icon(Icons.edit_sharp),
+          text: S.of(context).settings_service_nodes,
+          onTap: () =>
+              Navigator.of(context).pushNamed(OxenRoutes.settingsServiceNode)),
       NavListHeader(S.of(context).settings_title_app),
-      NavListArrow(
-        leading: Icon(Icons.language_sharp),
-        text: S.of(context).settings_language,
-        onTap: () =>
-            Navigator.of(context).pushNamed(OxenRoutes.settingsLanguage),
-      ),
       Observer(builder: (_) {
         return NavListTrailing(
-            leading: Icon(Icons.lightbulb),
+            leading: Icon(Icons.lightbulb_sharp),
             text: settingsStore.isDarkTheme
                 ? S.of(context).settings_light_theme
                 : S.of(context).settings_dark_theme,
             trailing: StandardSwitch(
-              value: settingsStore.isDarkTheme,
-              onTaped: () => settingsStore.toggleDarkTheme(),
-            ));
-      })
+                value: settingsStore.isDarkTheme,
+                onTaped: () => settingsStore.toggleDarkTheme()));
+      }),
+      NavListArrow(
+          leading: Icon(Icons.language_sharp),
+          text: S.of(context).settings_language,
+          onTap: () =>
+              Navigator.of(context).pushNamed(OxenRoutes.settingsLanguage)),
+      NavListArrow(
+          leading: Icon(Icons.change_history_sharp),
+          text: S.of(context).title_changelog,
+          onTap: () =>
+              Navigator.of(context).pushNamed(OxenRoutes.settingsChangelog))
     ]);
   }
 }
