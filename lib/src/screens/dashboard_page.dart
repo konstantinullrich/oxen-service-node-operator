@@ -128,6 +128,14 @@ class DashboardPage extends BasePage {
             ),
           ),
           Padding(
+              padding: EdgeInsets.only(bottom: 20),
+              child: Text(
+                S.of(context).all_service_nodes(
+                    nodeSyncStatus.networkSize, nodeSyncStatus.currentHeight),
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 14.0, color: Palette.wildDarkBlue),
+              )),
+          Padding(
               padding: EdgeInsets.only(bottom: 28),
               child: Text(
                 S.of(context).your_service_nodes,
