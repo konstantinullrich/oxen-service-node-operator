@@ -80,8 +80,15 @@ class ServiceNodeStatus {
 }
 
 class ServiceNodeInfo {
-  ServiceNodeInfo(this.operatorAddress, this.registrationHeight,
-      this.registrationHfVersion, this.publicKey, this.ipAddress, this.version);
+  ServiceNodeInfo(
+      this.operatorAddress,
+      this.registrationHeight,
+      this.registrationHfVersion,
+      this.publicKey,
+      this.ipAddress,
+      this.nodeVersion,
+      this.storageServerVersion,
+      this.lokinetVersion);
 
   ServiceNodeInfo.fromMap(Map map)
       : operatorAddress = map['operator_address'] as String,
@@ -89,14 +96,19 @@ class ServiceNodeInfo {
         registrationHfVersion = map['registration_hf_version'] as int,
         publicKey = map['service_node_pubkey'] as String,
         ipAddress = map['public_ip'] as String,
-        version = (map['service_node_version'] as List).join('.');
+        nodeVersion = (map['service_node_version'] as List).join('.'),
+        storageServerVersion =
+            (map['storage_server_version'] as List).join('.'),
+        lokinetVersion = (map['lokinet_version'] as List).join('.');
 
   final String operatorAddress;
   final int registrationHeight;
   final int registrationHfVersion;
   final String publicKey;
   final String ipAddress;
-  final String version;
+  final String nodeVersion;
+  final String storageServerVersion;
+  final String lokinetVersion;
 
   bool equals(ServiceNodeInfo serviceNodeInfo) {
     return serviceNodeInfo.operatorAddress == operatorAddress &&
@@ -104,7 +116,9 @@ class ServiceNodeInfo {
         serviceNodeInfo.registrationHfVersion == registrationHfVersion &&
         serviceNodeInfo.publicKey == publicKey &&
         serviceNodeInfo.ipAddress == ipAddress &&
-        serviceNodeInfo.version == version;
+        serviceNodeInfo.nodeVersion == nodeVersion &&
+        serviceNodeInfo.storageServerVersion == storageServerVersion &&
+        serviceNodeInfo.lokinetVersion == lokinetVersion;
   }
 }
 

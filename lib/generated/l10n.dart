@@ -325,6 +325,36 @@ class S {
     );
   }
 
+  /// `Node/Storage Server/Lokinet Version`
+  String get software_versions {
+    return Intl.message(
+      'Node/Storage Server/lokinet Version',
+      name: 'software_versions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Storage Server Version`
+  String get storage_server_version {
+    return Intl.message(
+      'Storage Server Version',
+      name: 'storage_server_version',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lokinet Version`
+  String get lokinet_version {
+    return Intl.message(
+      'Lokinet Version',
+      name: 'lokinet_version',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Node Operator`
   String get service_node_operator {
     return Intl.message(

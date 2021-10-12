@@ -136,8 +136,8 @@ class DetailsServiceNodePage extends BasePage {
                     '${node.nodeInfo.registrationHeight}'),
                 NavListMultiHeader(S.of(context).registration_hf_version,
                     '${node.nodeInfo.registrationHfVersion}'),
-                NavListMultiHeader(S.of(context).service_node_version,
-                    '${node.nodeInfo.version}'),
+                NavListMultiHeader(S.of(context).software_versions,
+                    '${node.nodeInfo.nodeVersion}/${node.nodeInfo.storageServerVersion}/${node.nodeInfo.lokinetVersion}'),
               ]);
         })
       ],
