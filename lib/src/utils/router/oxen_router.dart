@@ -4,6 +4,7 @@ import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/screens/add_new_daemon_page.dart';
 import 'package:oxen_service_node/src/screens/add_new_service_node_page.dart';
 import 'package:oxen_service_node/src/screens/change_language_page.dart';
+import 'package:oxen_service_node/src/screens/changelog_page.dart';
 import 'package:oxen_service_node/src/screens/dashboard_page.dart';
 import 'package:oxen_service_node/src/screens/details_service_node_page.dart';
 import 'package:oxen_service_node/src/screens/edit_daemons.dart';
@@ -40,6 +41,9 @@ class OxenRouter {
 
       case OxenRoutes.settingsDaemon:
         return CupertinoPageRoute(builder: (_) => EditDaemonsPage());
+
+      case OxenRoutes.settingsChangelog:
+        return CupertinoPageRoute(builder: (_) => ChangelogPage());
 
       case OxenRoutes.settingsServiceNode:
         return CupertinoPageRoute(builder: (_) => EditServiceNodesPage());
