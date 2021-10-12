@@ -195,6 +195,16 @@ class S {
     );
   }
 
+  /// `{networkSize} nodes at height {currentHeight}`
+  String all_service_nodes(Object networkSize, Object currentHeight) {
+    return Intl.message(
+      '$networkSize nodes at height $currentHeight',
+      name: 'all_service_nodes',
+      desc: '',
+      args: [networkSize, currentHeight],
+    );
+  }
+
   /// `Your Service Nodes`
   String get your_service_nodes {
     return Intl.message(

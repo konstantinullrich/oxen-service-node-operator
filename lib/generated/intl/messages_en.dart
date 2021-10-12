@@ -33,11 +33,14 @@ class MessageLookup extends MessageLookupByLibrary {
 
   static m5(minutes) => "${minutes} minutes ago";
 
+  static m7(networkSize, currentHeight) => "${networkSize} nodes at height ${currentHeight}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static _notInlinedMessages(_) => <String, Function> {
     "add_daemon" : MessageLookupByLibrary.simpleMessage("Add Daemon"),
     "add_node_to_get_started" : MessageLookupByLibrary.simpleMessage("Add a Service Node below to get started."),
     "add_service_node" : MessageLookupByLibrary.simpleMessage("Add a Service Node"),
+    "all_service_nodes": m7,
     "copied_to_clipboard" : m0,
     "daemon_address" : MessageLookupByLibrary.simpleMessage("Daemon Address"),
     "daemon_port" : MessageLookupByLibrary.simpleMessage("Daemon Port"),

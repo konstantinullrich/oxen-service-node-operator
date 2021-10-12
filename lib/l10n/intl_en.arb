@@ -18,6 +18,7 @@
   "daemon_address": "Daemon Address",
   "daemon_port": "Daemon Port",
 
+  "all_service_nodes": "{networkSize} nodes at height {currentHeight}",
   "your_service_nodes": "Your Service Nodes",
   "health_all_nodes": "All {total} nodes operational",
   "health_out_of_nodes": "{healthyNodes} out of {total} nodes\nare operational",
