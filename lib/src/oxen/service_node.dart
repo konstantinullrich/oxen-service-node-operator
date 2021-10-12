@@ -29,19 +29,34 @@ class ServiceNode extends HiveObject {
   int registrationHfVersion;
 
   @HiveField(5)
-  String version;
+  String nodeVersion;
 
   @HiveField(6)
   String ipAddress;
 
-  ServiceNodeInfo get nodeInfo => ServiceNodeInfo(operatorAddress,
-      registrationHeight, registrationHfVersion, publicKey, ipAddress, version);
+  @HiveField(7)
+  String storageServerVersion;
+
+  @HiveField(8)
+  String lokinetVersion;
+
+  ServiceNodeInfo get nodeInfo => ServiceNodeInfo(
+      operatorAddress,
+      registrationHeight,
+      registrationHfVersion,
+      publicKey,
+      ipAddress,
+      nodeVersion,
+      storageServerVersion,
+      lokinetVersion);
 
   set nodeInfo(ServiceNodeInfo value) {
     operatorAddress = value.operatorAddress;
     registrationHeight = value.registrationHeight;
     registrationHfVersion = value.registrationHfVersion;
-    version = value.version;
+    nodeVersion = value.nodeVersion;
+    storageServerVersion = value.storageServerVersion;
+    lokinetVersion = value.lokinetVersion;
     ipAddress = value.ipAddress;
   }
 }
