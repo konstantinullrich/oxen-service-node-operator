@@ -2,13 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:oxen_service_node/src/utils/theme/palette.dart';
 
 class NavListMultiHeader extends StatelessWidget {
-  NavListMultiHeader(this.title, this.subtitle, {this.onTap});
+  NavListMultiHeader(this.title, this.subtitle,
+      {this.onTap, this.forceSmallText = false});
 
   final String title;
   final String subtitle;
   final VoidCallback onTap;
+  final bool forceSmallText;
 
-  double get subtitleSize => subtitle.length > 30 ? 16.0 : 20.0;
+  double get subtitleSize =>
+      (subtitle.length > 40 || forceSmallText) ? 16.0 : 20.0;
 
   @override
   Widget build(BuildContext context) {

@@ -35,7 +35,7 @@
   "registration_hf_version": "Registration Hardfork Version",
   "service_node_version": "Node Version",
   "service_node_operator": "Node Operator",
-  "software_versions": "Node/Storage Server/Lokinet Version",
+  "software_versions": "Node / Storage Server / Lokinet Version",
   "last_uptime_proof": "Last Uptime Proof",
   "next_reward": "Next Reward:",
   "estimated_reward_block": "~ in {nextReward} blocks",

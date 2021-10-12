@@ -14,22 +14,23 @@ import 'intl/messages_all.dart';
 
 class S {
   S();
-  
+
   static S current;
-  
-  static const AppLocalizationDelegate delegate =
-    AppLocalizationDelegate();
+
+  static const AppLocalizationDelegate delegate = AppLocalizationDelegate();
 
   static Future<S> load(Locale locale) {
-    final name = (locale.countryCode?.isEmpty ?? false) ? locale.languageCode : locale.toString();
-    final localeName = Intl.canonicalizedLocale(name); 
+    final name = (locale.countryCode?.isEmpty ?? false)
+        ? locale.languageCode
+        : locale.toString();
+    final localeName = Intl.canonicalizedLocale(name);
     return initializeMessages(localeName).then((_) {
       Intl.defaultLocale = localeName;
       S.current = S();
-      
+
       return S.current;
     });
-  } 
+  }
 
   static S of(BuildContext context) {
     return Localizations.of<S>(context, S);
@@ -305,26 +306,6 @@ class S {
     );
   }
 
-  /// `Checkpoints`
-  String get checkpoint_blocks {
-    return Intl.message(
-      'Checkpoints',
-      name: 'checkpoint_blocks',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Pulses`
-  String get pulse_blocks {
-    return Intl.message(
-      'Pulses',
-      name: 'pulse_blocks',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Registration Height`
   String get registration_height {
     return Intl.message(
@@ -355,41 +336,21 @@ class S {
     );
   }
 
-  /// `Node/Storage Server/Lokinet Version`
-  String get software_versions {
-    return Intl.message(
-      'Node/Storage Server/lokinet Version',
-      name: 'software_versions',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Storage Server Version`
-  String get storage_server_version {
-    return Intl.message(
-      'Storage Server Version',
-      name: 'storage_server_version',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Lokinet Version`
-  String get lokinet_version {
-    return Intl.message(
-      'Lokinet Version',
-      name: 'lokinet_version',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Node Operator`
   String get service_node_operator {
     return Intl.message(
       'Node Operator',
       name: 'service_node_operator',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Node / Storage Server / Lokinet Version`
+  String get software_versions {
+    return Intl.message(
+      'Node / Storage Server / Lokinet Version',
+      name: 'software_versions',
       desc: '',
       args: [],
     );
@@ -452,6 +413,26 @@ class S {
       name: 'copied_to_clipboard',
       desc: '',
       args: [title],
+    );
+  }
+
+  /// `Checkpoints`
+  String get checkpoints {
+    return Intl.message(
+      'Checkpoints',
+      name: 'checkpoints',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pulses`
+  String get pulses {
+    return Intl.message(
+      'Pulses',
+      name: 'pulses',
+      desc: '',
+      args: [],
     );
   }
 
