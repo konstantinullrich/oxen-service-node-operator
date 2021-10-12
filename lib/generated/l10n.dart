@@ -305,6 +305,26 @@ class S {
     );
   }
 
+  /// `Checkpoints`
+  String get checkpoint_blocks {
+    return Intl.message(
+      'Checkpoints',
+      name: 'checkpoint_blocks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Pulses`
+  String get pulse_blocks {
+    return Intl.message(
+      'Pulses',
+      name: 'pulse_blocks',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Registration Height`
   String get registration_height {
     return Intl.message(
@@ -330,6 +350,36 @@ class S {
     return Intl.message(
       'Node Version',
       name: 'service_node_version',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Node/Storage Server/Lokinet Version`
+  String get software_versions {
+    return Intl.message(
+      'Node/Storage Server/lokinet Version',
+      name: 'software_versions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Storage Server Version`
+  String get storage_server_version {
+    return Intl.message(
+      'Storage Server Version',
+      name: 'storage_server_version',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Lokinet Version`
+  String get lokinet_version {
+    return Intl.message(
+      'Lokinet Version',
+      name: 'lokinet_version',
       desc: '',
       args: [],
     );
