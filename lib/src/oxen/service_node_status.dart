@@ -156,7 +156,7 @@ class CheckpointParticipation {
   CheckpointParticipation(this.checkpoints);
 
   CheckpointParticipation.fromMap(Map map)
-      : checkpoints = (map['active']
+      : checkpoints = (map.containsKey('checkpoint_participation')
             ? (map['checkpoint_participation'] as List)
                 .map((e) => Checkpoint.fromMap(e))
                 .toList()
@@ -180,7 +180,7 @@ class PulseParticipation {
   PulseParticipation(this.pulses);
 
   PulseParticipation.fromMap(Map map)
-      : pulses = (map['active']
+      : pulses = (map.containsKey('pulse_participation')
             ? (map['pulse_participation'] as List)
                 .map((e) => Pulse.fromMap(e))
                 .toList()
