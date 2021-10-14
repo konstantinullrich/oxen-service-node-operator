@@ -49,9 +49,11 @@ class OxenRouter {
         return CupertinoPageRoute(builder: (_) => EditServiceNodesPage());
 
       case OxenRoutes.detailsServiceNode:
-        return CupertinoPageRoute(
-            builder: (_) =>
-                DetailsServiceNodePage(settings.arguments as String));
+        return CupertinoPageRoute(builder: (_) {
+          List<String> args = settings.arguments;
+          String nodeName = args.length > 1 ? args[1] : null;
+          return DetailsServiceNodePage(args.first, nodeName: nodeName);
+        });
 
       default:
         return MaterialPageRoute<void>(
