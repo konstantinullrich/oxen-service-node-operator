@@ -90,7 +90,7 @@ class ServiceNodeCard extends StatelessWidget {
                   padding: EdgeInsets.zero,
                   onPressed: () => Navigator.of(context).pushNamed(
                       OxenRoutes.detailsServiceNode,
-                      arguments: serviceNodeKey),
+                      arguments: [serviceNodeKey, name]),
                   child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [

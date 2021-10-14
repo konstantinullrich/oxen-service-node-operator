@@ -13,9 +13,10 @@ import 'package:oxen_service_node/src/widgets/nav/nav_list_multiheader.dart';
 import 'package:provider/provider.dart';
 
 class DetailsServiceNodePage extends BasePage {
-  DetailsServiceNodePage(this.publicKey);
+  DetailsServiceNodePage(this.publicKey, {this.nodeName});
 
   final String publicKey;
+  final String nodeName;
 
   static const int DECOMMISSION_MAX_CREDIT = 1440;
   static const int MINIMUM_CREDIT = 60;
@@ -31,6 +32,8 @@ class DetailsServiceNodePage extends BasePage {
       ),
     );
   }
+
+  String get title => this.nodeName;
 
   DateTime estimateFutureDateForHeight(int expectedAddedBlocks) {
     return DateTime.now()
