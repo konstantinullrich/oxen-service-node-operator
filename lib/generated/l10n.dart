@@ -305,6 +305,16 @@ class S {
     );
   }
 
+  /// `Last State Change Height`
+  String get state_height {
+    return Intl.message(
+      'Last State Change Height',
+      name: 'state_height',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Earned Downtime Blocks`
   String get earned_downtime_blocks {
     return Intl.message(

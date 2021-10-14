@@ -43,6 +43,7 @@
   "copied_to_clipboard": "{title} in die Zwischenablage kopiert",
   "checkpoints": "Checkpoint Blöcke",
   "pulses": "Pulse Blöcke",
+  "state_height": "Letzte Zustandsänderung Höhe",
 
   "hours": "Stunden",
   "minutes_ago": "vor {minutes} Minuten",

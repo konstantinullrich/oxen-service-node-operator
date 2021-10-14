@@ -45,6 +45,7 @@
   "copied_to_clipboard": "Copied {title} to clipboard",
   "checkpoints": "Checkpoints",
   "pulses": "Pulses",
+  "state_height": "Last State Change Height",
 
   "hours": "hours",
   "minutes_ago": "{minutes} minutes ago",
