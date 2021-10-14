@@ -73,6 +73,9 @@
   "error_public_key_too_long": "Öffentlicher Schlüssel zu lang",
   "error_public_key_too_short" : "Öffentlicher Schlüssel zu kurz",
   "error_you_are_already_monitoring": "Du überwachst diesen Node bereits",
+  "error_name_taken": "Du hast bereits einen Node mit dem Namen",
   "error_text_daemon_port" : "Der Daemon Port kann nur Nummern zwischen 0 und 65535 beinhalten.",
-  "error_text_daemon_address": "Bitte gebe eine valide iPv4 Adresse oder Domain Name ein."
+  "error_text_daemon_address": "Bitte gebe eine valide iPv4 Adresse oder Domain Name ein.",
+
+  "success_saved_node": "Node gespeichert"
 }
