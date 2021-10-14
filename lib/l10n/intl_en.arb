@@ -75,6 +75,9 @@
   "error_public_key_too_long": "Public Key too long",
   "error_public_key_too_short" : "Public Key too short",
   "error_you_are_already_monitoring": "You are already monitoring that node",
+  "error_name_taken": "You already have a node with that name",
   "error_text_daemon_port" : "Daemon port can only contain numbers between 0 and 65535",
-  "error_text_daemon_address": "Please enter a valid iPv4 address or domain name"
+  "error_text_daemon_address": "Please enter a valid iPv4 address or domain name",
+
+  "success_saved_node": "Node successfully saved"
 }

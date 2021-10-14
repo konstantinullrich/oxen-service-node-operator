@@ -305,16 +305,6 @@ class S {
     );
   }
 
-  /// `Last State Change Height`
-  String get state_height {
-    return Intl.message(
-      'Last State Change Height',
-      name: 'state_height',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `Earned Downtime Blocks`
   String get earned_downtime_blocks {
     return Intl.message(
@@ -450,6 +440,16 @@ class S {
     return Intl.message(
       'Pulses',
       name: 'pulses',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Last State Change Height`
+  String get state_height {
+    return Intl.message(
+      'Last State Change Height',
+      name: 'state_height',
       desc: '',
       args: [],
     );
@@ -705,6 +705,16 @@ class S {
     );
   }
 
+  /// `You already have a node with that name`
+  String get error_name_taken {
+    return Intl.message(
+      'You already have a node with that name',
+      name: 'error_name_taken',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Daemon port can only contain numbers between 0 and 65535`
   String get error_text_daemon_port {
     return Intl.message(
@@ -720,6 +730,16 @@ class S {
     return Intl.message(
       'Please enter a valid iPv4 address or domain name',
       name: 'error_text_daemon_address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Node successfully saved`
+  String get success_saved_node {
+    return Intl.message(
+      'Node successfully saved',
+      name: 'success_saved_node',
       desc: '',
       args: [],
     );
