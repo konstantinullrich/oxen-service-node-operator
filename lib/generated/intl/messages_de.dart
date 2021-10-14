@@ -89,6 +89,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings_title_app" : MessageLookupByLibrary.simpleMessage("App"),
     "settings_title_general" : MessageLookupByLibrary.simpleMessage("Generelle Einstellungen"),
     "software_versions" : MessageLookupByLibrary.simpleMessage("Node / Storage Server / Lokinet Version"),
+    "state_height" : MessageLookupByLibrary.simpleMessage("Letzte Zustandsänderung Höhe"),
     "storage_server" : MessageLookupByLibrary.simpleMessage("Storage Server"),
     "swarm_id" : MessageLookupByLibrary.simpleMessage("Swarm ID"),
     "title_add_daemon" : MessageLookupByLibrary.simpleMessage("Daemon hinzufügen"),

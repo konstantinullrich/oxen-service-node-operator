@@ -32,6 +32,11 @@ class DetailsServiceNodePage extends BasePage {
     );
   }
 
+  DateTime estimatePastDateForHeight(int height) {
+    return DateTime.now()
+        .subtract(Duration(minutes: height * AVERAGE_BLOCK_MINUTES));
+  }
+
   DateTime estimateFutureDateForHeight(int expectedAddedBlocks) {
     return DateTime.now()
         .add(Duration(minutes: expectedAddedBlocks * AVERAGE_BLOCK_MINUTES));
@@ -194,7 +199,9 @@ class DetailsServiceNodePage extends BasePage {
                     forceSmallText: true),
                 Padding(padding: EdgeInsets.only(top: 15.0), child: Divider()),
                 NavListMultiHeader(S.of(context).registration_height,
-                    '${node.nodeInfo.registrationHeight}'),
+                    '${node.nodeInfo.registrationHeight} (~ ${DateFormat.yMMMd(localeName).add_jm().format(estimatePastDateForHeight(nodeSyncStatus.currentHeight - node.nodeInfo.registrationHeight))})'),
+                NavListMultiHeader(S.of(context).state_height,
+                    '${node.stateHeight} (~ ${DateFormat.yMMMd(localeName).add_jm().format(estimatePastDateForHeight(nodeSyncStatus.currentHeight - node.stateHeight))})'),
                 NavListMultiHeader(S.of(context).registration_hf_version,
                     '${node.nodeInfo.registrationHfVersion}'),
                 NavListMultiHeader(S.of(context).software_versions,
