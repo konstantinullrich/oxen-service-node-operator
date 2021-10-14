@@ -85,6 +85,16 @@ class S {
     );
   }
 
+  /// `Save Service Node`
+  String get save_service_node {
+    return Intl.message(
+      'Save Service Node',
+      name: 'save_service_node',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add Daemon`
   String get title_add_daemon {
     return Intl.message(
@@ -115,11 +125,21 @@ class S {
     );
   }
 
-  /// `Edit Service Nodes`
+  /// `Edit Service Node`
   String get title_edit_service_node {
     return Intl.message(
-      'Edit Service Nodes',
+      'Edit Service Node',
       name: 'title_edit_service_node',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Edit Service Nodes`
+  String get title_edit_service_nodes {
+    return Intl.message(
+      'Edit Service Nodes',
+      name: 'title_edit_service_nodes',
       desc: '',
       args: [],
     );
