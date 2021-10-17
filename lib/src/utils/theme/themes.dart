@@ -54,9 +54,7 @@ class Themes {
               color: OxenPalette.blue,
               backgroundColor: OxenPalette.blue,
               decorationColor: Palette.manatee)),
-      buttonTheme: ButtonThemeData(
-        buttonColor: Palette.darkGrey
-      ),
+      buttonTheme: ButtonThemeData(buttonColor: Palette.darkGrey),
       primaryIconTheme: IconThemeData(color: Colors.white),
       accentIconTheme: IconThemeData(color: Colors.white));
 
@@ -113,9 +111,7 @@ class Themes {
               color: PaletteDark.darkThemeTitle,
               backgroundColor: PaletteDark.darkThemeGrey,
               decorationColor: PaletteDark.darkThemeTitle)),
-      buttonTheme: ButtonThemeData(
-        buttonColor: PaletteDark.darkThemePinButton
-      ),
+      buttonTheme: ButtonThemeData(buttonColor: PaletteDark.darkThemePinButton),
       primaryIconTheme: IconThemeData(color: PaletteDark.darkThemeViolet),
       accentIconTheme:
           IconThemeData(color: PaletteDark.darkThemeIndigoButtonBorder));

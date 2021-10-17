@@ -1,8 +1,4 @@
-enum KeyValidity {
-  CORRECT,
-  TOO_LONG,
-  TOO_SHORT
-}
+enum KeyValidity { CORRECT, TOO_LONG, TOO_SHORT }
 
 KeyValidity isValidPublicKey(String publicKey) {
   if (publicKey.length == 64) return KeyValidity.CORRECT;
