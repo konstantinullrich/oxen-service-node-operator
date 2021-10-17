@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/oxen/service_node.dart';
+import 'package:oxen_service_node/src/stores/node_sync_store.dart';
 import 'package:oxen_service_node/src/utils/theme/palette.dart';
 import 'package:oxen_service_node/src/widgets/base_page.dart';
 import 'package:oxen_service_node/src/widgets/nav/nav_list_multiheader.dart';
@@ -74,6 +75,8 @@ class EditServiceNodePageBodyState extends State<EditServiceNodePageBody> {
 
   @override
   Widget build(BuildContext context) {
+    final nodeSyncStore = context.watch<NodeSyncStore>();
+
     return ScrollableWithBottomSection(
       contentPadding: EdgeInsets.all(0),
       content: Form(
@@ -105,6 +108,7 @@ class EditServiceNodePageBodyState extends State<EditServiceNodePageBody> {
           onPressed: () async {
             if (!_formKey.currentState.validate()) return;
             await _saveServiceNode();
+            await nodeSyncStore.sync();
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                 content: Text(S.of(context).success_saved_node),
                 behavior: SnackBarBehavior.floating,

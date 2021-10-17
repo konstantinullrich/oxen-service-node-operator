@@ -22,13 +22,27 @@ class EditServiceNodesPage extends BasePage {
           onPressed: () =>
               Navigator.of(context).pushNamed(OxenRoutes.addServiceNode),
           child: Icon(Icons.add_sharp,
-              color: Theme.of(context).primaryTextTheme.caption.color,
+              color: Theme
+                  .of(context)
+                  .primaryTextTheme
+                  .caption
+                  .color,
               size: 24)),
     );
   }
 
   @override
-  Widget body(BuildContext context) {
+  Widget body(BuildContext context) => EditServiceNodesPageBody();
+}
+
+class EditServiceNodesPageBody extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() => EditServiceNodesPageBodyState();
+}
+
+class EditServiceNodesPageBodyState extends State<EditServiceNodesPageBody> {
+  @override
+  Widget build(BuildContext context) {
     final serviceNodeSources = context.watch<Box<ServiceNode>>();
     final nodeSyncStore = context.watch<NodeSyncStore>();
 
@@ -40,8 +54,12 @@ class EditServiceNodesPage extends BasePage {
         children: <Widget>[
           Expanded(
               child: ListView.separated(
-                  separatorBuilder: (_, __) => Divider(
-                      color: Theme.of(context).dividerTheme.color, height: 1),
+                  separatorBuilder: (_, __) =>
+                      Divider(
+                          color: Theme
+                              .of(context)
+                              .dividerTheme
+                              .color, height: 1),
                   itemCount: serviceNodes.length,
                   itemBuilder: (BuildContext context, int index) {
                     final serviceNode = serviceNodes[index];
@@ -49,35 +67,39 @@ class EditServiceNodesPage extends BasePage {
 
                     final content = Container(
                         child: ListTile(
-                      leading: Icon(CupertinoIcons.chart_bar_fill),
-                      title: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            serviceNode.name,
-                            style: TextStyle(
-                                fontSize: 18.0,
-                                color: Theme.of(context)
-                                    .primaryTextTheme
-                                    .headline6
-                                    .color),
+                          leading: Icon(CupertinoIcons.chart_bar_fill),
+                          title: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                serviceNode.name,
+                                style: TextStyle(
+                                    fontSize: 18.0,
+                                    color: Theme
+                                        .of(context)
+                                        .primaryTextTheme
+                                        .headline6
+                                        .color),
+                              ),
+                              Text(
+                                '${publicKey.substring(0, 16)}...${publicKey
+                                    .substring(publicKey.length - 5)}',
+                                style: TextStyle(
+                                    fontSize: 10.0,
+                                    color: Theme
+                                        .of(context)
+                                        .primaryTextTheme
+                                        .subtitle2
+                                        .color),
+                              ),
+                            ],
                           ),
-                          Text(
-                            '${publicKey.substring(0, 16)}...${publicKey.substring(publicKey.length - 5)}',
-                            style: TextStyle(
-                                fontSize: 10.0,
-                                color: Theme.of(context)
-                                    .primaryTextTheme
-                                    .subtitle2
-                                    .color),
-                          ),
-                        ],
-                      ),
-                      onTap: () {
-                        Navigator.pushNamed(context, OxenRoutes.editServiceNode,
-                            arguments: publicKey);
-                      },
-                    ));
+                          onTap: () {
+                            Navigator.pushNamed(
+                                context, OxenRoutes.editServiceNode,
+                                arguments: publicKey).whenComplete(() => setState(() {}));
+                          },
+                        ));
 
                     return Dismissible(
                         key: Key('${serviceNode.key}'),

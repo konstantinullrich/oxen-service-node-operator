@@ -86,7 +86,7 @@ class ServiceNodeCard extends StatelessWidget {
             child: Container(
                 width: MediaQuery.of(context).size.width * 0.25,
                 height: 100,
-                child: FlatButton(
+                child: MaterialButton(
                   padding: EdgeInsets.zero,
                   onPressed: () => Navigator.of(context).pushNamed(
                       OxenRoutes.detailsServiceNode,
