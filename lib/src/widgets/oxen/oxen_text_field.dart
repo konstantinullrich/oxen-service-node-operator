@@ -47,6 +47,9 @@ class OxenTextField extends StatelessWidget {
             enabledBorder: OutlineInputBorder(
                 borderSide: BorderSide(
                     color: Theme.of(context).focusColor, width: 1.0)),
+            disabledBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                    color: Theme.of(context).focusColor, width: 1.0)),
             errorBorder: OutlineInputBorder(
                 borderSide: BorderSide(color: OxenPalette.red, width: 1.0)),
             focusedErrorBorder: OutlineInputBorder(

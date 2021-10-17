@@ -8,6 +8,7 @@ import 'package:oxen_service_node/src/screens/changelog_page.dart';
 import 'package:oxen_service_node/src/screens/dashboard_page.dart';
 import 'package:oxen_service_node/src/screens/details_service_node_page.dart';
 import 'package:oxen_service_node/src/screens/edit_daemons.dart';
+import 'package:oxen_service_node/src/screens/edit_service_node_page.dart';
 import 'package:oxen_service_node/src/screens/edit_service_nodes.dart';
 import 'package:oxen_service_node/src/screens/settings_page.dart';
 import 'package:oxen_service_node/src/screens/welcome_page.dart';
@@ -26,6 +27,10 @@ class OxenRouter {
       case OxenRoutes.addServiceNode:
         return CupertinoPageRoute<void>(
             builder: (_) => AddNewServiceNodePage());
+
+      case OxenRoutes.editServiceNode:
+        return CupertinoPageRoute<void>(
+            builder: (_) => EditServiceNodePage(settings.arguments as String));
 
       case OxenRoutes.addDaemon:
         return CupertinoPageRoute<void>(builder: (_) => AddNewDaemonPage());

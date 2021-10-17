@@ -21,7 +21,7 @@ class DetailsServiceNodePage extends BasePage {
   static const int DECOMMISSION_MAX_CREDIT = 1440;
   static const int MINIMUM_CREDIT = 60;
   static const int AVERAGE_BLOCK_MINUTES = 2;
-  
+
   String get title => this.nodeName;
 
   void copyToClipboard(String title, String data) {

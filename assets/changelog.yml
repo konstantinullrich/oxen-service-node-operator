@@ -3,6 +3,8 @@
   changes:
     - Added Storage Server and Lokinet Versions (Implemented by ianmacd)
     - Added current Number of Nodes and current block height. (Implemented by ianmacd)
+    - Added Nodename to Tile of Detailpage
+    - Added Edit Node ability
     - More minor improvements
 -
   version: 1.0.2

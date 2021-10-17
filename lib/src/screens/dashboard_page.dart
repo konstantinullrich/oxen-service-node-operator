@@ -50,12 +50,12 @@ class DashboardPage extends BasePage {
       width: 30,
       child: Observer(builder: (_) {
         if (nodeSyncStatus.isSyncing) return Spinner(icon: Icons.sync);
-        return IconButton(
+        return MaterialButton(
           padding: EdgeInsets.all(0),
           onPressed: () {
             nodeSyncStatus.sync();
           },
-          icon: Icon(Icons.sync,
+          child: Icon(Icons.sync,
               color: Theme.of(context).primaryTextTheme.caption.color,
               size: 24),
         );
@@ -67,10 +67,10 @@ class DashboardPage extends BasePage {
   Widget trailing(BuildContext context) {
     return SizedBox(
       width: 30,
-      child: IconButton(
+      child: MaterialButton(
           padding: EdgeInsets.all(0),
           onPressed: () => Navigator.of(context).pushNamed(OxenRoutes.settings),
-          icon: Icon(Icons.settings_sharp,
+          child: Icon(Icons.settings_sharp,
               color: Theme.of(context).primaryTextTheme.caption.color,
               size: 24)),
     );
