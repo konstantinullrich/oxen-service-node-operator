@@ -123,7 +123,7 @@ class DetailsServiceNodePage extends BasePage {
                   ),
                 ),
                 NavListMultiHeader(S.of(context).last_reward_height,
-                    '${node.lastReward.blockHeight}'),
+                    '${node.lastReward.blockHeight} (~ ${DateFormat.yMMMd(localeName).add_jm().format(estimatePastDateForHeight(nodeSyncStatus.currentHeight - node.lastReward.blockHeight))})'),
                 NavListMultiHeader(S.of(context).last_uptime_proof,
                     '${DateFormat.yMMMd(localeName).add_jms().format(node.lastUptimeProof)} (${S.of(context).minutes_ago(DateTime.now().difference(node.lastUptimeProof).inMinutes)})'),
                 NavListMultiHeader(S.of(context).earned_downtime_blocks,
