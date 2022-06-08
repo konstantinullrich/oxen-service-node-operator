@@ -28,6 +28,7 @@
   "health_no_nodes": "Kein Node ist\nbetriebsbereit!",
 
   "storage_server": "Storage Server",
+  "lokinet_router": "Lokinet Router",
   "last_reward": "Letzte Belohung",
   "more": "Mehr",
 

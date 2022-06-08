@@ -5,13 +5,14 @@ import 'package:oxen_service_node/src/utils/theme/palette.dart';
 
 class ServiceNodeCard extends StatelessWidget {
   ServiceNodeCard(this.name, this.serviceNodeKey, this.isUnlocking, this.active,
-      this.isStorageServerReachable, this.lastRewardBlockHeight);
+      this.isStorageServerReachable, this.isLokinetRouterReachable, this.lastRewardBlockHeight);
 
   final String name;
   final String serviceNodeKey;
   final bool isUnlocking;
   final bool active;
   final bool isStorageServerReachable;
+  final bool isLokinetRouterReachable;
   final int lastRewardBlockHeight;
 
   @override
@@ -78,6 +79,29 @@ class ServiceNodeCard extends StatelessWidget {
                       Padding(
                           padding: EdgeInsets.only(bottom: 5),
                           child: Text(S.of(context).storage_server,
+                              style: TextStyle(fontSize: 16)))
+                    ])),
+          ),
+          Expanded(
+            flex: 1,
+            child: Container(
+                width: MediaQuery.of(context).size.width * 0.25,
+                height: 100,
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                          flex: 1,
+                          child: Center(
+                            child: Icon(
+                                isLokinetRouterReachable
+                                    ? Icons.check_circle_sharp
+                                    : Icons.error_sharp,
+                                size: 30),
+                          )),
+                      Padding(
+                          padding: EdgeInsets.only(bottom: 5),
+                          child: Text(S.of(context).lokinet_router,
                               style: TextStyle(fontSize: 16)))
                     ])),
           ),

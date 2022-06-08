@@ -13,6 +13,7 @@ class ServiceNodeStatus {
       this.nodeInfo,
       this.stateHeight,
       this.storageServer,
+      this.lokinetRouter,
       this.swarmId,
       {this.stakingRequirement = 15000000000000});
 
@@ -28,6 +29,7 @@ class ServiceNodeStatus {
   final int stakingRequirement;
   final int stateHeight;
   final StorageServerStatus storageServer;
+  final LokinetRouterStatus lokinetRouter;
   final int requestedUnlockHeight;
   final int swarmId;
   final int _lastUptimeProof;
@@ -49,6 +51,7 @@ class ServiceNodeStatus {
       'requested_unlock_height',
       'state_height',
       'storage_server_reachable_timestamp',
+      'lokinet_reachable_timestamp',
       'swarm_id',
       'total_contributed',
       'total_reserved'
@@ -64,6 +67,7 @@ class ServiceNodeStatus {
 
     final contribution = Contribution.fromMap(map);
     final storageServerStatus = StorageServerStatus.fromMap(map);
+    final lokinetRouterStatus = LokinetRouterStatus.fromMap(map);
     final lastReward = LastReward.fromMap(map);
     final serviceNodeInfo = ServiceNodeInfo.fromMap(map);
     final checkpointBlocks = CheckpointParticipation.fromMap(map);
@@ -83,6 +87,7 @@ class ServiceNodeStatus {
         serviceNodeInfo,
         map['state_height'] as int,
         storageServerStatus,
+        lokinetRouterStatus,
         map['swarm_id'] as int);
   }
 }
@@ -136,6 +141,17 @@ class StorageServerStatus {
   StorageServerStatus.fromMap(Map map)
       : isReachable = map['storage_server_reachable'] as bool,
         timestamp = map['storage_server_reachable_timestamp'] as int;
+
+  final bool isReachable;
+  final int timestamp;
+}
+
+class LokinetRouterStatus {
+  LokinetRouterStatus(this.isReachable, this.timestamp);
+
+  LokinetRouterStatus.fromMap(Map map)
+      : isReachable = map['lokinet_reachable'] as bool,
+        timestamp = map['lokinet_router_reachable_timestamp'] as int;
 
   final bool isReachable;
   final int timestamp;

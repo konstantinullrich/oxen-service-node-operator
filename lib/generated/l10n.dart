@@ -285,6 +285,16 @@ class S {
     );
   }
 
+  /// `Lokinet Router`
+  String get lokinet_router {
+    return Intl.message(
+      'Lokinet Router',
+      name: 'lokinet_router',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Last Reward`
   String get last_reward {
     return Intl.message(
