@@ -345,6 +345,16 @@ class S {
     );
   }
 
+  /// `Blocks`
+  String get blocks {
+    return Intl.message(
+      'blocks',
+      name: 'blocks',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Registration Height`
   String get registration_height {
     return Intl.message(
@@ -400,6 +410,16 @@ class S {
     return Intl.message(
       'Last Uptime Proof',
       name: 'last_uptime_proof',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Uptime Proof`
+  String get uptime_proof {
+    return Intl.message(
+      'Uptime proof',
+      name: 'uptime_proof',
       desc: '',
       args: [],
     );
