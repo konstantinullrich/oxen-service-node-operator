@@ -1,14 +1,21 @@
 import 'dart:io' show Platform;
 
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/utils/router/oxen_routes.dart';
 import 'package:oxen_service_node/src/utils/theme/palette.dart';
 
-class ServiceNodeCard extends StatelessWidget {
-  ServiceNodeCard(this.name, this.serviceNodeKey, this.isUnlocking, this.active,
-      this.isStorageServerReachable, this.isLokinetRouterReachable, this.lastRewardBlockHeight, this.earnedDowntimeBlocks, this.lastUptimeProof);
+class ServiceNodeCard extends StatefulWidget {
+  ServiceNodeCard(
+      this.name,
+      this.serviceNodeKey,
+      this.isUnlocking,
+      this.active,
+      this.isStorageServerReachable,
+      this.isLokinetRouterReachable,
+      this.lastRewardBlockHeight,
+      this.earnedDowntimeBlocks,
+      this.lastUptimeProof);
 
   final String name;
   final String serviceNodeKey;
@@ -20,11 +27,27 @@ class ServiceNodeCard extends StatelessWidget {
   final int earnedDowntimeBlocks;
   final DateTime lastUptimeProof;
 
+  @override
+  State<StatefulWidget> createState() => _ServiceNodeCardState();
+}
+
+class _ServiceNodeCardState extends State<ServiceNodeCard> {
   static const int DECOMMISSION_MAX_CREDIT = 1440;
+
+  var _tileExpanded = false;
 
   @override
   Widget build(BuildContext context) {
-    final localeName = Platform.localeName;
+    final serviceNodeKey = widget.serviceNodeKey;
+    final name = widget.name;
+    final isUnlocking = widget.isUnlocking;
+    final active = widget.active;
+    final earnedDowntimeBlocks = widget.earnedDowntimeBlocks;
+    final lastUptimeProof = widget.lastUptimeProof;
+    final lastRewardBlockHeight = widget.lastRewardBlockHeight;
+    final isStorageServerReachable = widget.isStorageServerReachable;
+    final isLokinetRouterReachable = widget.isLokinetRouterReachable;
+
     final serviceNodeKeyShort =
         '${serviceNodeKey.substring(0, 12)}...${serviceNodeKey.substring(serviceNodeKey.length - 4)}';
     final statusIcon = isUnlocking
@@ -37,11 +60,21 @@ class ServiceNodeCard extends StatelessWidget {
     return Card(
         child: ExpansionTile(
       leading: Padding(padding: EdgeInsets.all(5), child: statusIcon),
+      trailing: Icon(
+          _tileExpanded
+              ? Icons.keyboard_arrow_up_sharp
+              : Icons.keyboard_arrow_down_sharp,
+          size: 30,
+          color: Theme.of(context).primaryTextTheme.caption.color),
+      onExpansionChanged: (bool expanded) {
+        setState(() => _tileExpanded = expanded);
+      },
       title: Text(name,
           style: TextStyle(
               fontSize: 18,
               color: Theme.of(context).primaryTextTheme.caption.color)),
-      subtitle: Text('${serviceNodeKeyShort}\n${S.of(context).uptime_proof}: ${lastUptimeProof.millisecondsSinceEpoch == 0 ? '-' : S.of(context).minutes_ago(DateTime.now().difference(lastUptimeProof).inMinutes)} (${earnedDowntimeBlocks} / ${DECOMMISSION_MAX_CREDIT} ${S.of(context).blocks})',
+      subtitle: Text(
+          '$serviceNodeKeyShort\n${S.of(context).uptime_proof}: ${lastUptimeProof.millisecondsSinceEpoch == 0 ? '-' : S.of(context).minutes_ago(DateTime.now().difference(lastUptimeProof).inMinutes)} ($earnedDowntimeBlocks / $DECOMMISSION_MAX_CREDIT ${S.of(context).blocks})',
           style: TextStyle(
               fontSize: 13,
               height: 1.5,
@@ -60,11 +93,13 @@ class ServiceNodeCard extends StatelessWidget {
                         flex: 1,
                         child: Center(
                           child: Text('$lastRewardBlockHeight',
+                              textAlign: TextAlign.center,
                               style: TextStyle(fontSize: 20)),
                         )),
                     Padding(
                         padding: EdgeInsets.only(bottom: 5),
                         child: Text(S.of(context).last_reward,
+                            textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 16)))
                   ]),
             ),
@@ -89,6 +124,7 @@ class ServiceNodeCard extends StatelessWidget {
                       Padding(
                           padding: EdgeInsets.only(bottom: 5),
                           child: Text(S.of(context).storage_server,
+                              textAlign: TextAlign.center,
                               style: TextStyle(fontSize: 16)))
                     ])),
           ),
@@ -112,6 +148,7 @@ class ServiceNodeCard extends StatelessWidget {
                       Padding(
                           padding: EdgeInsets.only(bottom: 5),
                           child: Text(S.of(context).lokinet_router,
+                              textAlign: TextAlign.center,
                               style: TextStyle(fontSize: 16)))
                     ])),
           ),
@@ -136,6 +173,7 @@ class ServiceNodeCard extends StatelessWidget {
                         Padding(
                             padding: EdgeInsets.only(bottom: 5),
                             child: Text(S.of(context).more,
+                                textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.normal)))

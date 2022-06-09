@@ -27,9 +27,9 @@
   "health_out_of_nodes": "{healthyNodes} von {total} Nodes\nsind betriebsbereit",
   "health_no_nodes": "Kein Node ist\nbetriebsbereit!",
 
-  "storage_server": "Storage Server",
-  "lokinet_router": "Lokinet Router",
-  "last_reward": "Letzte Belohung",
+  "storage_server": "Storage\nServer",
+  "lokinet_router": "Lokinet\nRouter",
+  "last_reward": "Letzte\nBelohung",
   "more": "Mehr",
 
   "swarm_id": "Swarm ID",

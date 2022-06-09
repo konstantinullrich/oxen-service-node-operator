@@ -275,30 +275,30 @@ class S {
     );
   }
 
-  /// `Storage Server`
+  /// `Storage\nServer`
   String get storage_server {
     return Intl.message(
-      'Storage Server',
+      'Storage\nServer',
       name: 'storage_server',
       desc: '',
       args: [],
     );
   }
 
-  /// `Lokinet Router`
+  /// `Lokinet\nRouter`
   String get lokinet_router {
     return Intl.message(
-      'Lokinet Router',
+      'Lokinet\nRouter',
       name: 'lokinet_router',
       desc: '',
       args: [],
     );
   }
 
-  /// `Last Reward`
+  /// `Last\nReward`
   String get last_reward {
     return Intl.message(
-      'Last Reward',
+      'Last\nReward',
       name: 'last_reward',
       desc: '',
       args: [],
@@ -345,7 +345,7 @@ class S {
     );
   }
 
-  /// `Blocks`
+  /// `blocks`
   String get blocks {
     return Intl.message(
       'blocks',
@@ -415,7 +415,7 @@ class S {
     );
   }
 
-  /// `Uptime Proof`
+  /// `Uptime proof`
   String get uptime_proof {
     return Intl.message(
       'Uptime proof',
