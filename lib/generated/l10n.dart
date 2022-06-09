@@ -285,6 +285,16 @@ class S {
     );
   }
 
+  /// `Lokinet Router`
+  String get lokinet_router {
+    return Intl.message(
+      'Lokinet Router',
+      name: 'lokinet_router',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Last Reward`
   String get last_reward {
     return Intl.message(
@@ -330,6 +340,16 @@ class S {
     return Intl.message(
       'Earned Downtime Blocks',
       name: 'earned_downtime_blocks',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Blocks`
+  String get blocks {
+    return Intl.message(
+      'blocks',
+      name: 'blocks',
       desc: '',
       args: [],
     );
@@ -390,6 +410,16 @@ class S {
     return Intl.message(
       'Last Uptime Proof',
       name: 'last_uptime_proof',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Uptime Proof`
+  String get uptime_proof {
+    return Intl.message(
+      'Uptime proof',
+      name: 'uptime_proof',
       desc: '',
       args: [],
     );
