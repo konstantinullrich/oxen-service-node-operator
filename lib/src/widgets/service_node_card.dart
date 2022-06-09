@@ -27,6 +27,8 @@ class ServiceNodeCard extends StatefulWidget {
   final int earnedDowntimeBlocks;
   final DateTime lastUptimeProof;
 
+  final localeName = Platform.localeName; // Hack to fix Local 'built' has not been initialized
+
   @override
   State<StatefulWidget> createState() => _ServiceNodeCardState();
 }
