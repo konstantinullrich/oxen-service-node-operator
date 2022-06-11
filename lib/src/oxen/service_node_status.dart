@@ -31,7 +31,7 @@ class ServiceNodeStatus {
   final StorageServerStatus storageServer;
   final LokinetRouterStatus lokinetRouter;
   final int requestedUnlockHeight;
-  final int swarmId;
+  final String swarmId;
   final int _lastUptimeProof;
 
   bool get isUnlocking => requestedUnlockHeight != 0;
@@ -52,7 +52,6 @@ class ServiceNodeStatus {
       'state_height',
       'storage_server_reachable_timestamp',
       'lokinet_reachable_timestamp',
-      'swarm_id',
       'total_contributed',
       'total_reserved'
     ];
@@ -88,7 +87,7 @@ class ServiceNodeStatus {
         map['state_height'] as int,
         storageServerStatus,
         lokinetRouterStatus,
-        map['swarm_id'] as int);
+        map['swarm_id'] as String);
   }
 }
 
