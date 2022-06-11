@@ -174,7 +174,7 @@ class _ServiceNodeCardState extends State<ServiceNodeCard> {
                             )),
                         Padding(
                             padding: EdgeInsets.only(bottom: 5),
-                            child: Text(S.of(context).more,
+                            child: Text('${S.of(context).more}\n',
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize: 16,
