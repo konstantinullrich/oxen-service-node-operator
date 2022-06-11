@@ -49,6 +49,7 @@
   "checkpoints": "Checkpoint Blöcke",
   "pulses": "Pulse Blöcke",
   "state_height": "Letzte Zustandsänderung Höhe",
+  "contributors": "Beiträger",
 
   "hours": "Stunden",
   "minutes_ago": "vor {minutes} Minuten",

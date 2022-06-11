@@ -43,6 +43,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "all_service_nodes" : m0,
     "blocks" : MessageLookupByLibrary.simpleMessage("blocks"),
     "checkpoints" : MessageLookupByLibrary.simpleMessage("Checkpoints"),
+    "contributors" : MessageLookupByLibrary.simpleMessage("Contributors"),
     "copied_to_clipboard" : m1,
     "daemon_address" : MessageLookupByLibrary.simpleMessage("Daemon Address"),
     "daemon_port" : MessageLookupByLibrary.simpleMessage("Daemon Port"),

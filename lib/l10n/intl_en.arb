@@ -51,6 +51,7 @@
   "checkpoints": "Checkpoints",
   "pulses": "Pulses",
   "state_height": "Last State Change Height",
+  "contributors": "Contributors",
 
   "hours": "hours",
   "minutes_ago": "{minutes} minutes ago",

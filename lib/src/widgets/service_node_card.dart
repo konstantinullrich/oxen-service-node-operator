@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/utils/router/oxen_routes.dart';
 import 'package:oxen_service_node/src/utils/theme/palette.dart';
+import 'package:oxen_service_node/src/oxen/service_node_status.dart';
 
 class ServiceNodeCard extends StatefulWidget {
   ServiceNodeCard(
@@ -15,7 +16,8 @@ class ServiceNodeCard extends StatefulWidget {
       this.isLokinetRouterReachable,
       this.lastRewardBlockHeight,
       this.earnedDowntimeBlocks,
-      this.lastUptimeProof);
+      this.lastUptimeProof,
+      this.contribution);
 
   final String name;
   final String serviceNodeKey;
@@ -26,6 +28,7 @@ class ServiceNodeCard extends StatefulWidget {
   final int lastRewardBlockHeight;
   final int earnedDowntimeBlocks;
   final DateTime lastUptimeProof;
+  final Contribution contribution;
 
   final localeName = Platform.localeName; // Hack to fix Local 'built' has not been initialized
 
@@ -49,9 +52,17 @@ class _ServiceNodeCardState extends State<ServiceNodeCard> {
     final lastRewardBlockHeight = widget.lastRewardBlockHeight;
     final isStorageServerReachable = widget.isStorageServerReachable;
     final isLokinetRouterReachable = widget.isLokinetRouterReachable;
+    final contribution = widget.contribution;
 
     final serviceNodeKeyShort =
         '${serviceNodeKey.substring(0, 12)}...${serviceNodeKey.substring(serviceNodeKey.length - 4)}';
+    final partiallyStaked = contribution.totalContributed / 1000000000 < 15000;
+    final remainingContribution = partiallyStaked
+      ? ' (${(contribution.totalContributed / 1000000000).toInt()} / 15000 OXEN)'
+      : '';
+    final earnedDowntimeBlocksDisplay = partiallyStaked
+      ? ''
+      : ' ($earnedDowntimeBlocks / $DECOMMISSION_MAX_CREDIT ${S.of(context).blocks})';
     final statusIcon = isUnlocking
         ? Icon(Icons.access_time_sharp, color: OxenPalette.orange, size: 30)
         : (active
@@ -76,7 +87,7 @@ class _ServiceNodeCardState extends State<ServiceNodeCard> {
               fontSize: 18,
               color: Theme.of(context).primaryTextTheme.caption.color)),
       subtitle: Text(
-          '$serviceNodeKeyShort\n${S.of(context).uptime_proof}: ${lastUptimeProof.millisecondsSinceEpoch == 0 ? '-' : S.of(context).minutes_ago(DateTime.now().difference(lastUptimeProof).inMinutes)} ($earnedDowntimeBlocks / $DECOMMISSION_MAX_CREDIT ${S.of(context).blocks})',
+          '$serviceNodeKeyShort\n${S.of(context).uptime_proof}: ${lastUptimeProof.millisecondsSinceEpoch == 0 ? '-' : S.of(context).minutes_ago(DateTime.now().difference(lastUptimeProof).inMinutes)}${earnedDowntimeBlocksDisplay}\n${S.of(context).contributors}: ${contribution.contributors.length}${remainingContribution}',
           style: TextStyle(
               fontSize: 13,
               height: 1.5,
