@@ -1,4 +1,15 @@
 -
+  version: 1.0.4
+  changes:
+    - Display Lokinet router reachability on dashboard (Implemented by ianmacd)
+    - Add uptime proof and downtime credit to dashboard (Implemented by ianmacd)
+    - Set hours of earned downtime blocks to 2 decimal places (Implemented by ianmacd)
+    - Deal with nodes without recent uptime proof (Implemented by ianmacd)
+    - Fix ExpansionTile Arrow Color
+    - Fix Swarm Id
+    - More minor improvements
+
+-
   version: 1.0.3
   changes:
     - Added Storage Server and Lokinet Versions (Implemented by ianmacd)
