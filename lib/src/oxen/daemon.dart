@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:http/http.dart' as http;
 
@@ -39,8 +40,11 @@ class Daemon extends HiveObject {
     final headers = {'Content-type': 'application/json'};
     final body = json.encode(requestBody);
     final response = await http.post(url, headers: headers, body: body);
-    resultBody = json.decode(response.body) as Map<String, dynamic>;
+    final newBody = response.body.replaceAllMapped(
+        RegExp(r'("swarm_id":)(\d+)'),
+        (match) => '${match.group(1)}"${match.group(2)}"');
 
+    resultBody = json.decode(newBody) as Map<String, dynamic>;
     return resultBody;
   }
 }
