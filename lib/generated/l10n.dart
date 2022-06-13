@@ -804,6 +804,26 @@ class S {
       args: [],
     );
   }
+
+  /// `Staker`
+  String get address {
+    return Intl.message(
+      'Staker',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amount`
+  String get amount {
+    return Intl.message(
+      'Amount',
+      name: 'amount',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
