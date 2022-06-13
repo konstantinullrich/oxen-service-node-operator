@@ -52,6 +52,7 @@
   "contributors": "Beiträger",
   "address": "Spender",
   "amount": "Betrag",
+  "awaiting_contributions": "Warten auf Beiträge"
 
   "hours": "Stunden",
   "minutes_ago": "vor {minutes} Minuten",

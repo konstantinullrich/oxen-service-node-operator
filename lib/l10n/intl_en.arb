@@ -54,6 +54,7 @@
   "contributors": "Contributors",
   "address": "Staker",
   "amount": "Amount",
+  "awaiting_contributions": "Awaiting Contributions",
 
   "hours": "hours",
   "minutes_ago": "{minutes} minutes ago",

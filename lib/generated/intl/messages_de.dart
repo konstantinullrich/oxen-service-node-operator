@@ -41,6 +41,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "address" : MessageLookupByLibrary.simpleMessage("Spender"),
     "all_service_nodes" : m0,
     "amount" : MessageLookupByLibrary.simpleMessage("Betrag"),
+    "awaiting_contributions" : MessageLookupByLibrary.simpleMessage("Warten auf Beiträge"),
     "blocks" : MessageLookupByLibrary.simpleMessage("Blöcke"),
     "checkpoints" : MessageLookupByLibrary.simpleMessage("Checkpoint Blöcke"),
     "contributors" : MessageLookupByLibrary.simpleMessage("Beiträger"),
