@@ -50,6 +50,8 @@
   "pulses": "Pulse Blöcke",
   "state_height": "Letzte Zustandsänderung Höhe",
   "contributors": "Beiträger",
+  "address": "Spender",
+  "amount": "Betrag",
 
   "hours": "Stunden",
   "minutes_ago": "vor {minutes} Minuten",

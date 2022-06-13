@@ -52,6 +52,8 @@
   "pulses": "Pulses",
   "state_height": "Last State Change Height",
   "contributors": "Contributors",
+  "address": "Staker",
+  "amount": "Amount",
 
   "hours": "hours",
   "minutes_ago": "{minutes} minutes ago",

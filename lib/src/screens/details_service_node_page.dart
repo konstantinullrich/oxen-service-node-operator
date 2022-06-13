@@ -61,6 +61,7 @@ class DetailsServiceNodePage extends BasePage {
           checkpoints.sort((a, b) => b.height.compareTo(a.height));
           final pulses = node.pulseBlocks.pulses;
           pulses.sort((a, b) => b.height.compareTo(a.height));
+	  final contribution = node.contribution;
 
           return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -198,7 +199,63 @@ class DetailsServiceNodePage extends BasePage {
                     onTap: () => copyToClipboard(
                         S.of(context).service_node_operator,
                         node.nodeInfo.operatorAddress)),
-                NavListMultiHeader(S.of(context).swarm_id, '${node.swarmId}',
+                Center(
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                        Container(
+                          child: Table(
+                            children: [
+                              TableRow(children: [
+                                NavListHeader(S.of(context).address),
+                                NavListHeader(S.of(context).amount),
+                              ]),
+                              TableRow(children: [
+                                ListView.builder(
+                                  physics: NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: contribution.contributors.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Container(
+                                      padding: EdgeInsets.only(
+                                          left: 20.0, right: 20.0),
+                                      child: Text(
+        //'${serviceNodeKey.substring(0, 12)}...${serviceNodeKey.substring(serviceNodeKey.length - 4)}';
+                                          '${contribution.contributors[index].address.substring(0, 12)}...${contribution.contributors[index].address.substring(contribution.contributors[index].address.length - 4)}',
+					  style: TextStyle(
+					      fontSize: 16,
+					      color: Theme.of(context).primaryTextTheme.headline5.color
+					  )
+				      )
+                                    );
+                                  },
+                                ),
+                                ListView.builder(
+                                  physics: NeverScrollableScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: contribution.contributors.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Container(
+                                      padding: EdgeInsets.only(
+                                          left: 20.0, right: 20.0),
+                                      child: Text(
+                                          '${(contribution.contributors[index].amount / 1000000000).toInt()} (${(contribution.contributors[index].amount / 150000000000).toStringAsFixed(2)}%)',
+					  style: TextStyle(
+					      fontSize: 16,
+					      color: Theme.of(context).primaryTextTheme.headline5.color
+					  )
+				      )
+                                    );
+                                  },
+                                ),
+                               ])
+                            ],
+                          ),
+                        ),
+                      ])),
+NavListMultiHeader(S.of(context).swarm_id, '${node.swarmId}',
                     forceSmallText: true),
                 Padding(padding: EdgeInsets.only(top: 15.0), child: Divider()),
                 NavListMultiHeader(S.of(context).registration_height,
