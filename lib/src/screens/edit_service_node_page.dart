@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/oxen/service_node.dart';
 import 'package:oxen_service_node/src/stores/node_sync_store.dart';
+import 'package:oxen_service_node/src/utils/short_address.dart';
 import 'package:oxen_service_node/src/utils/theme/palette.dart';
 import 'package:oxen_service_node/src/widgets/base_page.dart';
 import 'package:oxen_service_node/src/widgets/nav/nav_list_multiheader.dart';
@@ -98,8 +99,7 @@ class EditServiceNodePageBodyState extends State<EditServiceNodePageBody> {
             ),
             Padding(
               padding: EdgeInsets.only(top: 20),
-              child: NavListMultiHeader(S.of(context).public_key,
-                  '${publicKey.substring(0, 20)}...${publicKey.substring(publicKey.length - 5)}'),
+              child: NavListMultiHeader(S.of(context).public_key, publicKey.toShortAddress(20)),
             ),
           ]),
         ),

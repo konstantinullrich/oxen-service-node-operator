@@ -5,6 +5,7 @@ import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/oxen/service_node.dart';
 import 'package:oxen_service_node/src/stores/node_sync_store.dart';
 import 'package:oxen_service_node/src/utils/router/oxen_routes.dart';
+import 'package:oxen_service_node/src/utils/short_address.dart';
 import 'package:oxen_service_node/src/utils/theme/palette.dart';
 import 'package:oxen_service_node/src/widgets/base_page.dart';
 import 'package:provider/provider.dart';
@@ -72,8 +73,7 @@ class EditServiceNodesPageBodyState extends State<EditServiceNodesPageBody> {
                                     .headline6
                                     .color),
                           ),
-                          Text(
-                            '${publicKey.substring(0, 16)}...${publicKey.substring(publicKey.length - 5)}',
+                          Text(publicKey.toShortAddress(16),
                             style: TextStyle(
                                 fontSize: 10.0,
                                 color: Theme.of(context)
