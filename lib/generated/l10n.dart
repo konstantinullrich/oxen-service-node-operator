@@ -824,6 +824,16 @@ class S {
       args: [],
     );
   }
+ 
+  /// `Awaiting Contributions`
+  String get awaiting_contributions {
+    return Intl.message(
+      'Awaiting Contributions',
+      name: 'awaiting_contributions',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

@@ -105,18 +105,23 @@ class DetailsServiceNodePage extends BasePage {
                         padding: EdgeInsets.all(20),
                         width: 600,
                         child: Column(
-                          children: [
-                            Text(S.of(context).next_reward,
-                                style: TextStyle(fontSize: 30)),
-                            Text(
-                                S
+                          children: contribution.totalContributed / 1000000000 < 15000
+			    ? [
+				Text(S.of(context).awaiting_contributions,
+				  style: TextStyle(fontSize: 30))
+			      ]
+                            : [
+				Text(S.of(context).next_reward,
+				  style: TextStyle(fontSize: 30)),
+				Text(
+				  S
                                     .of(context)
                                     .estimated_reward_block(nextReward),
-                                style: TextStyle(fontSize: 20)),
-                            Text(
-                                "~ ${DateFormat.yMMMd(localeName).add_jms().format(estimateFutureDateForHeight(nextReward))}",
-                                style: TextStyle(fontSize: 20))
-                          ],
+				  style: TextStyle(fontSize: 20)),
+				Text(
+				  "~ ${DateFormat.yMMMd(localeName).add_jms().format(estimateFutureDateForHeight(nextReward))}",
+				  style: TextStyle(fontSize: 20))
+			      ]
                         ),
                       ),
                       color: OxenPalette.teal,
