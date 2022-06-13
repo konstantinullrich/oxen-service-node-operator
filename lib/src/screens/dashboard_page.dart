@@ -163,7 +163,8 @@ class DashboardPage extends BasePage {
                     nodeStatus.lokinetRouter.isReachable,
                     nodeStatus.lastReward.blockHeight,
                     nodeStatus.earnedDowntimeBlocks,
-                    nodeStatus.lastUptimeProof);
+                    nodeStatus.lastUptimeProof,
+                    nodeStatus.contribution);
               }),
         ],
       );
