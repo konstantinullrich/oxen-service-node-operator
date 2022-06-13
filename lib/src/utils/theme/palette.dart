@@ -70,5 +70,6 @@ class OxenPalette {
   // Default
   static const Color red = Color.fromRGBO(255, 51, 51, 1.0);
   static const Color orange = Color.fromRGBO(255, 170, 21, 1.0);
+  static const Color yellow = Color.fromRGBO(255, 255, 0, 1.0);
   static const Color green = Color.fromRGBO(39, 206, 80, 1.0);
 }

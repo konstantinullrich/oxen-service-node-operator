@@ -64,11 +64,14 @@ class _ServiceNodeCardState extends State<ServiceNodeCard> {
       ? ''
       : ' ($earnedDowntimeBlocks / $DECOMMISSION_MAX_CREDIT ${S.of(context).blocks})';
     final statusIcon = isUnlocking
-        ? Icon(Icons.access_time_sharp, color: OxenPalette.orange, size: 30)
+        ? Icon(Icons.lock_clock_sharp, color: OxenPalette.orange, size: 30)
         : (active
             ? Icon(Icons.check_circle_sharp,
                 color: OxenPalette.iceBlue, size: 30)
-            : Icon(Icons.error_sharp, color: OxenPalette.red, size: 30));
+	    : partiallyStaked
+		? Icon(Icons.people_sharp,
+		  color: OxenPalette.yellow, size: 30)
+		: Icon(Icons.error_sharp, color: OxenPalette.red, size: 30));
 
     return Card(
         child: ExpansionTile(
