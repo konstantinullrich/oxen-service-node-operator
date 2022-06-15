@@ -95,6 +95,16 @@ class S {
     );
   }
 
+  /// `Delete Service Node`
+  String get delete_service_node {
+    return Intl.message(
+      'Delete Service Node',
+      name: 'delete_service_node',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add Daemon`
   String get title_add_daemon {
     return Intl.message(
@@ -505,6 +515,46 @@ class S {
     );
   }
 
+  /// `Contributors`
+  String get contributors {
+    return Intl.message(
+      'Contributors',
+      name: 'contributors',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Staker`
+  String get address {
+    return Intl.message(
+      'Staker',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Amount`
+  String get amount {
+    return Intl.message(
+      'Amount',
+      name: 'amount',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Awaiting Contributions`
+  String get awaiting_contributions {
+    return Intl.message(
+      'Awaiting Contributions',
+      name: 'awaiting_contributions',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `hours`
   String get hours {
     return Intl.message(
@@ -790,46 +840,6 @@ class S {
     return Intl.message(
       'Node successfully saved',
       name: 'success_saved_node',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Contributors`
-  String get contributors {
-    return Intl.message(
-      'Contributors',
-      name: 'contributors',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Staker`
-  String get address {
-    return Intl.message(
-      'Staker',
-      name: 'address',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Amount`
-  String get amount {
-    return Intl.message(
-      'Amount',
-      name: 'amount',
-      desc: '',
-      args: [],
-    );
-  }
- 
-  /// `Awaiting Contributions`
-  String get awaiting_contributions {
-    return Intl.message(
-      'Awaiting Contributions',
-      name: 'awaiting_contributions',
       desc: '',
       args: [],
     );

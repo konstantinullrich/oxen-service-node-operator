@@ -3,6 +3,7 @@ import 'dart:io' show Platform;
 import 'package:flutter/material.dart';
 import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/utils/router/oxen_routes.dart';
+import 'package:oxen_service_node/src/utils/short_address.dart';
 import 'package:oxen_service_node/src/utils/theme/palette.dart';
 import 'package:oxen_service_node/src/oxen/service_node_status.dart';
 
@@ -54,11 +55,10 @@ class _ServiceNodeCardState extends State<ServiceNodeCard> {
     final isLokinetRouterReachable = widget.isLokinetRouterReachable;
     final contribution = widget.contribution;
 
-    final serviceNodeKeyShort =
-        '${serviceNodeKey.substring(0, 12)}...${serviceNodeKey.substring(serviceNodeKey.length - 4)}';
+    final serviceNodeKeyShort = serviceNodeKey.toShortAddress();
     final partiallyStaked = contribution.totalContributed / 1000000000 < 15000;
     final remainingContribution = partiallyStaked
-      ? ' (${(contribution.totalContributed / 1000000000).toInt()} / 15000 OXEN)'
+      ? ' (${contribution.totalContributed ~/ 1000000000} / 15000 OXEN)'
       : '';
     final earnedDowntimeBlocksDisplay = partiallyStaked
       ? ''

@@ -1,16 +1,23 @@
 import 'dart:io' show Platform;
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/stores/node_sync_store.dart';
+import 'package:oxen_service_node/src/utils/short_address.dart';
 import 'package:oxen_service_node/src/utils/theme/palette.dart';
 import 'package:oxen_service_node/src/widgets/base_page.dart';
 import 'package:oxen_service_node/src/widgets/nav/nav_list_header.dart';
 import 'package:oxen_service_node/src/widgets/nav/nav_list_multiheader.dart';
+import 'package:oxen_service_node/src/widgets/primary_button.dart';
 import 'package:provider/provider.dart';
+
+import '../../oxen/service_node.dart';
+import '../../utils/router/oxen_routes.dart';
 
 class DetailsServiceNodePage extends BasePage {
   DetailsServiceNodePage(this.publicKey, {this.nodeName});
@@ -47,6 +54,7 @@ class DetailsServiceNodePage extends BasePage {
 
   @override
   Widget body(BuildContext context) {
+    final serviceNodeSources = context.watch<Box<ServiceNode>>();
     final nodeSyncStatus = context.watch<NodeSyncStore>();
     final localeName = Platform.localeName;
 
@@ -61,7 +69,7 @@ class DetailsServiceNodePage extends BasePage {
           checkpoints.sort((a, b) => b.height.compareTo(a.height));
           final pulses = node.pulseBlocks.pulses;
           pulses.sort((a, b) => b.height.compareTo(a.height));
-	  final contribution = node.contribution;
+          final contribution = node.contribution;
 
           return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -105,24 +113,25 @@ class DetailsServiceNodePage extends BasePage {
                         padding: EdgeInsets.all(20),
                         width: 600,
                         child: Column(
-                          children: contribution.totalContributed / 1000000000 < 15000
-			    ? [
-				Text(S.of(context).awaiting_contributions,
-				  style: TextStyle(fontSize: 30))
-			      ]
-                            : [
-				Text(S.of(context).next_reward,
-				  style: TextStyle(fontSize: 30)),
-				Text(
-				  S
-                                    .of(context)
-                                    .estimated_reward_block(nextReward),
-				  style: TextStyle(fontSize: 20)),
-				Text(
-				  "~ ${DateFormat.yMMMd(localeName).add_jms().format(estimateFutureDateForHeight(nextReward))}",
-				  style: TextStyle(fontSize: 20))
-			      ]
-                        ),
+                            children: contribution.totalContributed /
+                                        1000000000 <
+                                    15000
+                                ? [
+                                    Text(S.of(context).awaiting_contributions,
+                                        style: TextStyle(fontSize: 30))
+                                  ]
+                                : [
+                                    Text(S.of(context).next_reward,
+                                        style: TextStyle(fontSize: 30)),
+                                    Text(
+                                        S
+                                            .of(context)
+                                            .estimated_reward_block(nextReward),
+                                        style: TextStyle(fontSize: 20)),
+                                    Text(
+                                        "~ ${DateFormat.yMMMd(localeName).add_jms().format(estimateFutureDateForHeight(nextReward))}",
+                                        style: TextStyle(fontSize: 20))
+                                  ]),
                       ),
                       color: OxenPalette.teal,
                     ),
@@ -130,8 +139,11 @@ class DetailsServiceNodePage extends BasePage {
                 ),
                 NavListMultiHeader(S.of(context).last_reward_height,
                     '${node.lastReward.blockHeight} (~ ${DateFormat.yMMMd(localeName).add_jm().format(estimatePastDateForHeight(nodeSyncStatus.currentHeight - node.lastReward.blockHeight))})'),
-                NavListMultiHeader(S.of(context).last_uptime_proof,
-                    node.lastUptimeProof.millisecondsSinceEpoch == 0 ? '-' : '${DateFormat.yMMMd(localeName).add_jms().format(node.lastUptimeProof)} (${S.of(context).minutes_ago(DateTime.now().difference(node.lastUptimeProof).inMinutes)})'),
+                NavListMultiHeader(
+                    S.of(context).last_uptime_proof,
+                    node.lastUptimeProof.millisecondsSinceEpoch == 0
+                        ? '-'
+                        : '${DateFormat.yMMMd(localeName).add_jms().format(node.lastUptimeProof)} (${S.of(context).minutes_ago(DateTime.now().difference(node.lastUptimeProof).inMinutes)})'),
                 NavListMultiHeader(S.of(context).earned_downtime_blocks,
                     '${node.earnedDowntimeBlocks} / $DECOMMISSION_MAX_CREDIT (${(node.earnedDowntimeBlocks / 60 * AVERAGE_BLOCK_MINUTES).toStringAsFixed(2)} ${S.of(context).hours})'),
                 if (node.active)
@@ -205,62 +217,59 @@ class DetailsServiceNodePage extends BasePage {
                         S.of(context).service_node_operator,
                         node.nodeInfo.operatorAddress)),
                 Center(
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                        Container(
-                          child: Table(
-                            children: [
-                              TableRow(children: [
-                                NavListHeader(S.of(context).address),
-                                NavListHeader(S.of(context).amount),
-                              ]),
-                              TableRow(children: [
-                                ListView.builder(
-                                  physics: NeverScrollableScrollPhysics(),
-                                  shrinkWrap: true,
-                                  itemCount: contribution.contributors.length,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return Container(
+                    child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                      Container(
+                        child: Table(
+                          children: [
+                            TableRow(children: [
+                              NavListHeader(S.of(context).address),
+                              NavListHeader(S.of(context).amount),
+                            ]),
+                            TableRow(children: [
+                              ListView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: contribution.contributors.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Container(
                                       padding: EdgeInsets.only(
                                           left: 20.0, right: 20.0),
                                       child: Text(
-        //'${serviceNodeKey.substring(0, 12)}...${serviceNodeKey.substring(serviceNodeKey.length - 4)}';
-                                          '${contribution.contributors[index].address.substring(0, 12)}...${contribution.contributors[index].address.substring(contribution.contributors[index].address.length - 4)}',
-					  style: TextStyle(
-					      fontSize: 16,
-					      color: Theme.of(context).primaryTextTheme.headline5.color
-					  )
-				      )
-                                    );
-                                  },
-                                ),
-                                ListView.builder(
-                                  physics: NeverScrollableScrollPhysics(),
-                                  shrinkWrap: true,
-                                  itemCount: contribution.contributors.length,
-                                  itemBuilder:
-                                      (BuildContext context, int index) {
-                                    return Container(
+                                          '${contribution.contributors[index].address.toShortAddress()}',
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              color: Theme.of(context)
+                                                  .primaryTextTheme
+                                                  .headline5
+                                                  .color)));
+                                },
+                              ),
+                              ListView.builder(
+                                physics: NeverScrollableScrollPhysics(),
+                                shrinkWrap: true,
+                                itemCount: contribution.contributors.length,
+                                itemBuilder: (BuildContext context, int index) {
+                                  return Container(
                                       padding: EdgeInsets.only(
                                           left: 20.0, right: 20.0),
                                       child: Text(
-                                          '${(contribution.contributors[index].amount / 1000000000).toInt()} (${(contribution.contributors[index].amount / 150000000000).toStringAsFixed(2)}%)',
-					  style: TextStyle(
-					      fontSize: 16,
-					      color: Theme.of(context).primaryTextTheme.headline5.color
-					  )
-				      )
-                                    );
-                                  },
-                                ),
-                               ])
-                            ],
-                          ),
+                                          '${contribution.contributors[index].amount ~/ 1000000000} (${(contribution.contributors[index].amount / 150000000000).toStringAsFixed(2)}%)',
+                                          style: TextStyle(
+                                              fontSize: 16,
+                                              color: Theme.of(context)
+                                                  .primaryTextTheme
+                                                  .headline5
+                                                  .color)));
+                                },
+                              ),
+                            ])
+                          ],
                         ),
-                      ])),
-NavListMultiHeader(S.of(context).swarm_id, '${node.swarmId}',
+                      ),
+                    ])),
+                NavListMultiHeader(S.of(context).swarm_id, '${node.swarmId}',
                     forceSmallText: true),
                 Padding(padding: EdgeInsets.only(top: 15.0), child: Divider()),
                 NavListMultiHeader(S.of(context).registration_height,
@@ -271,7 +280,19 @@ NavListMultiHeader(S.of(context).swarm_id, '${node.swarmId}',
                     '${node.nodeInfo.registrationHfVersion}'),
                 NavListMultiHeader(S.of(context).software_versions,
                     '${node.nodeInfo.nodeVersion} / ${node.nodeInfo.storageServerVersion} / ${node.nodeInfo.lokinetVersion}'),
-                Padding(padding: EdgeInsets.only(top: 15))
+                Padding(
+                  padding: EdgeInsets.only(top: 25, bottom: 25),
+                  child: PrimaryButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, OxenRoutes.editServiceNode,
+                          arguments: publicKey);
+                    },
+                    text: S.of(context).title_edit_service_node,
+                    color: Colors.transparent,
+                    borderColor: Colors.transparent,
+                    textColor: OxenPalette.teal,
+                  ),
+                ),
               ]);
         })
       ],

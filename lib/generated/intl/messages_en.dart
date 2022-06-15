@@ -50,6 +50,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "copied_to_clipboard" : m1,
     "daemon_address" : MessageLookupByLibrary.simpleMessage("Daemon Address"),
     "daemon_port" : MessageLookupByLibrary.simpleMessage("Daemon Port"),
+    "delete_service_node" : MessageLookupByLibrary.simpleMessage("Delete Service Node"),
     "earned_downtime_blocks" : MessageLookupByLibrary.simpleMessage("Earned Downtime Blocks"),
     "error_name_taken" : MessageLookupByLibrary.simpleMessage("You already have a node with that name"),
     "error_public_key_too_long" : MessageLookupByLibrary.simpleMessage("Public Key too long"),
