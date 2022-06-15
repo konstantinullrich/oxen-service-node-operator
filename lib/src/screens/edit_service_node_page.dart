@@ -3,6 +3,7 @@ import 'package:hive/hive.dart';
 import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/oxen/service_node.dart';
 import 'package:oxen_service_node/src/stores/node_sync_store.dart';
+import 'package:oxen_service_node/src/utils/router/oxen_routes.dart';
 import 'package:oxen_service_node/src/utils/short_address.dart';
 import 'package:oxen_service_node/src/utils/theme/palette.dart';
 import 'package:oxen_service_node/src/widgets/base_page.dart';
@@ -47,6 +48,7 @@ class EditServiceNodePageBodyState extends State<EditServiceNodePageBody> {
   final _formKey = GlobalKey<FormState>();
 
   Box<ServiceNode> serviceNodeSource;
+  ServiceNode node;
 
   bool _isDuplicateName(String name) =>
       serviceNodeSource.values.any((element) => element.name == name);
@@ -55,7 +57,7 @@ class EditServiceNodePageBodyState extends State<EditServiceNodePageBody> {
   void initState() {
     super.initState();
     serviceNodeSource = context.read<Box<ServiceNode>>();
-    final node = serviceNodeSource.values
+    node = serviceNodeSource.values
         .firstWhere((e) => e.publicKey == this.publicKey);
 
     _nameController.text = node.name;
@@ -68,10 +70,18 @@ class EditServiceNodePageBodyState extends State<EditServiceNodePageBody> {
   }
 
   Future _saveServiceNode() async {
-    final node = serviceNodeSource.values
-        .firstWhere((e) => e.publicKey == this.publicKey);
     node.name = _nameController.text;
     await node.save();
+  }
+
+  Future _deleteServiceNode() async {
+    await node.delete();
+
+    if (serviceNodeSource.isEmpty)
+      Navigator.pushNamedAndRemoveUntil(context, OxenRoutes.welcome,
+          ModalRoute.withName(OxenRoutes.dashboard));
+    else
+      Navigator.pop(context);
   }
 
   @override
@@ -98,8 +108,16 @@ class EditServiceNodePageBodyState extends State<EditServiceNodePageBody> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(top: 20),
-              child: NavListMultiHeader(S.of(context).public_key, publicKey.toShortAddress(20)),
+              padding: EdgeInsets.only(top: 20, bottom: 20),
+              child: NavListMultiHeader(
+                  S.of(context).public_key, publicKey.toShortAddress(20)),
+            ),
+            PrimaryButton(
+              onPressed: _deleteServiceNode,
+              text: S.of(context).delete_service_node,
+              color: Colors.transparent,
+              borderColor: Colors.transparent,
+              textColor: Colors.red,
             ),
           ]),
         ),

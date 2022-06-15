@@ -94,7 +94,12 @@ class EditServiceNodesPageBodyState extends State<EditServiceNodesPageBody> {
                         key: Key('${serviceNode.key}'),
                         onDismissed: (direction) async {
                           await serviceNodeSources.delete(serviceNode.key);
-                          await nodeSyncStore.sync();
+
+                          if (serviceNodeSources.isEmpty)
+                            Navigator.pushNamedAndRemoveUntil(context, OxenRoutes.welcome,
+                                ModalRoute.withName(OxenRoutes.dashboard));
+                          else
+                            await nodeSyncStore.sync();
                         },
                         direction: DismissDirection.endToStart,
                         background: Container(

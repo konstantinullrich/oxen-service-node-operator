@@ -95,6 +95,16 @@ class S {
     );
   }
 
+  /// `Delete Service Node`
+  String get delete_service_node {
+    return Intl.message(
+      'Delete Service Node',
+      name: 'delete_service_node',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Add Daemon`
   String get title_add_daemon {
     return Intl.message(

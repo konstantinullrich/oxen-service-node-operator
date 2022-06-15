@@ -5,6 +5,7 @@
   "add_service_node": "Add a Service Node",
   "add_daemon": "Add Daemon",
   "save_service_node": "Save Service Node",
+  "delete_service_node": "Delete Service Node",
 
   "title_add_daemon": "Add Daemon",
   "title_edit_daemons": "Edit Daemons",

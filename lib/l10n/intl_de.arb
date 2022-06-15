@@ -5,6 +5,7 @@
   "add_service_node": "Service Node hinzufügen",
   "add_daemon": "Daemon hinzufügen",
   "save_service_node": "Service Node speichern",
+  "delete_service_node": "Service Node löschen",
 
   "title_add_daemon": "Daemon hinzufügen",
   "title_edit_daemons": "Daemons bearbeiten",

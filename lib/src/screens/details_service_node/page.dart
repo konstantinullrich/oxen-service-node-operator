@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/stores/node_sync_store.dart';
@@ -14,6 +15,9 @@ import 'package:oxen_service_node/src/widgets/nav/nav_list_header.dart';
 import 'package:oxen_service_node/src/widgets/nav/nav_list_multiheader.dart';
 import 'package:oxen_service_node/src/widgets/primary_button.dart';
 import 'package:provider/provider.dart';
+
+import '../../oxen/service_node.dart';
+import '../../utils/router/oxen_routes.dart';
 
 class DetailsServiceNodePage extends BasePage {
   DetailsServiceNodePage(this.publicKey, {this.nodeName});
@@ -50,6 +54,7 @@ class DetailsServiceNodePage extends BasePage {
 
   @override
   Widget body(BuildContext context) {
+    final serviceNodeSources = context.watch<Box<ServiceNode>>();
     final nodeSyncStatus = context.watch<NodeSyncStore>();
     final localeName = Platform.localeName;
 
@@ -231,7 +236,8 @@ class DetailsServiceNodePage extends BasePage {
                                   return Container(
                                       padding: EdgeInsets.only(
                                           left: 20.0, right: 20.0),
-                                      child: Text('${contribution.contributors[index].address.toShortAddress()}',
+                                      child: Text(
+                                          '${contribution.contributors[index].address.toShortAddress()}',
                                           style: TextStyle(
                                               fontSize: 16,
                                               color: Theme.of(context)
@@ -274,7 +280,19 @@ class DetailsServiceNodePage extends BasePage {
                     '${node.nodeInfo.registrationHfVersion}'),
                 NavListMultiHeader(S.of(context).software_versions,
                     '${node.nodeInfo.nodeVersion} / ${node.nodeInfo.storageServerVersion} / ${node.nodeInfo.lokinetVersion}'),
-                Padding(padding: EdgeInsets.only(top: 15))
+                Padding(
+                  padding: EdgeInsets.only(top: 25, bottom: 25),
+                  child: PrimaryButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, OxenRoutes.editServiceNode,
+                          arguments: publicKey);
+                    },
+                    text: S.of(context).title_edit_service_node,
+                    color: Colors.transparent,
+                    borderColor: Colors.transparent,
+                    textColor: OxenPalette.teal,
+                  ),
+                ),
               ]);
         })
       ],
