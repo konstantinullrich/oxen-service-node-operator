@@ -97,6 +97,7 @@ class MessageLookup extends MessageLookupByLibrary {
     "settings_dark_theme" : MessageLookupByLibrary.simpleMessage("Dark Theme"),
     "settings_language" : MessageLookupByLibrary.simpleMessage("Language"),
     "settings_light_theme" : MessageLookupByLibrary.simpleMessage("Light Theme"),
+    "settings_order_by" : MessageLookupByLibrary.simpleMessage("Oder Nodes by"),
     "settings_service_nodes" : MessageLookupByLibrary.simpleMessage("Service Nodes"),
     "settings_title_app" : MessageLookupByLibrary.simpleMessage("App"),
     "settings_title_general" : MessageLookupByLibrary.simpleMessage("General"),

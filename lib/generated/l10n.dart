@@ -745,6 +745,16 @@ class S {
     );
   }
 
+  /// `Oder Nodes by`
+  String get settings_order_by {
+    return Intl.message(
+      'Oder Nodes by',
+      name: 'settings_order_by',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Dark Theme`
   String get settings_dark_theme {
     return Intl.message(

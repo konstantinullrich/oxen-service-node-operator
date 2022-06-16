@@ -42,6 +42,19 @@ class SettingsPage extends BasePage {
           text: S.of(context).settings_service_nodes,
           onTap: () =>
               Navigator.of(context).pushNamed(OxenRoutes.settingsServiceNode)),
+      NavListTrailing(
+          leading: Icon(Icons.sort_sharp),
+          text: S.of(context).settings_order_by,
+          trailing: Observer(builder: (_) {
+            return Text(
+              settingsStore.dashboardOrderBy.name,
+              textAlign: TextAlign.right,
+              style: TextStyle(
+                  fontSize: 16.0,
+                  color: Theme.of(context).primaryTextTheme.subtitle2.color),
+            );
+          }),
+          onTap: () {}),
       NavListHeader(S.of(context).settings_title_app),
       Observer(builder: (_) {
         return NavListTrailing(
