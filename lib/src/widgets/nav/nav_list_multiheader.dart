@@ -3,12 +3,19 @@ import 'package:oxen_service_node/src/utils/theme/palette.dart';
 
 class NavListMultiHeader extends StatelessWidget {
   NavListMultiHeader(this.title, this.subtitle,
-      {this.onTap, this.forceSmallText = false});
+      {this.onTap,
+      this.forceSmallText = false,
+      this.titleColor,
+      this.subtitleColor});
 
   final String title;
   final String subtitle;
   final VoidCallback onTap;
   final bool forceSmallText;
+  final Color titleColor;
+  final Color subtitleColor;
+
+  Color get _titleColor => titleColor ?? Palette.wildDarkBlue;
 
   double get subtitleSize =>
       (subtitle.length > 40 || forceSmallText) ? 16.0 : 20.0;
@@ -27,14 +34,13 @@ class NavListMultiHeader extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     title,
-                    style:
-                        TextStyle(fontSize: 15.0, color: Palette.wildDarkBlue),
+                    style: TextStyle(fontSize: 15.0, color: _titleColor),
                   ),
                   Text(
                     subtitle,
                     style: TextStyle(
                         fontSize: subtitleSize,
-                        color:
+                        color: subtitleColor ??
                             Theme.of(context).primaryTextTheme.headline5.color),
                   )
                 ],

@@ -52,6 +52,10 @@ class DetailsServiceNodePage extends BasePage {
         .add(Duration(minutes: expectedAddedBlocks * AVERAGE_BLOCK_MINUTES));
   }
 
+  double estimateDowntimeHours(int earnedDowntimeBlocks) {
+    return (earnedDowntimeBlocks / 60 * AVERAGE_BLOCK_MINUTES);
+  }
+
   @override
   Widget body(BuildContext context) {
     final serviceNodeSources = context.watch<Box<ServiceNode>>();
@@ -144,8 +148,11 @@ class DetailsServiceNodePage extends BasePage {
                     node.lastUptimeProof.millisecondsSinceEpoch == 0
                         ? '-'
                         : '${DateFormat.yMMMd(localeName).add_jms().format(node.lastUptimeProof)} (${S.of(context).minutes_ago(DateTime.now().difference(node.lastUptimeProof).inMinutes)})'),
-                NavListMultiHeader(S.of(context).earned_downtime_blocks,
-                    '${node.earnedDowntimeBlocks} / $DECOMMISSION_MAX_CREDIT (${(node.earnedDowntimeBlocks / 60 * AVERAGE_BLOCK_MINUTES).toStringAsFixed(2)} ${S.of(context).hours})'),
+                NavListMultiHeader(
+                  S.of(context).earned_downtime_blocks,
+                  '${node.earnedDowntimeBlocks} / $DECOMMISSION_MAX_CREDIT (${estimateDowntimeHours(node.earnedDowntimeBlocks).toStringAsFixed(2)} ${S.of(context).hours})',
+                  subtitleColor: estimateDowntimeHours(node.earnedDowntimeBlocks) < 2 ? Colors.red : null,
+                ),
                 if (node.active)
                   Center(
                       child: Column(

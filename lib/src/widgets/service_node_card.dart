@@ -90,7 +90,7 @@ class _ServiceNodeCardState extends State<ServiceNodeCard> {
               fontSize: 18,
               color: Theme.of(context).primaryTextTheme.caption.color)),
       subtitle: Text(
-          '$serviceNodeKeyShort\n${S.of(context).uptime_proof}: ${lastUptimeProof.millisecondsSinceEpoch == 0 ? '-' : S.of(context).minutes_ago(DateTime.now().difference(lastUptimeProof).inMinutes)}${earnedDowntimeBlocksDisplay}\n${S.of(context).contributors}: ${contribution.contributors.length}${remainingContribution}',
+          '$serviceNodeKeyShort\n${S.of(context).uptime_proof}: ${lastUptimeProof.millisecondsSinceEpoch == 0 ? '-' : S.of(context).minutes_ago(DateTime.now().difference(lastUptimeProof).inMinutes)}$earnedDowntimeBlocksDisplay\n${S.of(context).contributors}: ${contribution.contributors.length}$remainingContribution',
           style: TextStyle(
               fontSize: 13,
               height: 1.5,
