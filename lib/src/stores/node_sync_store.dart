@@ -49,13 +49,13 @@ abstract class NodeSyncStoreBase with Store {
 
   @action
   Future startSync() async {
-    print('[Sync] Started');
+    print('[Oxen-Service-Node: Sync] Started');
     while (runSyncLoop) {
       await sync();
-      print('[Sync] Ran Sync');
+      print('[Oxen-Service-Node: Sync] Ran Sync');
       await Future.delayed(Duration(seconds: 20));
     }
-    print('[Sync] Stopped!!!!');
+    print('[Oxen-Service-Node: Sync] Stopped!!!!');
   }
 
   @action

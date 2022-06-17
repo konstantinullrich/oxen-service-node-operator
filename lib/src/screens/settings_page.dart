@@ -19,7 +19,8 @@ class SettingsPage extends BasePage {
 
   Future<void> _setDashboardOrderBy(BuildContext context) async {
     final settingsStore = context.read<SettingsStore>();
-    final selectedDashboardOrderBy = await presentPicker(context, DashboardOrderBy.values);
+    final selectedDashboardOrderBy =
+        await presentPicker(context, DashboardOrderBy.values);
 
     if (selectedDashboardOrderBy != null) {
       await settingsStore.setDashboardOrderBy(selectedDashboardOrderBy);
@@ -32,9 +33,10 @@ class SettingsPage extends BasePage {
     final themeChanger = Provider.of<ThemeChanger>(context);
     settingsStore.themeChanger = themeChanger;
 
-    return Column(children: <Widget>[
-      NavListHeader(S.of(context).settings_title_general),
-      NavListTrailing(
+    return Column(
+      children: <Widget>[
+        NavListHeader(S.of(context).settings_title_general),
+        NavListTrailing(
           leading: Icon(Icons.cloud_sharp),
           text: S.of(context).settings_daemon,
           trailing: Observer(builder: (_) {
@@ -47,13 +49,15 @@ class SettingsPage extends BasePage {
             );
           }),
           onTap: () =>
-              Navigator.of(context).pushNamed(OxenRoutes.settingsDaemon)),
-      NavListArrow(
+              Navigator.of(context).pushNamed(OxenRoutes.settingsDaemon),
+        ),
+        NavListArrow(
           leading: Icon(Icons.edit_sharp),
           text: S.of(context).settings_service_nodes,
           onTap: () =>
-              Navigator.of(context).pushNamed(OxenRoutes.settingsServiceNode)),
-      NavListTrailing(
+              Navigator.of(context).pushNamed(OxenRoutes.settingsServiceNode),
+        ),
+        NavListTrailing(
           leading: Icon(Icons.sort_sharp),
           text: S.of(context).settings_order_by,
           trailing: Observer(builder: (_) {
@@ -65,28 +69,34 @@ class SettingsPage extends BasePage {
                   color: Theme.of(context).primaryTextTheme.subtitle2.color),
             );
           }),
-          onTap: () => _setDashboardOrderBy(context)),
-      NavListHeader(S.of(context).settings_title_app),
-      Observer(builder: (_) {
-        return NavListTrailing(
+          onTap: () => _setDashboardOrderBy(context),
+        ),
+        NavListHeader(S.of(context).settings_title_app),
+        Observer(builder: (_) {
+          return NavListTrailing(
             leading: Icon(Icons.lightbulb_sharp),
             text: settingsStore.isDarkTheme
                 ? S.of(context).settings_light_theme
                 : S.of(context).settings_dark_theme,
             trailing: StandardSwitch(
-                value: settingsStore.isDarkTheme,
-                onTaped: () => settingsStore.toggleDarkTheme()));
-      }),
-      NavListArrow(
+              value: settingsStore.isDarkTheme,
+              onTaped: () => settingsStore.toggleDarkTheme(),
+            ),
+          );
+        }),
+        NavListArrow(
           leading: Icon(Icons.language_sharp),
           text: S.of(context).settings_language,
           onTap: () =>
-              Navigator.of(context).pushNamed(OxenRoutes.settingsLanguage)),
-      NavListArrow(
+              Navigator.of(context).pushNamed(OxenRoutes.settingsLanguage),
+        ),
+        NavListArrow(
           leading: Icon(Icons.change_history_sharp),
           text: S.of(context).title_changelog,
           onTap: () =>
-              Navigator.of(context).pushNamed(OxenRoutes.settingsChangelog))
-    ]);
+              Navigator.of(context).pushNamed(OxenRoutes.settingsChangelog),
+        )
+      ],
+    );
   }
 }

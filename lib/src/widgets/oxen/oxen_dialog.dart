@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 Future showOxenDialog(BuildContext context, Widget child,
     {void Function(BuildContext context) onDismiss}) {
   return showDialog<void>(
-      builder: (_) => OxenDialog(body: child, onDismiss: onDismiss),
-      context: context);
+    builder: (_) => OxenDialog(body: child, onDismiss: onDismiss),
+    context: context,
+  );
 }
 
 class OxenDialog extends StatelessWidget {
@@ -32,18 +33,23 @@ class OxenDialog extends StatelessWidget {
         child: BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 3.0, sigmaY: 3.0),
           child: Container(
-            decoration: BoxDecoration(color: Colors.white.withOpacity(0.55)),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.55),
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
                 Container(
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                        color: Theme.of(context).backgroundColor,
-                        borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            topRight: Radius.circular(20))),
-                    child: body),
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).backgroundColor,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(20),
+                      topRight: Radius.circular(20),
+                    ),
+                  ),
+                  child: body,
+                ),
               ],
             ),
           ),
