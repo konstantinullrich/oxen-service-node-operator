@@ -1,13 +1,12 @@
 import 'dart:io' show Platform;
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/stores/node_sync_store.dart';
+import 'package:oxen_service_node/src/utils/router/oxen_routes.dart';
 import 'package:oxen_service_node/src/utils/short_address.dart';
 import 'package:oxen_service_node/src/utils/theme/palette.dart';
 import 'package:oxen_service_node/src/widgets/base_page.dart';
@@ -15,9 +14,6 @@ import 'package:oxen_service_node/src/widgets/nav/nav_list_header.dart';
 import 'package:oxen_service_node/src/widgets/nav/nav_list_multiheader.dart';
 import 'package:oxen_service_node/src/widgets/primary_button.dart';
 import 'package:provider/provider.dart';
-
-import '../../oxen/service_node.dart';
-import '../../utils/router/oxen_routes.dart';
 
 class DetailsServiceNodePage extends BasePage {
   DetailsServiceNodePage(this.publicKey, {this.nodeName});
@@ -58,7 +54,6 @@ class DetailsServiceNodePage extends BasePage {
 
   @override
   Widget body(BuildContext context) {
-    final serviceNodeSources = context.watch<Box<ServiceNode>>();
     final nodeSyncStatus = context.watch<NodeSyncStore>();
     final localeName = Platform.localeName;
 
