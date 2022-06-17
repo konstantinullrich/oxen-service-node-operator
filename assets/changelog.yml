@@ -1,4 +1,13 @@
 -
+  version: 1.0.5
+  changes:
+    - Add details of node contributors to the node details page (Implemented by ianmacd)
+    - Improved remove node functionality
+    - Nodes are now sortable by name
+    - Earned downtime credit is now displayed in red if < 2 hours
+    - More minor improvements
+
+-
   version: 1.0.4
   changes:
     - Display Lokinet router reachability on dashboard (Implemented by ianmacd)
