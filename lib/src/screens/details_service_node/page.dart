@@ -1,13 +1,12 @@
 import 'dart:io' show Platform;
 
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:hive/hive.dart';
 import 'package:intl/intl.dart';
 import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/stores/node_sync_store.dart';
+import 'package:oxen_service_node/src/utils/router/oxen_routes.dart';
 import 'package:oxen_service_node/src/utils/short_address.dart';
 import 'package:oxen_service_node/src/utils/theme/palette.dart';
 import 'package:oxen_service_node/src/widgets/base_page.dart';
@@ -15,9 +14,6 @@ import 'package:oxen_service_node/src/widgets/nav/nav_list_header.dart';
 import 'package:oxen_service_node/src/widgets/nav/nav_list_multiheader.dart';
 import 'package:oxen_service_node/src/widgets/primary_button.dart';
 import 'package:provider/provider.dart';
-
-import '../../oxen/service_node.dart';
-import '../../utils/router/oxen_routes.dart';
 
 class DetailsServiceNodePage extends BasePage {
   DetailsServiceNodePage(this.publicKey, {this.nodeName});
@@ -52,9 +48,12 @@ class DetailsServiceNodePage extends BasePage {
         .add(Duration(minutes: expectedAddedBlocks * AVERAGE_BLOCK_MINUTES));
   }
 
+  double estimateDowntimeHours(int earnedDowntimeBlocks) {
+    return (earnedDowntimeBlocks / 60 * AVERAGE_BLOCK_MINUTES);
+  }
+
   @override
   Widget body(BuildContext context) {
-    final serviceNodeSources = context.watch<Box<ServiceNode>>();
     final nodeSyncStatus = context.watch<NodeSyncStore>();
     final localeName = Platform.localeName;
 
@@ -144,8 +143,11 @@ class DetailsServiceNodePage extends BasePage {
                     node.lastUptimeProof.millisecondsSinceEpoch == 0
                         ? '-'
                         : '${DateFormat.yMMMd(localeName).add_jms().format(node.lastUptimeProof)} (${S.of(context).minutes_ago(DateTime.now().difference(node.lastUptimeProof).inMinutes)})'),
-                NavListMultiHeader(S.of(context).earned_downtime_blocks,
-                    '${node.earnedDowntimeBlocks} / $DECOMMISSION_MAX_CREDIT (${(node.earnedDowntimeBlocks / 60 * AVERAGE_BLOCK_MINUTES).toStringAsFixed(2)} ${S.of(context).hours})'),
+                NavListMultiHeader(
+                  S.of(context).earned_downtime_blocks,
+                  '${node.earnedDowntimeBlocks} / $DECOMMISSION_MAX_CREDIT (${estimateDowntimeHours(node.earnedDowntimeBlocks).toStringAsFixed(2)} ${S.of(context).hours})',
+                  subtitleColor: estimateDowntimeHours(node.earnedDowntimeBlocks) < 2 ? Colors.red : null,
+                ),
                 if (node.active)
                   Center(
                       child: Column(
