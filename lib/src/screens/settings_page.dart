@@ -2,18 +2,29 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/stores/settings_store.dart';
+import 'package:oxen_service_node/src/utils/dashboard_sort_order.dart';
 import 'package:oxen_service_node/src/utils/router/oxen_routes.dart';
 import 'package:oxen_service_node/src/utils/theme/theme_changer.dart';
 import 'package:oxen_service_node/src/widgets/base_page.dart';
 import 'package:oxen_service_node/src/widgets/nav/nav_list_arrow.dart';
 import 'package:oxen_service_node/src/widgets/nav/nav_list_header.dart';
 import 'package:oxen_service_node/src/widgets/nav/nav_list_trailing.dart';
+import 'package:oxen_service_node/src/widgets/present_picker.dart';
 import 'package:oxen_service_node/src/widgets/standard_switch.dart';
 import 'package:provider/provider.dart';
 
 class SettingsPage extends BasePage {
   @override
   String get title => S.current.title_settings;
+
+  Future<void> _setDashboardOrderBy(BuildContext context) async {
+    final settingsStore = context.read<SettingsStore>();
+    final selectedDashboardOrderBy = await presentPicker(context, DashboardOrderBy.values);
+
+    if (selectedDashboardOrderBy != null) {
+      await settingsStore.setDashboardOrderBy(selectedDashboardOrderBy);
+    }
+  }
 
   @override
   Widget body(BuildContext context) {
@@ -47,14 +58,14 @@ class SettingsPage extends BasePage {
           text: S.of(context).settings_order_by,
           trailing: Observer(builder: (_) {
             return Text(
-              settingsStore.dashboardOrderBy.name,
+              settingsStore.dashboardOrderBy.toString(),
               textAlign: TextAlign.right,
               style: TextStyle(
                   fontSize: 16.0,
                   color: Theme.of(context).primaryTextTheme.subtitle2.color),
             );
           }),
-          onTap: () {}),
+          onTap: () => _setDashboardOrderBy(context)),
       NavListHeader(S.of(context).settings_title_app),
       Observer(builder: (_) {
         return NavListTrailing(

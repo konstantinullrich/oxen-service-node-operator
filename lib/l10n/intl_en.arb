@@ -32,6 +32,8 @@
   "lokinet_router": "Lokinet\nRouter",
   "last_reward": "Last\nReward",
   "more": "More",
+  "ok": "OK",
+  "please_select" : "Please select:",
 
   "swarm_id": "Swarm ID",
   "last_reward_height": "Last Reward Height",
@@ -90,5 +92,8 @@
   "error_text_daemon_port" : "Daemon port can only contain numbers between 0 and 65535",
   "error_text_daemon_address": "Please enter a valid iPv4 address or domain name",
 
-  "success_saved_node": "Node successfully saved"
+  "success_saved_node": "Node successfully saved",
+
+  "dashboard_order_by_name": "Name",
+  "dashboard_order_by_next_reward": "Next Reward"
 }
