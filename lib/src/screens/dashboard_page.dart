@@ -5,6 +5,8 @@ import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/oxen/service_node.dart';
 import 'package:oxen_service_node/src/oxen/service_node_status.dart';
 import 'package:oxen_service_node/src/stores/node_sync_store.dart';
+import 'package:oxen_service_node/src/stores/settings_store.dart';
+import 'package:oxen_service_node/src/utils/dashboard_sort_order.dart';
 import 'package:oxen_service_node/src/utils/router/oxen_routes.dart';
 import 'package:oxen_service_node/src/utils/theme/palette.dart';
 import 'package:oxen_service_node/src/widgets/base_page.dart';
@@ -80,6 +82,7 @@ class DashboardPage extends BasePage {
   Widget body(BuildContext context) {
     final nodeSyncStatus = context.watch<NodeSyncStore>();
     final nodes = context.watch<Box<ServiceNode>>();
+    final settingsStore = Provider.of<SettingsStore>(context);
 
     return Observer(builder: (_) {
       final operatorStatus = OperatorStatus.load(nodeSyncStatus.nodes);
@@ -91,9 +94,22 @@ class DashboardPage extends BasePage {
               : S.of(context).health_out_of_nodes(
                   operatorStatus.healthyNodes, operatorStatus.totalNodes));
 
-      if (nodeSyncStatus.nodes != null)
-        nodeSyncStatus.nodes.sort((a, b) =>
-            a.lastReward.blockHeight.compareTo(b.lastReward.blockHeight));
+      if (nodeSyncStatus.nodes != null) {
+        if (settingsStore.dashboardOrderBy == DashboardOrderBy.NAME) {
+          nodeSyncStatus.nodes.sort((a, b) {
+            var aN = nodes.values
+                .firstWhere((e) => e.publicKey == b.nodeInfo.publicKey)
+                .name.toUpperCase();
+            var bN = nodes.values
+                .firstWhere((e) => e.publicKey == a.nodeInfo.publicKey)
+                .name.toUpperCase();
+            return bN.compareTo(aN);
+          });
+        } else {
+          nodeSyncStatus.nodes.sort((a, b) =>
+              a.lastReward.blockHeight.compareTo(b.lastReward.blockHeight));
+        }
+      }
 
       return ListView(
         shrinkWrap: true,

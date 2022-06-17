@@ -325,6 +325,26 @@ class S {
     );
   }
 
+  /// `OK`
+  String get ok {
+    return Intl.message(
+      'OK',
+      name: 'ok',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please select:`
+  String get please_select {
+    return Intl.message(
+      'Please select:',
+      name: 'please_select',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Swarm ID`
   String get swarm_id {
     return Intl.message(
@@ -745,6 +765,16 @@ class S {
     );
   }
 
+  /// `Oder Nodes by`
+  String get settings_order_by {
+    return Intl.message(
+      'Oder Nodes by',
+      name: 'settings_order_by',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Dark Theme`
   String get settings_dark_theme {
     return Intl.message(
@@ -840,6 +870,26 @@ class S {
     return Intl.message(
       'Node successfully saved',
       name: 'success_saved_node',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Name`
+  String get dashboard_order_by_name {
+    return Intl.message(
+      'Name',
+      name: 'dashboard_order_by_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Next Reward`
+  String get dashboard_order_by_next_reward {
+    return Intl.message(
+      'Next Reward',
+      name: 'dashboard_order_by_next_reward',
       desc: '',
       args: [],
     );

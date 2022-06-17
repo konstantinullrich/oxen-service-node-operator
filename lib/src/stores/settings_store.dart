@@ -1,6 +1,7 @@
 import 'package:hive/hive.dart';
 import 'package:mobx/mobx.dart';
 import 'package:oxen_service_node/src/oxen/daemon.dart';
+import 'package:oxen_service_node/src/utils/dashboard_sort_order.dart';
 import 'package:oxen_service_node/src/utils/language.dart';
 import 'package:oxen_service_node/src/utils/theme/theme_changer.dart';
 import 'package:oxen_service_node/src/utils/theme/themes.dart';
@@ -11,12 +12,13 @@ part 'settings_store.g.dart';
 class SettingsStore = SettingsStoreBase with _$SettingsStore;
 
 abstract class SettingsStoreBase with Store {
-  SettingsStoreBase(this._sharedPreferences, this.isDarkTheme,
-      this.languageCode, this._daemons);
+  SettingsStoreBase(this._sharedPreferences, this._daemons, this.isDarkTheme,
+      this.languageCode, this.dashboardOrderBy);
 
   static const currentNodeIdKey = 'current_node_id';
   static const currentLanguageCodeKey = 'language_code';
   static const currentDarkThemeKey = 'dark_theme';
+  static const currentDashboardOrderBy = 'dashboard_sort_order';
 
   static Future<SettingsStore> load(
       SharedPreferences sharedPreferences, Box<Daemon> daemons) async {
@@ -26,8 +28,12 @@ abstract class SettingsStoreBase with Store {
         sharedPreferences.getString(currentLanguageCodeKey) ??
             await Language.localeDetection();
 
-    final store = SettingsStore(
-        sharedPreferences, savedDarkTheme, savedLanguageCode, daemons);
+    final savedDashboardOrderBy = DashboardOrderBy.parse(
+            sharedPreferences.getString(currentDashboardOrderBy)) ??
+        DashboardOrderBy.NAME;
+
+    final store = SettingsStore(sharedPreferences, daemons, savedDarkTheme,
+        savedLanguageCode, savedDashboardOrderBy);
     store.loadSettings();
 
     return store;
@@ -41,6 +47,9 @@ abstract class SettingsStoreBase with Store {
 
   @observable
   Daemon daemon;
+
+  @observable
+  DashboardOrderBy dashboardOrderBy;
 
   Box<Daemon> _daemons;
 
@@ -78,5 +87,12 @@ abstract class SettingsStoreBase with Store {
   Future setDaemon(Daemon newDaemon) async {
     daemon = newDaemon;
     await _sharedPreferences.setInt(currentNodeIdKey, daemon.key);
+  }
+
+  @action
+  Future setDashboardOrderBy(DashboardOrderBy newDashboardSortOrder) async {
+    dashboardOrderBy = newDashboardSortOrder;
+    await _sharedPreferences.setString(
+        currentDashboardOrderBy, dashboardOrderBy.name);
   }
 }

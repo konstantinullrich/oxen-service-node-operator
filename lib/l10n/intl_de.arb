@@ -32,6 +32,8 @@
   "lokinet_router": "Lokinet\nRouter",
   "last_reward": "Letzte\nBelohung",
   "more": "Mehr",
+  "ok": "OK",
+  "please_select" : "Bitte auswählen:",
 
   "swarm_id": "Swarm ID",
   "last_reward_height": "Letzte Belohungs Höhe",
@@ -76,6 +78,7 @@
   "settings_language": "Sprache",
   "settings_daemon": "Daemon",
   "settings_service_nodes": "Service Nodes",
+  "settings_order_by": "Sortierung",
   "settings_dark_theme": "Dunkles Farbschema",
   "settings_light_theme": "Helles Farbschema",
 
@@ -87,5 +90,8 @@
   "error_text_daemon_port" : "Der Daemon Port kann nur Nummern zwischen 0 und 65535 beinhalten.",
   "error_text_daemon_address": "Bitte gebe eine valide iPv4 Adresse oder Domain Name ein.",
 
-  "success_saved_node": "Node gespeichert"
+  "success_saved_node": "Node gespeichert",
+
+  "dashboard_order_by_name": "Name",
+  "dashboard_order_by_next_reward": "Nächste Belohnung"
 }
