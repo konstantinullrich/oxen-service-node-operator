@@ -26,7 +26,7 @@ class OperatorStatus {
 
     if (nodes != null) {
       for (final node in nodes) {
-        if (node.active && node.funded)
+        if ((node.active && node.funded) || (!node.active && !node.funded))
           healthyNodes++;
         else
           unhealthyNodes++;
