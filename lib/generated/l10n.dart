@@ -765,10 +765,10 @@ class S {
     );
   }
 
-  /// `Oder Nodes by`
+  /// `Order Nodes by`
   String get settings_order_by {
     return Intl.message(
-      'Oder Nodes by',
+      'Order Nodes by',
       name: 'settings_order_by',
       desc: '',
       args: [],
