@@ -95,17 +95,23 @@ class DashboardPage extends BasePage {
                   operatorStatus.healthyNodes, operatorStatus.totalNodes));
 
       if (nodeSyncStatus.nodes != null) {
-        if (settingsStore.dashboardOrderBy == DashboardOrderBy.NAME) {
-          nodeSyncStatus.nodes.sort((a, b) {
-            var aN = nodes.values
-                .firstWhere((e) => e.publicKey == b.nodeInfo.publicKey)
-                .name.toUpperCase();
-            var bN = nodes.values
-                .firstWhere((e) => e.publicKey == a.nodeInfo.publicKey)
-                .name.toUpperCase();
-            return bN.compareTo(aN);
-          });
-        } else {
+        switch (settingsStore.dashboardOrderBy) {
+	  case DashboardOrderBy.NAME:
+	    nodeSyncStatus.nodes.sort((a, b) {
+              var aN = nodes.values
+                  .firstWhere((e) => e.publicKey == b.nodeInfo.publicKey)
+                  .name.toUpperCase();
+              var bN = nodes.values
+                  .firstWhere((e) => e.publicKey == a.nodeInfo.publicKey)
+                  .name.toUpperCase();
+              return bN.compareTo(aN);
+	    });
+	    break;
+	  case DashboardOrderBy.LAST_UPTIME_PROOF:
+            nodeSyncStatus.nodes.sort((a, b) =>
+                a.lastUptimeProof.compareTo(b.lastUptimeProof));
+	    break;
+	  case DashboardOrderBy.NAME:
           nodeSyncStatus.nodes.sort((a, b) =>
               a.lastReward.blockHeight.compareTo(b.lastReward.blockHeight));
         }
