@@ -2,8 +2,14 @@
   uri: public.loki.foundation:22023
   is_default: true
 -
-  uri: node.loki-pool.com:18081
+  uri: imaginary.stream:22023
   is_default: false
 -
-  uri: freyr.imaginary.stream:22023
+  uri: nodes.hashvault.pro:22023
+  is_default: false
+-
+  uri: explorer.loki.aussie-pools.com:18081
+  is_default: false
+-
+  uri: oxen-rpc.caliban.org:22023
   is_default: false
