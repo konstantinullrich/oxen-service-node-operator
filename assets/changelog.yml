@@ -2,8 +2,11 @@
   version: 1.0.5
   changes:
     - Add details of node contributors to the node details page (Implemented by ianmacd)
-    - Improved remove node functionality
+    - Don't count a node awaiting contributions as unhealthy (Implemented by ianmacd)
+    - Allow hyphens in the hostnames of RPC nodes (Implemented by ianmacd)
+    - Add node sorting by last uptime proof, oldest first (Implemented by ianmacd)
     - Nodes are now sortable by name
+    - Improved remove node functionality
     - Earned downtime credit is now displayed in red if < 2 hours
     - More minor improvements
 
