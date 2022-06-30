@@ -96,24 +96,26 @@ class DashboardPage extends BasePage {
 
       if (nodeSyncStatus.nodes != null) {
         switch (settingsStore.dashboardOrderBy) {
-	  case DashboardOrderBy.NAME:
-	    nodeSyncStatus.nodes.sort((a, b) {
+          case DashboardOrderBy.NAME:
+            nodeSyncStatus.nodes.sort((a, b) {
               var aN = nodes.values
                   .firstWhere((e) => e.publicKey == b.nodeInfo.publicKey)
-                  .name.toUpperCase();
+                  .name
+                  .toUpperCase();
               var bN = nodes.values
                   .firstWhere((e) => e.publicKey == a.nodeInfo.publicKey)
-                  .name.toUpperCase();
+                  .name
+                  .toUpperCase();
               return bN.compareTo(aN);
-	    });
-	    break;
-	  case DashboardOrderBy.LAST_UPTIME_PROOF:
+            });
+            break;
+          case DashboardOrderBy.LAST_UPTIME_PROOF:
+            nodeSyncStatus.nodes
+                .sort((a, b) => a.lastUptimeProof.compareTo(b.lastUptimeProof));
+            break;
+          case DashboardOrderBy.NEXT_REWARD:
             nodeSyncStatus.nodes.sort((a, b) =>
-                a.lastUptimeProof.compareTo(b.lastUptimeProof));
-	    break;
-	  case DashboardOrderBy.NAME:
-          nodeSyncStatus.nodes.sort((a, b) =>
-              a.lastReward.blockHeight.compareTo(b.lastReward.blockHeight));
+                a.lastReward.blockHeight.compareTo(b.lastReward.blockHeight));
         }
       }
 
