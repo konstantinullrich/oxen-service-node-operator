@@ -1,14 +1,14 @@
 -
-  uri: public.loki.foundation:22023
+  uri: public-na.optf.ngo:22023
   is_default: true
 -
-  uri: imaginary.stream:22023
+  uri: public-eu.optf.ngo:22023
   is_default: false
 -
   uri: nodes.hashvault.pro:22023
   is_default: false
 -
-  uri: explorer.loki.aussie-pools.com:18081
+  uri: explorer.oxen.aussie-pools.com:18081
   is_default: false
 -
   uri: oxen-rpc.caliban.org:22023
