@@ -24,13 +24,11 @@ class OperatorStatus {
     var healthyNodes = 0;
     var unhealthyNodes = 0;
 
-    if (nodes != null) {
-      for (final node in nodes) {
-        if ((node.active && node.funded) || (!node.active && !node.funded))
-          healthyNodes++;
-        else
-          unhealthyNodes++;
-      }
+    for (final node in nodes) {
+      if ((node.active && node.funded) || (!node.active && !node.funded))
+        healthyNodes++;
+      else
+        unhealthyNodes++;
     }
 
     return OperatorStatus(healthyNodes, unhealthyNodes);
@@ -58,7 +56,7 @@ class DashboardPage extends BasePage {
             nodeSyncStatus.sync();
           },
           child: Icon(Icons.sync,
-              color: Theme.of(context).primaryTextTheme.caption.color,
+              color: Theme.of(context).primaryTextTheme.bodySmall?.color,
               size: 24),
         );
       }),
@@ -73,7 +71,7 @@ class DashboardPage extends BasePage {
           padding: EdgeInsets.all(0),
           onPressed: () => Navigator.of(context).pushNamed(OxenRoutes.settings),
           child: Icon(Icons.settings_sharp,
-              color: Theme.of(context).primaryTextTheme.caption.color,
+              color: Theme.of(context).primaryTextTheme.bodySmall?.color,
               size: 24)),
     );
   }
@@ -94,29 +92,27 @@ class DashboardPage extends BasePage {
               : S.of(context).health_out_of_nodes(
                   operatorStatus.healthyNodes, operatorStatus.totalNodes));
 
-      if (nodeSyncStatus.nodes != null) {
-        switch (settingsStore.dashboardOrderBy) {
-          case DashboardOrderBy.NAME:
-            nodeSyncStatus.nodes.sort((a, b) {
-              var aN = nodes.values
-                  .firstWhere((e) => e.publicKey == b.nodeInfo.publicKey)
-                  .name
-                  .toUpperCase();
-              var bN = nodes.values
-                  .firstWhere((e) => e.publicKey == a.nodeInfo.publicKey)
-                  .name
-                  .toUpperCase();
-              return bN.compareTo(aN);
-            });
-            break;
-          case DashboardOrderBy.LAST_UPTIME_PROOF:
-            nodeSyncStatus.nodes
-                .sort((a, b) => a.lastUptimeProof.compareTo(b.lastUptimeProof));
-            break;
-          case DashboardOrderBy.NEXT_REWARD:
-            nodeSyncStatus.nodes.sort((a, b) =>
-                a.lastReward.blockHeight.compareTo(b.lastReward.blockHeight));
-        }
+      switch (settingsStore.dashboardOrderBy) {
+        case DashboardOrderBy.NAME:
+          nodeSyncStatus.nodes.sort((a, b) {
+            var aN = nodes.values
+                .firstWhere((e) => e.publicKey == b.nodeInfo.publicKey)
+                .name
+                .toUpperCase();
+            var bN = nodes.values
+                .firstWhere((e) => e.publicKey == a.nodeInfo.publicKey)
+                .name
+                .toUpperCase();
+            return bN.compareTo(aN);
+          });
+          break;
+        case DashboardOrderBy.LAST_UPTIME_PROOF:
+          nodeSyncStatus.nodes
+              .sort((a, b) => a.lastUptimeProof.compareTo(b.lastUptimeProof));
+          break;
+        case DashboardOrderBy.NEXT_REWARD:
+          nodeSyncStatus.nodes.sort((a, b) =>
+              a.lastReward.blockHeight.compareTo(b.lastReward.blockHeight));
       }
 
       return ListView(
@@ -169,9 +165,7 @@ class DashboardPage extends BasePage {
           ListView.builder(
               shrinkWrap: true,
               physics: NeverScrollableScrollPhysics(),
-              itemCount: nodeSyncStatus.nodes != null
-                  ? nodeSyncStatus.nodes.length
-                  : 0,
+              itemCount: nodeSyncStatus.nodes.length,
               itemBuilder: (BuildContext context, int index) {
                 final nodeStatus = nodeSyncStatus.nodes[index];
                 final serviceNodeKey = nodeStatus.nodeInfo.publicKey;

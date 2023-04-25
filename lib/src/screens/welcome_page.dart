@@ -10,7 +10,7 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Theme.of(context).backgroundColor,
+        backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
         resizeToAvoidBottomInset: false,
         body: SafeArea(child: body(context)));
   }
@@ -34,7 +34,7 @@ class WelcomePage extends StatelessWidget {
                 child: Text(
                   S.of(context).welcome,
                   style: TextStyle(
-                    fontSize: 30.0,
+                    fontSize: 27.0,
                     fontWeight: FontWeight.bold,
                   ),
                   textScaleFactor: textScaleFactor,
@@ -46,7 +46,7 @@ class WelcomePage extends StatelessWidget {
                   child: Text(
                     S.of(context).welcome_first_line,
                     style: TextStyle(
-                      fontSize: 22.0,
+                      fontSize: 20.0,
                     ),
                     textScaleFactor: textScaleFactor,
                     textAlign: TextAlign.center,
@@ -56,7 +56,7 @@ class WelcomePage extends StatelessWidget {
                   child: Text(
                     S.of(context).add_node_to_get_started,
                     style: TextStyle(
-                      fontSize: 22.0,
+                      fontSize: 20.0,
                       color: Palette.lightBlue,
                     ),
                     textScaleFactor: textScaleFactor,
@@ -65,18 +65,21 @@ class WelcomePage extends StatelessWidget {
             ]),
       ),
       Container(
+          width: double.infinity,
           padding: EdgeInsets.fromLTRB(20.0, 10.0, 20.0, 20.0),
-          child: Column(children: <Widget>[
-            PrimaryButton(
-                onPressed: () {
-                  Navigator.pushNamed(context, OxenRoutes.addServiceNode);
-                },
-                text: S.of(context).add_service_node,
-                color:
-                    Theme.of(context).primaryTextTheme.button.backgroundColor,
-                borderColor:
-                    Theme.of(context).primaryTextTheme.button.decorationColor),
-          ]))
+          child: PrimaryButton(
+              onPressed: () {
+                Navigator.pushNamed(context, OxenRoutes.addServiceNode);
+              },
+              text: S.of(context).add_service_node,
+              color: Theme.of(context)
+                  .primaryTextTheme
+                  .labelLarge
+                  ?.backgroundColor,
+              borderColor: Theme.of(context)
+                  .primaryTextTheme
+                  .labelLarge
+                  ?.decorationColor))
     ]);
   }
 }

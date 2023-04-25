@@ -11,13 +11,12 @@ Future<List<Daemon>> loadDefaultNodes() async {
     if (raw is Map) {
       return Daemon.fromMap(raw);
     }
-
     return null;
-  }).toList();
+  }).whereType<Daemon>().toList();
 }
 
 Future resetToDefault(Box<Daemon> nodeSource) async {
-  final nodes = await loadDefaultNodes();
+  final nodes = await loadDefaultNodes() ?? [];
   final entities = <int, Daemon>{};
 
   await nodeSource.clear();

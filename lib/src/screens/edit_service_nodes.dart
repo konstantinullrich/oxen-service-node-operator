@@ -23,7 +23,7 @@ class EditServiceNodesPage extends BasePage {
           onPressed: () =>
               Navigator.of(context).pushNamed(OxenRoutes.addServiceNode),
           child: Icon(Icons.add_sharp,
-              color: Theme.of(context).primaryTextTheme.caption.color,
+              color: Theme.of(context).primaryTextTheme.bodySmall?.color,
               size: 24)),
     );
   }
@@ -70,16 +70,16 @@ class EditServiceNodesPageBodyState extends State<EditServiceNodesPageBody> {
                                 fontSize: 18.0,
                                 color: Theme.of(context)
                                     .primaryTextTheme
-                                    .headline6
-                                    .color),
+                                    .titleLarge
+                                    ?.color),
                           ),
                           Text(publicKey.toShortAddress(16),
                             style: TextStyle(
                                 fontSize: 10.0,
                                 color: Theme.of(context)
                                     .primaryTextTheme
-                                    .subtitle2
-                                    .color),
+                                    .titleSmall
+                                    ?.color),
                           ),
                         ],
                       ),

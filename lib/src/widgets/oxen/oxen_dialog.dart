@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 Future showOxenDialog(BuildContext context, Widget child,
-    {void Function(BuildContext context) onDismiss}) {
+    {void Function(BuildContext context)? onDismiss}) {
   return showDialog<void>(
     builder: (_) => OxenDialog(body: child, onDismiss: onDismiss),
     context: context,
@@ -13,14 +13,14 @@ Future showOxenDialog(BuildContext context, Widget child,
 class OxenDialog extends StatelessWidget {
   OxenDialog({this.body, this.onDismiss});
 
-  final void Function(BuildContext context) onDismiss;
-  final Widget body;
+  final void Function(BuildContext context)? onDismiss;
+  final Widget? body;
 
   void _onDismiss(BuildContext context) {
     if (onDismiss == null) {
       Navigator.of(context).pop();
     } else {
-      onDismiss(context);
+      onDismiss!(context);
     }
   }
 

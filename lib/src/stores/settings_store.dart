@@ -29,8 +29,7 @@ abstract class SettingsStoreBase with Store {
             await Language.localeDetection();
 
     final savedDashboardOrderBy = DashboardOrderBy.parse(
-            sharedPreferences.getString(currentDashboardOrderBy)) ??
-        DashboardOrderBy.NAME;
+            sharedPreferences.getString(currentDashboardOrderBy) ?? DashboardOrderBy.NAME.name);
 
     final store = SettingsStore(sharedPreferences, daemons, savedDarkTheme,
         savedLanguageCode, savedDashboardOrderBy);
@@ -46,7 +45,7 @@ abstract class SettingsStoreBase with Store {
   String languageCode;
 
   @observable
-  Daemon daemon;
+  Daemon? daemon;
 
   @observable
   DashboardOrderBy dashboardOrderBy;
@@ -55,15 +54,15 @@ abstract class SettingsStoreBase with Store {
 
   SharedPreferences _sharedPreferences;
 
-  ThemeChanger themeChanger;
+  ThemeChanger? themeChanger;
 
-  Language language;
+  Language? language;
 
   void loadSettings() {
-    daemon = _fetchCurrentDaemon();
+    daemon = _fetchCurrentDaemon()!;
   }
 
-  Daemon _fetchCurrentDaemon() {
+  Daemon? _fetchCurrentDaemon() {
     final id = _sharedPreferences.getInt(currentNodeIdKey) ?? 0;
     return _daemons.get(id);
   }
@@ -72,21 +71,21 @@ abstract class SettingsStoreBase with Store {
   Future<void> toggleDarkTheme() async {
     isDarkTheme = !isDarkTheme;
     if (themeChanger != null)
-      themeChanger.theme = isDarkTheme ? Themes.darkTheme : Themes.lightTheme;
+      themeChanger!.theme = isDarkTheme ? Themes.darkTheme : Themes.lightTheme;
     await _sharedPreferences.setBool(currentDarkThemeKey, isDarkTheme);
   }
 
   @action
   Future setLanguageCode(String newLanguageCode) async {
     languageCode = newLanguageCode;
-    if (language != null) language.currentLanguage = languageCode;
+    if (language != null) language!.currentLanguage = languageCode;
     await _sharedPreferences.setString(currentLanguageCodeKey, languageCode);
   }
 
   @action
   Future setDaemon(Daemon newDaemon) async {
     daemon = newDaemon;
-    await _sharedPreferences.setInt(currentNodeIdKey, daemon.key);
+    await _sharedPreferences.setInt(currentNodeIdKey, daemon?.key);
   }
 
   @action

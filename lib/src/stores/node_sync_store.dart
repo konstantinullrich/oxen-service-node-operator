@@ -18,7 +18,7 @@ abstract class NodeSyncStoreBase with Store {
         _serviceNodes.values.map((e) => e.publicKey).toList();
     try {
       final resultData =
-          await _settingsStore.daemon.sendRPCRequest('get_service_nodes');
+          await _settingsStore.daemon!.sendRPCRequest('get_service_nodes');
       final results = (resultData['result']['service_node_states'] as List);
       currentHeight = resultData['result']['height'] as int;
       networkSize =
@@ -70,13 +70,13 @@ abstract class NodeSyncStoreBase with Store {
   bool isSyncing;
 
   @observable
-  int currentHeight;
+  int currentHeight = 0;
 
   @observable
-  int networkSize;
+  int networkSize = 0;
 
   @observable
-  List<ServiceNodeStatus> nodes;
+  List<ServiceNodeStatus> nodes = [];
 
   SettingsStore _settingsStore;
 

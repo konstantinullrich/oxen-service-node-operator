@@ -29,7 +29,7 @@ class Daemon extends HiveObject {
   }
 
   Future<Map<String, dynamic>> sendRPCRequest(String method,
-      {Map params}) async {
+      {Map? params}) async {
     Map<String, dynamic> resultBody;
 
     final requestBody = params != null

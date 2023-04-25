@@ -7,11 +7,11 @@ import 'package:provider/provider.dart';
 class OxenAppBar extends StatelessWidget
     implements ObstructingPreferredSizeWidget {
   factory OxenAppBar(
-      {BuildContext context,
-      Widget leading,
-      Widget middle,
-      Widget trailing,
-      Color backgroundColor}) {
+      {required BuildContext context,
+      Widget? leading,
+      Widget? middle,
+      Widget? trailing,
+      Color? backgroundColor}) {
     final _themeChanger = Provider.of<ThemeChanger>(context);
     final _isDarkTheme = _themeChanger.theme == Themes.darkTheme;
 
@@ -25,11 +25,11 @@ class OxenAppBar extends StatelessWidget
   }
 
   factory OxenAppBar.withShadow(
-      {BuildContext context,
-      Widget leading,
-      Widget middle,
-      Widget trailing,
-      Color backgroundColor}) {
+      {required BuildContext context,
+      Widget? leading,
+      Widget? middle,
+      Widget? trailing,
+      Color? backgroundColor}) {
     final _themeChanger = Provider.of<ThemeChanger>(context);
     final _isDarkTheme = _themeChanger.theme == Themes.darkTheme;
 
@@ -64,11 +64,11 @@ class OxenAppBar extends StatelessWidget
   static const _originalHeight = 44.0; // iOS nav bar height
   static const _height = 60.0;
 
-  final Widget leading;
-  final Widget middle;
-  final Widget trailing;
-  final Color backgroundColor;
-  final BoxDecoration decoration;
+  final Widget? leading;
+  final Widget? middle;
+  final Widget? trailing;
+  final Color? backgroundColor;
+  final BoxDecoration? decoration;
   final double height;
 
   @override

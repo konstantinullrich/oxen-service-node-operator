@@ -20,25 +20,25 @@ class ServiceNode extends HiveObject {
   String publicKey;
 
   @HiveField(2)
-  String operatorAddress;
+  late String operatorAddress;
 
   @HiveField(3)
-  int registrationHeight;
+  late int registrationHeight;
 
   @HiveField(4)
-  int registrationHfVersion;
+  late int registrationHfVersion;
 
   @HiveField(5)
-  String nodeVersion;
+  late String nodeVersion;
 
   @HiveField(6)
-  String ipAddress;
+  late String ipAddress;
 
   @HiveField(7)
-  String storageServerVersion;
+  late String storageServerVersion;
 
   @HiveField(8)
-  String lokinetVersion;
+  late String lokinetVersion;
 
   ServiceNodeInfo get nodeInfo => ServiceNodeInfo(
       operatorAddress,

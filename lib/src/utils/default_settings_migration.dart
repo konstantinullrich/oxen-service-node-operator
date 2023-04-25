@@ -42,8 +42,8 @@ Future defaultSettingsMigration(int version,
 }
 
 Future<void> changeCurrentNodeToDefault(
-    {@required SharedPreferences sharedPreferences,
-    @required Box<Daemon> nodes}) async {
+    {required SharedPreferences sharedPreferences,
+    required Box<Daemon> nodes}) async {
   final timeZone = DateTime.now().timeZoneOffset.inHours;
   var nodeUri = '';
 

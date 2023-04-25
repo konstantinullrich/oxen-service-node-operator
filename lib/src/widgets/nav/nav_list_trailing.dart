@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
 class NavListTrailing extends StatelessWidget {
-  NavListTrailing({this.text, this.leading, this.onTap, this.trailing});
+  NavListTrailing({required this.text, this.leading, this.onTap, this.trailing});
 
   final String text;
-  final Widget leading;
-  final Widget trailing;
-  final GestureTapCallback onTap;
+  final Widget? leading;
+  final Widget? trailing;
+  final GestureTapCallback? onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class NavListTrailing extends StatelessWidget {
         title: Text(text,
             style: TextStyle(
                 fontSize: 16.0,
-                color: Theme.of(context).primaryTextTheme.headline6.color)),
+                color: Theme.of(context).primaryTextTheme.titleLarge?.color)),
         trailing: trailing,
         onTap: onTap,
       ),

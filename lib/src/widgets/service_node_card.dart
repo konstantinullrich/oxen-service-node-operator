@@ -81,20 +81,20 @@ class _ServiceNodeCardState extends State<ServiceNodeCard> {
               ? Icons.keyboard_arrow_up_sharp
               : Icons.keyboard_arrow_down_sharp,
           size: 30,
-          color: Theme.of(context).primaryTextTheme.caption.color),
+          color: Theme.of(context).primaryTextTheme.bodySmall?.color),
       onExpansionChanged: (bool expanded) {
         setState(() => _tileExpanded = expanded);
       },
       title: Text(name,
           style: TextStyle(
               fontSize: 18,
-              color: Theme.of(context).primaryTextTheme.caption.color)),
+              color: Theme.of(context).primaryTextTheme.bodySmall?.color)),
       subtitle: Text(
           '$serviceNodeKeyShort\n${S.of(context).uptime_proof}: ${lastUptimeProof.millisecondsSinceEpoch == 0 ? '-' : S.of(context).minutes_ago(DateTime.now().difference(lastUptimeProof).inMinutes)}$earnedDowntimeBlocksDisplay\n${S.of(context).contributors}: ${contribution.contributors.length}$remainingContribution',
           style: TextStyle(
               fontSize: 13,
               height: 1.5,
-              color: Theme.of(context).primaryTextTheme.caption.color)),
+              color: Theme.of(context).primaryTextTheme.bodySmall?.color)),
       children: [
         Row(children: [
           Expanded(

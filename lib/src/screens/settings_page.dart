@@ -22,9 +22,7 @@ class SettingsPage extends BasePage {
     final selectedDashboardOrderBy =
         await presentPicker(context, DashboardOrderBy.values);
 
-    if (selectedDashboardOrderBy != null) {
-      await settingsStore.setDashboardOrderBy(selectedDashboardOrderBy);
-    }
+    await settingsStore.setDashboardOrderBy(selectedDashboardOrderBy as DashboardOrderBy);
   }
 
   @override
@@ -41,11 +39,11 @@ class SettingsPage extends BasePage {
           text: S.of(context).settings_daemon,
           trailing: Observer(builder: (_) {
             return Text(
-              settingsStore.daemon == null ? '' : settingsStore.daemon.hostname,
+              settingsStore.daemon!.hostname,
               textAlign: TextAlign.right,
               style: TextStyle(
                   fontSize: 16.0,
-                  color: Theme.of(context).primaryTextTheme.subtitle2.color),
+                  color: Theme.of(context).primaryTextTheme.titleSmall?.color),
             );
           }),
           onTap: () =>
@@ -66,7 +64,7 @@ class SettingsPage extends BasePage {
               textAlign: TextAlign.right,
               style: TextStyle(
                   fontSize: 16.0,
-                  color: Theme.of(context).primaryTextTheme.subtitle2.color),
+                  color: Theme.of(context).primaryTextTheme.titleSmall?.color),
             );
           }),
           onTap: () => _setDashboardOrderBy(context),

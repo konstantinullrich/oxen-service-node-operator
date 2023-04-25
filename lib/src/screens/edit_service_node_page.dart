@@ -47,10 +47,10 @@ class EditServiceNodePageBodyState extends State<EditServiceNodePageBody> {
   final _nameController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  Box<ServiceNode> serviceNodeSource;
-  ServiceNode node;
+  late Box<ServiceNode> serviceNodeSource;
+  late ServiceNode node;
 
-  bool _isDuplicateName(String name) =>
+  bool _isDuplicateName(String? name) =>
       serviceNodeSource.values.any((element) => element.name == name);
 
   @override
@@ -124,7 +124,7 @@ class EditServiceNodePageBodyState extends State<EditServiceNodePageBody> {
       ),
       bottomSection: PrimaryButton(
           onPressed: () async {
-            if (!_formKey.currentState.validate()) return;
+            if (!(_formKey.currentState?.validate() == true)) return;
             await _saveServiceNode();
             await nodeSyncStore.sync();
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -133,9 +133,9 @@ class EditServiceNodePageBodyState extends State<EditServiceNodePageBody> {
                 backgroundColor: OxenPalette.green));
           },
           text: S.of(context).save_service_node,
-          color: Theme.of(context).primaryTextTheme.button.backgroundColor,
+          color: Theme.of(context).primaryTextTheme.labelLarge?.backgroundColor,
           borderColor:
-              Theme.of(context).primaryTextTheme.button.decorationColor),
+              Theme.of(context).primaryTextTheme.labelLarge?.decorationColor),
     );
   }
 }

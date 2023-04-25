@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class StandardSwitch extends StatefulWidget {
-  const StandardSwitch({@required this.value, @required this.onTaped});
+  const StandardSwitch({required this.value, required this.onTaped});
 
   final bool value;
   final VoidCallback onTaped;
@@ -24,7 +24,7 @@ class StandardSwitchState extends State<StandardSwitch> {
         decoration: BoxDecoration(
             color: Theme.of(context).toggleButtonsTheme.color,
             border: Border.all(
-                color: Theme.of(context).toggleButtonsTheme.borderColor),
+                color: Theme.of(context).toggleButtonsTheme.borderColor!),
             borderRadius: BorderRadius.all(Radius.circular(33.0))),
         child: Container(
           width: 25.0,

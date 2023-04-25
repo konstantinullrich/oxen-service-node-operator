@@ -16,7 +16,7 @@ import 'package:oxen_service_node/src/widgets/primary_button.dart';
 import 'package:provider/provider.dart';
 
 class DetailsServiceNodePage extends BasePage {
-  DetailsServiceNodePage(this.publicKey, {this.nodeName});
+  DetailsServiceNodePage(this.publicKey, {required this.nodeName});
 
   final String publicKey;
   final String nodeName;
@@ -29,7 +29,10 @@ class DetailsServiceNodePage extends BasePage {
 
   void copyToClipboard(String title, String data) {
     Clipboard.setData(ClipboardData(text: data));
-    ScaffoldMessenger.of(scaffoldKey.currentContext).showSnackBar(
+
+    if (scaffoldKey.currentContext == null) return;
+
+    ScaffoldMessenger.of(scaffoldKey.currentContext!).showSnackBar(
       SnackBar(
         content: Text(S.current.copied_to_clipboard(title)),
         backgroundColor: Colors.green,
@@ -244,8 +247,8 @@ class DetailsServiceNodePage extends BasePage {
                                               fontSize: 16,
                                               color: Theme.of(context)
                                                   .primaryTextTheme
-                                                  .headline5
-                                                  .color)));
+                                                  .headlineSmall
+                                                  ?.color)));
                                 },
                               ),
                               ListView.builder(
@@ -262,8 +265,8 @@ class DetailsServiceNodePage extends BasePage {
                                               fontSize: 16,
                                               color: Theme.of(context)
                                                   .primaryTextTheme
-                                                  .headline5
-                                                  .color)));
+                                                  .headlineSmall
+                                                  ?.color)));
                                 },
                               ),
                             ])

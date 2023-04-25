@@ -14,15 +14,15 @@ class OxenTextField extends StatelessWidget {
       this.suffixIcon,
       this.focusNode});
 
-  final bool enabled;
-  final String hintText;
-  final TextInputType keyboardType;
-  final TextEditingController controller;
-  final String Function(String) validator;
-  final List<TextInputFormatter> inputFormatters;
-  final Widget prefixIcon;
-  final Widget suffixIcon;
-  final FocusNode focusNode;
+  final bool? enabled;
+  final String? hintText;
+  final TextInputType? keyboardType;
+  final TextEditingController? controller;
+  final String? Function(String?)? validator;
+  final List<TextInputFormatter>? inputFormatters;
+  final Widget? prefixIcon;
+  final Widget? suffixIcon;
+  final FocusNode? focusNode;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,7 @@ class OxenTextField extends StatelessWidget {
         focusNode: focusNode,
         style: TextStyle(
             fontSize: 18.0,
-            color: Theme.of(context).accentTextTheme.overline.color),
+            color: Theme.of(context).accentTextTheme.labelSmall?.color),
         keyboardType: keyboardType,
         inputFormatters: inputFormatters,
         decoration: InputDecoration(

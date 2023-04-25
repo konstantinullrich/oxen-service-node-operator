@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:hive/hive.dart';
 import 'package:oxen_service_node/generated/l10n.dart';
 import 'package:oxen_service_node/src/oxen/daemon.dart';
@@ -44,14 +43,17 @@ class AddNewDaemonPageBodyState extends State<AddNewDaemonPageBody> {
     await daemonSource.add(daemon);
   }
 
-  String _validateNodeAddress(String value) {
+  String? _validateNodeAddress(String? value) {
+    if (value == null) return null;
+
     const pattern =
         '^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\$|^[-0-9a-zA-Z.]{1,253}\$';
     final isValid = RegExp(pattern).hasMatch(value);
     return isValid ? null : S.current.error_text_daemon_address;
   }
 
-  String _validateNodePort(String value) {
+  String? _validateNodePort(String? value) {
+    if (value == null) return null;
     const pattern = '^[0-9]{1,5}';
     final regExp = RegExp(pattern);
     bool isValid = false;
@@ -100,14 +102,14 @@ class AddNewDaemonPageBodyState extends State<AddNewDaemonPageBody> {
       ),
       bottomSection: PrimaryButton(
           onPressed: () async {
-            if (!_formKey.currentState.validate()) return;
+            if (!(_formKey.currentState?.validate() == true)) return;
             await _saveDaemon(daemonSource);
             Navigator.of(context).pop();
           },
           text: S.of(context).add_daemon,
-          color: Theme.of(context).primaryTextTheme.button.backgroundColor,
+          color: Theme.of(context).primaryTextTheme.labelLarge?.backgroundColor,
           borderColor:
-              Theme.of(context).primaryTextTheme.button.decorationColor),
+              Theme.of(context).primaryTextTheme.labelLarge?.decorationColor),
     );
   }
 }

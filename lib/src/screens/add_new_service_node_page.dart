@@ -35,7 +35,7 @@ class AddNewServiceNodePageBodyState extends State<AddNewServiceNodePageBody> {
           String publicKey, Box<ServiceNode> serviceNodeSource) =>
       serviceNodeSource.values.any((element) => element.publicKey == publicKey);
 
-  bool _isDuplicateName(String name, Box<ServiceNode> serviceNodeSource) =>
+  bool _isDuplicateName(String? name, Box<ServiceNode> serviceNodeSource) =>
       serviceNodeSource.values.any((element) => element.name == name);
 
   @override
@@ -88,10 +88,11 @@ class AddNewServiceNodePageBodyState extends State<AddNewServiceNodePageBody> {
                     icon: Icon(Icons.content_paste_sharp),
                     onPressed: () async {
                       final clipboard = await Clipboard.getData('text/plain');
-                      if (clipboard.text != null)
-                        _publicKeyController.text = clipboard.text;
+                      if (clipboard?.text != null)
+                        _publicKeyController.text = clipboard!.text!;
                     }),
                 validator: (value) {
+                  if (value == null) return null;
                   final validPublicKey = isValidPublicKey(value);
                   final isDuplicate =
                       _isDuplicatePublicKey(value, serviceNodeSource);
@@ -110,7 +111,7 @@ class AddNewServiceNodePageBodyState extends State<AddNewServiceNodePageBody> {
       ),
       bottomSection: PrimaryButton(
           onPressed: () async {
-            if (!_formKey.currentState.validate()) return;
+            if (!(_formKey.currentState?.validate() == true)) return;
             await _saveServiceNode(serviceNodeSource);
             await nodeSyncStatus.sync();
             ScaffoldMessenger.of(context).showSnackBar(SnackBar(
@@ -120,9 +121,9 @@ class AddNewServiceNodePageBodyState extends State<AddNewServiceNodePageBody> {
             Navigator.pushNamed(context, OxenRoutes.dashboard);
           },
           text: S.of(context).add_service_node,
-          color: Theme.of(context).primaryTextTheme.button.backgroundColor,
+          color: Theme.of(context).primaryTextTheme.labelLarge?.backgroundColor,
           borderColor:
-              Theme.of(context).primaryTextTheme.button.decorationColor),
+              Theme.of(context).primaryTextTheme.labelLarge?.decorationColor),
     );
   }
 }

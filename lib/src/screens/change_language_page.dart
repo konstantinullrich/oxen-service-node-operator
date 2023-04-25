@@ -18,16 +18,14 @@ class ChangeLanguagePage extends BasePage {
 
     final currentColor = Theme.of(context).selectedRowColor;
     final notCurrentColor =
-        Theme.of(context).accentTextTheme.subtitle1.backgroundColor;
+        Theme.of(context).accentTextTheme.titleMedium?.backgroundColor;
 
     return Container(
         padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
         child: ListView.builder(
           itemCount: languages.values.length,
           itemBuilder: (BuildContext context, int index) {
-            final isCurrent = settingsStore.languageCode == null
-                ? false
-                : languages.keys.elementAt(index) == settingsStore.languageCode;
+            final isCurrent = languages.keys.elementAt(index) == settingsStore.languageCode;
 
             return Container(
               margin: EdgeInsets.only(top: 10.0, bottom: 10.0),
@@ -38,7 +36,7 @@ class ChangeLanguagePage extends BasePage {
                   style: TextStyle(
                       fontSize: 16.0,
                       color:
-                          Theme.of(context).primaryTextTheme.headline6.color),
+                          Theme.of(context).primaryTextTheme.titleLarge?.color),
                 ),
                 onTap: () async {
                   if (!isCurrent) {

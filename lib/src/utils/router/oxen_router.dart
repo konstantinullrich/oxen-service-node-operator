@@ -55,8 +55,8 @@ class OxenRouter {
 
       case OxenRoutes.detailsServiceNode:
         return CupertinoPageRoute(builder: (_) {
-          List<String> args = settings.arguments;
-          String nodeName = args.length > 1 ? args[1] : null;
+          List<String> args = settings.arguments as List<String>;
+          String nodeName = args.length > 1 ? args[1] : "¯\\_(ツ)_/¯";
           return DetailsServiceNodePage(args.first, nodeName: nodeName);
         });
 
@@ -65,7 +65,7 @@ class OxenRouter {
             builder: (_) => Scaffold(
                   body: Center(
                       child:
-                          Text(S.current.error_router_no_route(settings.name))),
+                          Text(S.current.error_router_no_route(settings.name as String))),
                 ));
     }
   }

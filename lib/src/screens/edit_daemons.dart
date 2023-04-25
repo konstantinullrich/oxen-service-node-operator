@@ -24,7 +24,7 @@ class EditDaemonsPage extends BasePage {
           onPressed: () =>
               Navigator.of(context).pushNamed(OxenRoutes.addDaemon),
           icon: Icon(Icons.add_sharp,
-              color: Theme.of(context).primaryTextTheme.caption.color,
+              color: Theme.of(context).primaryTextTheme.bodySmall?.color,
               size: 24)),
     );
   }
@@ -36,7 +36,7 @@ class EditDaemonsPage extends BasePage {
 
     final daemons = daemonSources.values.toList();
     final currentColor = Theme.of(context).selectedRowColor;
-    final notCurrentColor = Theme.of(context).backgroundColor;
+    final notCurrentColor = Theme.of(context).colorScheme.background;
 
     return Container(
       padding: EdgeInsets.only(bottom: 20.0),
@@ -51,9 +51,7 @@ class EditDaemonsPage extends BasePage {
                     final daemon = daemons[index];
 
                     return Observer(builder: (_) {
-                      final isCurrent = settingsStore.daemon == null
-                          ? false
-                          : daemon.key == settingsStore.daemon.key;
+                      final isCurrent = daemon.key == settingsStore.daemon?.key;
 
                       final content = Container(
                           color: isCurrent ? currentColor : notCurrentColor,
@@ -64,8 +62,8 @@ class EditDaemonsPage extends BasePage {
                                   fontSize: 16.0,
                                   color: Theme.of(context)
                                       .primaryTextTheme
-                                      .headline6
-                                      .color),
+                                      .titleLarge
+                                      ?.color),
                             ),
                             trailing: FutureBuilder(
                                 future: daemon.isOnline(),

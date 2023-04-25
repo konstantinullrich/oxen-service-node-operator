@@ -1,4 +1,5 @@
 {
+  "@@locale": "en",
   "welcome": "Welcome,\nOXEN Service Node Operator",
   "welcome_first_line": "Here you can watch Service Nodes you run or contribute to.",
   "add_node_to_get_started": "Add a Service Node below to get started.",

@@ -10,10 +10,10 @@ class NavListMultiHeader extends StatelessWidget {
 
   final String title;
   final String subtitle;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final bool forceSmallText;
-  final Color titleColor;
-  final Color subtitleColor;
+  final Color? titleColor;
+  final Color? subtitleColor;
 
   Color get _titleColor => titleColor ?? Palette.wildDarkBlue;
 
@@ -41,7 +41,7 @@ class NavListMultiHeader extends StatelessWidget {
                     style: TextStyle(
                         fontSize: subtitleSize,
                         color: subtitleColor ??
-                            Theme.of(context).primaryTextTheme.headline5.color),
+                            Theme.of(context).primaryTextTheme.headlineSmall?.color),
                   )
                 ],
               ),
